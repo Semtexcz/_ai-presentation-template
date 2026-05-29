@@ -1,0 +1,36 @@
+# {{ presentation_title }}
+
+Slidev prezentace založená na interním prezentačním templatu.
+
+## Použití
+
+```bash
+pnpm install
+pnpm run dev
+```
+
+Výchozí adresa je `http://localhost:3030`. Pokud je port obsazený:
+
+```bash
+pnpm exec slidev --port 4100
+```
+
+Produkční build:
+
+```bash
+pnpm run build
+```
+
+Export:
+
+```bash
+pnpm run export
+```
+
+## Struktura
+
+- `slides.md` - obsah prezentace.
+- `layouts/` - vlastní Slidev layouty.
+- `components/` - sdílené komponenty layoutů.
+- `styles/index.css` - globální barvy, fonty a breadcrumb styl.
+- `snippets/` - volitelné ukázkové soubory pro code slidy.

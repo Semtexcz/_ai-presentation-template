@@ -1,10 +1,12 @@
-# Slidev Presentation Template
+# Copier Template pro Slidev prezentace
 
-Čistá šablona pro tvorbu dalších prezentací ve Slidev. Obsahuje vlastní layouty, globální styl a startovací `slides.md`.
+Čistá Copier šablona pro tvorbu dalších prezentací ve Slidev. Obsahuje vlastní layouty, globální styl a startovací `slides.md`.
 
 ## Použití
 
 ```bash
+copier copy path/to/_ai-presentation-template moje-prezentace
+cd moje-prezentace
 pnpm install
 pnpm run dev
 ```
@@ -15,13 +17,13 @@ Výchozí adresa je `http://localhost:3030`. Pokud je port obsazený:
 pnpm exec slidev --port 4100
 ```
 
-Produkční build:
+Produkční build ve vygenerované prezentaci:
 
 ```bash
 pnpm run build
 ```
 
-Export:
+Export ve vygenerované prezentaci:
 
 ```bash
 pnpm run export
@@ -29,19 +31,30 @@ pnpm run export
 
 ## Jak založit novou prezentaci
 
-1. Vytvoř nové repo z této šablony.
-2. Uprav `package.json`, hlavně `name`.
-3. Přepiš `slides.md`.
-4. Přidej vlastní obrázky do `images/` nebo `public/`, pokud je prezentace potřebuje.
-5. Layouty měň jen tehdy, když se změna má projevit ve všech dalších prezentacích.
+1. Nainstaluj Copier podle dokumentace: `pipx install copier`, `uv tool install copier` nebo jiným podporovaným způsobem.
+2. Spusť `copier copy path/to/_ai-presentation-template moje-prezentace`.
+3. Odpověz na otázky pro název projektu, slug, titulek, podtitulek a autora.
+4. Ve vygenerovaném adresáři spusť `pnpm install` a `pnpm run dev`.
+5. Přepiš `slides.md`.
+6. Přidej vlastní obrázky do `images/` nebo `public/`, pokud je prezentace potřebuje.
+
+Pozdější update z nové verze templatu:
+
+```bash
+copier update
+```
 
 ## Struktura
 
-- `slides.md` - startovací prezentace.
-- `layouts/` - vlastní Slidev layouty.
-- `components/` - sdílené komponenty layoutů.
-- `styles/index.css` - globální barvy, fonty a breadcrumb styl.
-- `snippets/` - volitelné ukázkové soubory pro code slidy.
+- `copier.yml` - otázky a nastavení Copier templatu.
+- `template/` - soubory, ze kterých vzniká nová prezentace.
+- `template/slides.md.jinja` - startovací prezentace s proměnnými.
+- `template/package.json.jinja` - package metadata s názvem podle `project_slug`.
+- `template/{{ _copier_conf.answers_file }}.jinja` - answers soubor pro budoucí `copier update`.
+- `template/layouts/` - vlastní Slidev layouty.
+- `template/components/` - sdílené komponenty layoutů.
+- `template/styles/index.css` - globální barvy, fonty a breadcrumb styl.
+- `template/snippets/` - volitelné ukázkové soubory pro code slidy.
 
 ## Společný frontmatter
 

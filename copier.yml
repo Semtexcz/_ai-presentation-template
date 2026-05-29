@@ -1,0 +1,31 @@
+_min_copier_version: "9.0.0"
+_subdirectory: template
+
+project_name:
+  type: str
+  help: Human readable presentation/project name.
+  default: "Moje prezentace"
+
+project_slug:
+  type: str
+  help: Npm package name; use the same value for the destination directory. Use lowercase letters, numbers and hyphens.
+  default: "{{ project_name|lower|replace(' ', '-')|replace('_', '-') }}"
+  validator: >-
+    {% if not (project_slug | regex_search('^[a-z][a-z0-9-]*$')) %}
+    Use lowercase letters, numbers and hyphens; start with a letter.
+    {% endif %}
+
+presentation_title:
+  type: str
+  help: Title shown in the first slide.
+  default: "{{ project_name }}"
+
+presentation_subtitle:
+  type: str
+  help: Subtitle shown in the first slide.
+  default: "Krátký podtitulek, který vysvětlí téma a slib prezentace."
+
+author_name:
+  type: str
+  help: Optional author/contact text for the closing slide.
+  default: ""
