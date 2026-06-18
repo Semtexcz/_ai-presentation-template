@@ -162,3 +162,90 @@ Sloty:
 - U `one-idea` preferuj konkrétní diagram, srovnání nebo graf před dlouhým textem.
 - Dlouhé vysvětlení patří do speaker notes.
 - Nový layout přidej jen tehdy, když opakovaně řeší jiný typ slidu než existující layouty.
+
+## Příklady dobrých promptů
+
+Pokud chceš přes AI vygenerovat první verzi `slides.md`, vyplatí se zadat nejen téma, ale i cílové publikum, strukturu a omezení templatu. Tyto prompty fungují výrazně lépe než obecné "udělej mi prezentaci".
+
+### 1. Návrh celé prezentace
+
+```text
+Vytvoř obsah souboru slides.md pro Slidev prezentaci v češtině.
+Téma: Jak zavést interní AI asistenty do produktového týmu.
+Cílové publikum: vedení firmy a seniorní product manažeři.
+Cíl prezentace: vysvětlit přínosy, rizika, plán pilotu a rozhodnutí na konci.
+
+Použij pouze layouty hero, toc, one-idea, pipeline a code.
+Prezentace má mít 10 slidů.
+Každý slide musí mít smysluplný frontmatter včetně section, current a title.
+U one-idea preferuj diagram, srovnání nebo jednoduchý decision framework místo odstavců textu.
+Text drž stručný, konkrétní a bez marketingových frází.
+Na konec přidej slide s jasným doporučením a dalšími kroky.
+
+Vrať pouze validní obsah slides.md.
+```
+
+### 2. Přepsání osnovy do tohoto templatu
+
+```text
+Převeď tuto osnovu do Slidev slides.md s využitím layoutů z tohoto templatu:
+1. Problém: týmy tráví moc času ruční přípravou podkladů
+2. Kde AI pomůže nejdřív
+3. Kde AI naopak nechceme nasadit
+4. Návrh pilotu na 6 týdnů
+5. Metriky úspěchu
+6. Rozhodnutí pro management
+
+Požadavky:
+- první slide jako hero
+- druhý slide jako toc
+- procesní část dej do pipeline
+- pokud se hodí ukázka promptu nebo výstupu, použij code layout
+- každý slide ať obsahuje jen jednu hlavní myšlenku
+- speaker notes nepřidávej
+
+Vrať jen Markdown pro slides.md.
+```
+
+### 3. Jeden silný slide místo textové omáčky
+
+```text
+Navrhni jeden slide s layoutem one-idea pro téma:
+"Ne každá AI automatizace šetří čas."
+
+Chci:
+- výrazný titul do slotu title
+- vizuál jako comparison mezi "rychlé demo" a "udržitelný provoz"
+- krátkou note větu, která vysvětlí trade-off
+- minimum textu, maximum srozumitelnosti
+
+Výstup vrať jako kompletní Markdown jednoho slidu včetně frontmatteru.
+```
+
+### 4. Slide s ukázkou promptu nebo terminálu
+
+```text
+Vytvoř slide s layoutem code, který ukazuje praktický prompt pro shrnutí zákaznických ticketů.
+Potřebuji:
+- krátký český nadpis
+- realistický prompt ve fenced code blocku
+- pod tím krátkou poznámku, kdy takový prompt funguje a kdy už nestačí
+- žádné obecné poučky, jen konkrétní ukázku
+
+Vrať pouze jeden slide jako Markdown.
+```
+
+### 5. Revize už existující prezentace
+
+```text
+Zkontroluj následující obsah slides.md a navrhni jeho lepší verzi pro tento template.
+Hledej hlavně:
+- slidy s příliš mnoha myšlenkami
+- místa, kde má být one-idea místo odstavců
+- části, které je lepší převést do pipeline nebo code layoutu
+- nejasné nebo generické titulky
+
+Pak vrať upravený obsah slides.md, ne seznam doporučení.
+```
+
+Nejlepší výsledky obvykle vzniknou, když do promptu doplníš ještě konkrétní kontext: typ publika, délku prezentace, očekávané rozhodnutí a 2 až 3 klíčové teze, které musí zaznít.
