@@ -1,15 +1,15 @@
 # Changelog
 
-Všechny významné změny v tomto templatu se zapisují sem.
+All notable changes to this template are documented in this file.
 
-Formát vychází z Keep a Changelog a releasy se verzují pomocí SemVer.
+The format is based on Keep a Changelog and releases follow SemVer.
 
 ## [0.1.0] - 2026-06-22
 
 ### Added
 
-- Zaveden root `CHANGELOG.md` pro sledování změn templatu.
-- Přidána interní proměnná `template_version` v `copier.yml` jako jedno zdrojové místo verze templatu.
-- Doplněn stručný root `AGENTS.md` s release workflow pravidly.
-- Do root `README.md` a generovaného `template/README.md.jinja` přidána informace o verzi templatu.
-- Do `template/package.json.jinja` přidáno pole `version` pro verzování vygenerovaného projektu.
+- Added a root `CHANGELOG.md` to track template changes.
+- Added the internal `template_version` variable to `copier.yml` as the single source of truth for the template version.
+- Added a concise root `AGENTS.md` with release workflow rules.
+- Added template version information to the root `README.md` and generated `template/README.md.jinja`.
+- Added the `version` field to `template/package.json.jinja` for generated project versioning.
