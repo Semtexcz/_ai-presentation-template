@@ -10,6 +10,7 @@ Používej pouze tyto layouty:
 - live-demo
 - code
 - pipeline
+- text-compare
 
 Prezentace je určena pro živou přednášku, ne jako samostatný studijní materiál.
 
@@ -23,6 +24,9 @@ Pravidla:
 - nadpis má nést pointu, ne jen téma
 - nepoužívej více než 3–4 karty v jednom řádku
 - kód nebo citace drž krátké
+- pro porovnání špatného a lepšího promptu nebo výstupu použij `text-compare`
+- nepoužívej kartičkovou stěnu jako náhradu za porovnání dvou bloků
+- delší prompt ke kopírování dej do `text-compare` ve `vertical` módu nebo do samostatného `code` layoutu
 - prezentace má mít jasný úvod, střed a závěr
 
 Cílové publikum:

@@ -4,6 +4,17 @@ All notable changes to this template are documented in this file.
 
 The format is based on Keep a Changelog and releases follow SemVer.
 
+## [0.4.0] - 2026-06-22
+
+### Added
+
+- Added a universal `text-compare` Slidev layout for side-by-side or stacked comparisons of prompts, outputs, assignments, and short code/text snippets.
+
+### Changed
+
+- Documented when to use `text-compare` in horizontal vs vertical mode and clarified that comparisons should stay limited to exactly two blocks.
+- Updated the Czech presentation prompt guidance to prefer `text-compare` over card walls for prompt comparisons.
+
 ## [0.3.0] - 2026-06-22
 
 ### Added

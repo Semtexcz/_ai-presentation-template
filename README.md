@@ -2,7 +2,7 @@
 
 Čistá Copier šablona pro tvorbu dalších prezentací ve Slidev. Obsahuje vlastní layouty, globální styl a startovací `slides.md`.
 
-Aktuální verze templatu: `v0.3.0`.
+Aktuální verze templatu: `v0.4.0`.
 
 ## Použití
 
@@ -99,6 +99,8 @@ Template je určený pro živý výklad. Slide funguje jako vizuální kotva pro
 - Pokud se text nevejde bez ošklivého lámání slov, slide je příliš hustý.
 - Pro živý přechod do prohlížeče nebo terminálu použij `live-demo`.
 - Pro jednu silnou větu použij `statement`.
+- Pro porovnání špatného a lepšího promptu použij `text-compare`, ne kartičkovou stěnu.
+- Delší prompt ke kopírování dej do `text-compare` ve `vertical` módu nebo do samostatného `code` slidu.
 
 ## Layout: hero
 
@@ -194,6 +196,120 @@ Sloty:
 
 Běžný fenced code block se zobrazí jako světlá, velká karta vhodná pro prompt nebo krátkou demo ukázku. Drž ho na 4–6 řádcích; syntax highlighting použij jen tehdy, když pomáhá výkladu.
 
+## Layout: text-compare
+
+Použití pro srovnání dvou textových bloků: špatný vs lepší prompt, slabý vs lepší výstup, původní vs upravené zadání nebo krátký původní vs opravený kód.
+
+Frontmatter:
+
+- `mode` - `horizontal` nebo `vertical`; výchozí `horizontal`.
+- `leftTitle` - název levého nebo horního panelu; výchozí `Původní`.
+- `rightTitle` - název pravého nebo dolního panelu; výchozí `Upravené`.
+- `leftKicker` - volitelný kicker levého nebo horního panelu.
+- `rightKicker` - volitelný kicker pravého nebo dolního panelu.
+- `leftVariant` - `neutral`, `bad`, `good` nebo `accent`; výchozí `neutral`.
+- `rightVariant` - `neutral`, `bad`, `good` nebo `accent`; výchozí `accent`.
+
+Sloty:
+
+- `#title` - hlavní nadpis slidu.
+- `#left` - levý nebo horní obsah.
+- `#right` - pravý nebo dolní obsah.
+- `#note` - volitelná krátká poznámka pod panely.
+
+Pravidla použití:
+
+- `horizontal` použij pro krátký kontrast, který se vejde do dvou panelů vedle sebe.
+- `vertical` použij pro delší prompt nebo text, který má jít pohodlně číst nebo kopírovat.
+- `text-compare` je jen pro dva bloky; pokud potřebuješ tři a více bloků, rozděl obsah do více slidů.
+- Pro velmi dlouhý prompt, dlouhý kód nebo detailní rozbor raději použij samostatný `code` slide.
+- Nepoužívej kartičkovou stěnu jen proto, abys napodobil porovnání; tento layout má držet strukturu jednoduchou.
+
+Krátký horizontální příklad:
+
+````md
+---
+layout: text-compare
+section: Python situace
+current: For cyklus
+title: "Lepší prompt nastaví směr odpovědi."
+mode: horizontal
+leftTitle: "Vágní prompt"
+rightTitle: "Lepší prompt"
+leftVariant: bad
+rightVariant: accent
+---
+
+<template #title>
+Lepší prompt nastaví směr odpovědi.
+</template>
+
+<template #left>
+
+```text
+Vysvětli for cyklus.
+```
+
+</template>
+
+<template #right>
+
+```text
+Jsem začátečník v Pythonu a znám proměnné a seznamy.
+Vysvětli mi for cyklus na seznamu jmen.
+Použij analogii, 5 řádků kódu a mini cvičení.
+```
+
+</template>
+
+<template #note>
+Lepší prompt nezmění jen formulaci. Změní typ odpovědi.
+</template>
+````
+
+Vertikální příklad pro delší prompt:
+
+````md
+---
+layout: text-compare
+section: Python situace
+current: Prompt ke kopírování
+title: "Dlouhý prompt dej raději přes celou šířku."
+mode: vertical
+leftTitle: "Vágní prompt"
+rightTitle: "Lepší prompt"
+leftVariant: bad
+rightVariant: accent
+---
+
+<template #title>
+Dlouhý prompt dej raději přes celou šířku.
+</template>
+
+<template #left>
+
+```text
+Napiš program na známky.
+```
+
+</template>
+
+<template #right>
+
+```text
+Napiš jednoduchý terminálový program na průměr známek.
+Jsem začátečník: použij jen list, input(), for, if a print().
+Neřeš zatím výjimky ani soubory.
+Přidej 2 testovací vstupy a očekávaný výstup.
+```
+
+</template>
+
+<template #note>
+Horizontal mód je na krátký kontrast. Vertical mód je lepší pro prompt, který chci číst nebo kopírovat.
+</template>
+````
+
 ## Layout: live-demo
 
 Použití jako čistý přechod před živou ukázkou v AI, prohlížeči nebo terminálu. Neobsahuje karty, code area ani note area.
@@ -211,6 +327,7 @@ Frontmatter `kicker` může přepsat výchozí text `Živá ukázka`.
 - Nepoužívej dekorace bez informační funkce.
 - U `one-idea` preferuj konkrétní diagram, srovnání nebo graf před dlouhým textem.
 - Pro skutečné procesy použij `pipeline`; karty v `.flow` nemají výchozí šipky.
+- `text-compare` neslouží pro víc než dva bloky; pokud potřebuješ tři a více, rozděl obsah do více slidů.
 - Dlouhé vysvětlení patří do speaker notes.
 - Nový layout přidej jen tehdy, když opakovaně řeší jiný typ slidu než existující layouty.
 
