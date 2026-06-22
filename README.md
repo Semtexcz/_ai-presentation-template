@@ -2,6 +2,8 @@
 
 Čistá Copier šablona pro tvorbu dalších prezentací ve Slidev. Obsahuje vlastní layouty, globální styl a startovací `slides.md`.
 
+Aktuální verze templatu: `v0.1.0`.
+
 ## Použití
 
 ```bash
@@ -43,6 +45,8 @@ Pozdější update z nové verze templatu:
 ```bash
 copier update
 ```
+
+Změny mezi releasy jsou v [CHANGELOG.md](/mnt/Data/1_Drive/1_Projekty/Softwarové projekty/_ai-presentation-template/CHANGELOG.md).
 
 ## Struktura
 
