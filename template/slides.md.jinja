@@ -18,8 +18,8 @@ title: {{ presentation_title|to_json }}
 
 <!--
 Speaker notes:
-- Otevři kontext a řekni, proč má téma smysl.
-- Vymez jednu hlavní myšlenku celé prezentace.
+- Otevři konkrétní situací, kterou publikum zná.
+- Řekni jediný slib prezentace; podrobnosti zatím nechej stranou.
 -->
 
 ---
@@ -32,8 +32,8 @@ breadcrumb:
 columns: 2
 items:
   - Kontext
-  - Hlavní princip
-  - Praktická ukázka
+  - Princip
+  - Ukázka
   - Shrnutí
 active: 0
 showAnchor: false
@@ -41,107 +41,168 @@ title: "Mapa prezentace"
 ---
 
 <template #title>
-Mapa prezentace
+Kam dnes míříme
 </template>
 
 <!--
 Speaker notes:
-- Ukaž trasu prezentace.
-- Nesnaž se vysvětlit vše hned na mapě.
+- Ukaž trasu, ale jednotlivé body ještě nevysvětluj.
+-->
+
+---
+layout: statement
+section: Kontext
+current: Hlavní myšlenka
+breadcrumb:
+  - {{ presentation_title|to_json }}
+  - Kontext
+  - Hlavní myšlenka
+title: "AI často hádá kontext."
+---
+
+<template #title>
+AI často hádá kontext.
+</template>
+
+<template #subtitle>
+Když ho nedostane, doplní si ho sama.
+</template>
+
+<!--
+Speaker notes:
+- Uveď jeden krátký příklad chybného předpokladu.
+- Nech pointu chvíli doznít, než přejdeš na strukturu promptu.
 -->
 
 ---
 layout: one-idea
-section: Kontext
-current: Hlavní otázka
+section: Princip
+current: Dobrý prompt
 breadcrumb:
   - {{ presentation_title|to_json }}
-  - Kontext
-  - Hlavní otázka
-visualVariant: comparison
-title: "Jakou otázku řešíme?"
+  - Princip
+  - Dobrý prompt
+visualVariant: diagram
+title: "Prompt potřebuje čtyři věci"
 ---
 
 <template #title>
-Jakou otázku řešíme?
+Prompt potřebuje čtyři věci.
 </template>
 
 <template #visual>
-<div class="comparison">
-  <div class="comparison-panel accent">
-    <div class="viz-kicker">stav dnes</div>
-    <div class="viz-label">co lidé dělají teď</div>
-    <div class="viz-sub">Popiš výchozí situaci nebo problém.</div>
+<div class="flow">
+  <div class="flow-step">
+    <div class="flow-kicker">1</div>
+    <div class="flow-label">Role</div>
+    <div class="flow-sub">Kdo odpovídá?</div>
   </div>
-  <div class="comparison-panel">
-    <div class="viz-kicker">cílový stav</div>
-    <div class="viz-label">co chceme změnit</div>
-    <div class="viz-sub">Popiš, kam se má publikum po prezentaci dostat.</div>
+  <div class="flow-step">
+    <div class="flow-kicker">2</div>
+    <div class="flow-label">Kontext</div>
+    <div class="flow-sub">Co musí znát?</div>
+  </div>
+  <div class="flow-step">
+    <div class="flow-kicker">3</div>
+    <div class="flow-label">Úkol</div>
+    <div class="flow-sub">Co má udělat?</div>
+  </div>
+  <div class="flow-step">
+    <div class="flow-kicker">4</div>
+    <div class="flow-label">Formát</div>
+    <div class="flow-sub">Jak má vypadat výstup?</div>
   </div>
 </div>
 </template>
 
-<template #note>
-Jeden slide má nést jednu jasnou myšlenku.
+<!--
+Speaker notes:
+- Každou kartu vysvětli jedním příkladem.
+- Pokud je potřeba více detailu, rozděl princip do dalších slidů.
+-->
+
+---
+layout: live-demo
+section: Ukázka
+current: Slabý prompt
+breadcrumb:
+  - {{ presentation_title|to_json }}
+  - Ukázka
+  - Slabý prompt
+title: "Teď to zkusíme v AI"
+---
+
+<template #title>
+Teď to zkusíme v AI
+</template>
+
+<template #subtitle>
+Slabý prompt → lepší prompt
 </template>
 
 <!--
 Speaker notes:
-- Doplň konkrétní příklad z praxe.
-- Řekni, proč rozdíl mezi oběma stavy stojí za pozornost.
+- Přepni do prohlížeče a nejdřív ukaž slabou verzi promptu.
+- Vrať se na slidy až ve chvíli, kdy publikum vidí rozdíl ve výstupu.
+-->
+
+---
+layout: code
+section: Ukázka
+current: Lepší prompt
+breadcrumb:
+  - {{ presentation_title|to_json }}
+  - Ukázka
+  - Lepší prompt
+title: "Dej modelu jasné mantinely"
+---
+
+<template #title>
+Dej modelu jasné mantinely.
+</template>
+
+```text
+Shrň zpětnou vazbu od zákazníků.
+Kontext: rozhodujeme o prioritách na další sprint.
+Výstup: 3 témata, u každého jeden citovaný příklad.
+Nevymýšlej chybějící informace.
+```
+
+<!--
+Speaker notes:
+- Zvýrazni kontext, formát a omezení.
+- Prompt nahlas nepředčítej; ukaž jen rozdíl proti slabé verzi.
 -->
 
 ---
 layout: pipeline
 section: Princip
-current: Postup
+current: Iterace
 breadcrumb:
   - {{ presentation_title|to_json }}
   - Princip
-  - Postup
+  - Iterace
 mode: snake
 columns: 3
 steps:
-  - Vstup
-  - Rozhodnutí
-  - Akce
-  - Kontrola
-  - Iterace
-  - Výsledek
-active: 0
-title: "Jak postup funguje"
+  - Napiš první verzi
+  - Spusť prompt
+  - Zkontroluj výstup
+  - Najdi slabé místo
+  - Uprav zadání
+  - Spusť znovu
+active: 2
+title: "První prompt není řešení"
 ---
 
 <template #title>
-Jak postup funguje
+První prompt není řešení.
 </template>
 
-<template #note>
-Proces drž krátký. Detail patří do výkladu nebo dalších slidů.
-</template>
-
----
-layout: code
-section: Ukázka
-current: Demo
-breadcrumb:
-  - {{ presentation_title|to_json }}
-  - Ukázka
-  - Demo
-title: "Praktická ukázka"
----
-
-<template #title>
-Praktická ukázka
-</template>
-
-```txt
-Sem vlož ukázku textu, kódu, promptu nebo terminálového výstupu.
-```
-
-<template #note>
-Poznámka pod ukázkou má vysvětlit, čeho si má publikum všimnout.
-</template>
+<!--
+Speaker notes:
+- Popiš cyklus jako rychlou kontrolovanou iteraci, ne jako jednorázové zadání.
+-->
 
 ---
 layout: one-idea
@@ -152,36 +213,34 @@ breadcrumb:
   - Shrnutí
   - Co si odnést
 visualVariant: diagram
-title: "Co si má publikum odnést?"
+title: "Tři věci pro praxi"
 ---
 
 <template #title>
-Co si má publikum odnést?
+Tři věci pro praxi.
 </template>
 
 <template #visual>
-<div class="flow" style="--flow-columns: 3;">
+<div class="flow">
   <div class="flow-step">
     <div class="flow-kicker">1</div>
-    <div class="flow-label">První pointa</div>
-    <div class="flow-sub">Krátké vysvětlení.</div>
+    <div class="flow-label">Doplň kontext</div>
   </div>
   <div class="flow-step">
     <div class="flow-kicker">2</div>
-    <div class="flow-label">Druhá pointa</div>
-    <div class="flow-sub">Krátké vysvětlení.</div>
+    <div class="flow-label">Urči formát</div>
   </div>
   <div class="flow-step">
     <div class="flow-kicker">3</div>
-    <div class="flow-label">Další krok</div>
-    <div class="flow-sub">Co má publikum udělat po prezentaci.</div>
+    <div class="flow-label">Ověř výstup</div>
   </div>
 </div>
 </template>
 
-<template #note>
-Závěr má být konkrétní a zapamatovatelný.
-</template>
+<!--
+Speaker notes:
+- Shrň jen to, co má publikum použít při příští práci.
+-->
 
 ---
 layout: hero
@@ -201,6 +260,6 @@ Děkuji.
 {% if author_name -%}
 {{ author_name }}
 {%- else -%}
-Kontakt, odkaz nebo výzva k další práci.
+Co vyzkoušíte jako první?
 {%- endif %}
 </template>

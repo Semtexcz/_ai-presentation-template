@@ -149,7 +149,8 @@ function stepClass(index) {
 .pipeline-step {
   position: relative;
 
-  height: 52px;
+  min-height: 64px;
+  height: auto;
   border: 1px solid var(--border);
   border-radius: 14px;
   background: #F4F4F4;
@@ -158,14 +159,20 @@ function stepClass(index) {
   align-items: center;
   justify-content: center;
 
-  padding: 0 18px;
+  padding: 12px 18px;
 
   font-family: 'Inter', sans-serif;
   font-size: 18px;
   font-weight: 500;
   color: var(--text);
 
-  white-space: nowrap;
+  line-height: 1.2;
+  text-align: center;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+  text-wrap: balance;
 }
 
 .pipeline-step.active {

@@ -2,7 +2,7 @@
 
 Čistá Copier šablona pro tvorbu dalších prezentací ve Slidev. Obsahuje vlastní layouty, globální styl a startovací `slides.md`.
 
-Aktuální verze templatu: `v0.1.0`.
+Aktuální verze templatu: `v0.2.0`.
 
 ## Použití
 
@@ -76,6 +76,19 @@ title: "Jakou otázku řešíme?"
 
 `breadcrumb` se zobrazí v horní navigační stopě. Pokud chybí, layout použije dvojici `section` a `current`. `title` je metadata pro Slidev; viditelný nadpis se většinou vkládá do slotu `#title`.
 
+## Live lecture pravidla
+
+Template je určený pro živý výklad. Slide funguje jako vizuální kotva pro řečníka, ne jako samostatný studijní materiál.
+
+- Slide není studijní materiál.
+- Každý slide má jednu funkci: myšlenka, ukázka, demo, cvičení nebo shrnutí.
+- Dlouhé vysvětlení patří do speaker notes jako HTML komentář.
+- Prompt na slidu má mít maximálně 4–6 řádků.
+- Nepoužívej více než 3–4 karty v jednom řádku.
+- Pokud se text nevejde bez ošklivého lámání slov, slide je příliš hustý.
+- Pro živý přechod do prohlížeče nebo terminálu použij `live-demo`.
+- Pro jednu silnou větu použij `statement`.
+
 ## Layout: hero
 
 Použití pro úvodní, závěrečné a velké přechodové slidy.
@@ -114,6 +127,15 @@ Frontmatter:
 - `columns` - `1` nebo `2`; výchozí hodnota je `1`.
 - `showAnchor` - `true` zobrazí dekorativní kruhový symbol vpravo.
 
+## Layout: statement
+
+Použití pro jednu velkou větu bez karet nebo rámu. Volitelný `#subtitle` doplní krátké upřesnění. Frontmatter `align` podporuje `left` (výchozí) a `center`.
+
+Sloty:
+
+- `#title` - jediná hlavní myšlenka.
+- `#subtitle` - volitelná krátká podpůrná věta.
+
 ## Layout: one-idea
 
 Použití pro jeden silný koncept na slide. Má nadpis, vizuální plochu a krátkou poznámku.
@@ -127,7 +149,7 @@ Sloty:
 
 - `#title` - hlavní myšlenka slidu.
 - `#visual` - obrázek, SVG nebo HTML struktura.
-- `#note` - krátká vysvětlující věta pod vizuálem.
+- `#note` - volitelná krátká takeaway věta pod vizuálem; dlouhý výklad patří do speaker notes.
 
 Pomocné CSS třídy ve vizuálu:
 
@@ -159,11 +181,25 @@ Sloty:
 - výchozí slot - Markdown obsah, typicky fenced code block.
 - `#note` - krátká poznámka pod ukázkou.
 
+Běžný fenced code block se zobrazí jako světlá, velká karta vhodná pro prompt nebo krátkou demo ukázku. Drž ho na 4–6 řádcích; syntax highlighting použij jen tehdy, když pomáhá výkladu.
+
+## Layout: live-demo
+
+Použití jako čistý přechod před živou ukázkou v AI, prohlížeči nebo terminálu. Neobsahuje karty, code area ani note area.
+
+Sloty:
+
+- `#title` - co se teď bude dít.
+- `#subtitle` - volitelný krátký popis ukázky.
+
+Frontmatter `kicker` může přepsat výchozí text `Živá ukázka`.
+
 ## Stylové zásady
 
 - Drž jednoduchou paletu definovanou v `styles/index.css`.
 - Nepoužívej dekorace bez informační funkce.
 - U `one-idea` preferuj konkrétní diagram, srovnání nebo graf před dlouhým textem.
+- Pro skutečné procesy použij `pipeline`; karty v `.flow` nemají výchozí šipky.
 - Dlouhé vysvětlení patří do speaker notes.
 - Nový layout přidej jen tehdy, když opakovaně řeší jiný typ slidu než existující layouty.
 

@@ -22,7 +22,7 @@
         <slot name="visual" />
       </div>
 
-      <div class="one-idea-note">
+      <div v-if="$slots.note" class="one-idea-note">
         <slot name="note" />
       </div>
     </main>
@@ -139,7 +139,10 @@ onBeforeUnmount(() => {
   letter-spacing: -0.03em;
   color: var(--text);
   max-width: 860px;
-  overflow-wrap: anywhere;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+  text-wrap: balance;
   flex: 0 0 auto;
 }
 
@@ -203,15 +206,15 @@ onBeforeUnmount(() => {
   width: 100%;
   min-width: 0;
   display: grid;
-  grid-template-columns: repeat(var(--flow-columns, 3), minmax(0, 1fr));
-  gap: 22px;
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+  gap: 24px;
   align-items: stretch;
 }
 
 .one-idea-visual :deep(.flow-step) {
   position: relative;
-  min-height: 116px;
-  padding: 16px 18px;
+  min-height: 124px;
+  padding: 18px 20px;
   border: 1.5px solid var(--border);
   border-radius: 14px;
   background: #FFFFFF;
@@ -220,31 +223,6 @@ onBeforeUnmount(() => {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-.one-idea-visual :deep(.flow-step:not(:last-child)::after) {
-  content: "";
-  position: absolute;
-  right: -22px;
-  top: 50%;
-  width: 22px;
-  height: 1.5px;
-  transform: translateY(-50%);
-  background: #BBBBBB;
-  z-index: 1;
-}
-
-.one-idea-visual :deep(.flow-step:not(:last-child)::before) {
-  content: "";
-  position: absolute;
-  right: -23px;
-  top: 50%;
-  width: 7px;
-  height: 7px;
-  border-top: 1.5px solid #BBBBBB;
-  border-right: 1.5px solid #BBBBBB;
-  transform: translateY(-50%) rotate(45deg);
-  z-index: 1;
 }
 
 .one-idea-visual :deep(.flow-kicker),
@@ -259,12 +237,14 @@ onBeforeUnmount(() => {
 .one-idea-visual :deep(.viz-label) {
   font: 700 24px/1.08 'Outfit', sans-serif;
   color: var(--text);
-  overflow-wrap: anywhere;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+  text-wrap: balance;
 }
 
 .one-idea-visual :deep(.flow-label) {
-  min-height: 52px;
-  overflow: hidden;
+  min-height: 50px;
 }
 
 .one-idea-visual :deep(.flow-sub),

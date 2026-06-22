@@ -57,6 +57,55 @@ li {
   color: var(--text-soft);
 }
 
+/* Presentation-safe wrapping for Czech and other non-hyphenated labels. */
+h1,
+h2,
+h3,
+.hero-title,
+.hero-subtitle,
+.toc-title,
+.toc-label,
+.one-idea-title,
+.flow-label,
+.flow-sub,
+.viz-label,
+.viz-sub,
+.demo-title,
+.demo-sub,
+.pipeline-title,
+.pipeline-step,
+.code-title,
+.generation-prompt,
+.generation-code,
+.live-demo-title,
+.live-demo-subtitle,
+.statement-title,
+.statement-subtitle,
+pre,
+code {
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+}
+
+h1,
+h2,
+h3,
+.hero-title,
+.toc-title,
+.toc-label,
+.one-idea-title,
+.flow-label,
+.viz-label,
+.demo-title,
+.pipeline-title,
+.pipeline-step,
+.code-title,
+.live-demo-title,
+.statement-title {
+  text-wrap: balance;
+}
+
 /* Shared breadcrumb */
 
 .breadcrumb {

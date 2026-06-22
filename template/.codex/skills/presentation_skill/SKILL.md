@@ -129,10 +129,12 @@ Use for concise updates:
 | Need | Use layout | Notes |
 |---|---|---|
 | Opening, closing, section break, strong statement | `hero` | Short title and subtitle. |
+| One strong sentence | `statement` | One takeaway, optional short subtitle. |
 | Agenda, map, progress, recap | `toc` | Use `active` to show the current section. |
 | One concept with a visual | `one-idea` | Best default for teaching slides. |
 | Process, sequence, workflow, algorithm | `pipeline` | Use short step labels. |
 | Code, prompt, command, structured text, terminal output | `code` | Show only the relevant excerpt. |
+| Switch to a live tool | `live-demo` | Clean transition to browser, AI, or terminal. |
 
 ## Shared Frontmatter
 
@@ -161,10 +163,12 @@ Rules:
 | Layout | Use for | Key inputs |
 |---|---|---|
 | `hero` | opening, ending, transition | slots `#title`, `#subtitle` |
+| `statement` | one strong takeaway | slots `#title`, optional `#subtitle` |
 | `toc` | agenda, progress, recap | `items`, `active`, `columns`, `showAnchor` |
 | `one-idea` | concept + visual + note | `visualFrame`, `visualVariant`, slots `#title`, `#visual`, `#note` |
 | `pipeline` | process or workflow | `steps`, `active`, `mode`, `columns` |
 | `code` | code, prompt, terminal, formula | slot `#title`, default Markdown slot, slot `#note` |
+| `live-demo` | transition to a live demo | slots `#title`, optional `#subtitle`; optional `kicker` |
 
 `one-idea.visualVariant` values:
 
@@ -321,7 +325,7 @@ Jedna jasná myšlenka.
 </template>
 
 <template #visual>
-<div class="flow" style="--flow-columns: 3;">
+<div class="flow">
   <div class="flow-step">
     <div class="flow-kicker">1</div>
     <div class="flow-label">Vstup</div>

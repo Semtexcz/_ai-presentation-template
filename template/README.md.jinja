@@ -4,6 +4,8 @@ Slidev prezentace založená na interním prezentačním templatu.
 
 Použitá verze templatu: `v{{ template_version }}`.
 
+Template je určený pro živý výklad: jeden slide má nést jednu myšlenku a delší vysvětlení patří do speaker notes.
+
 ## Použití
 
 ```bash
@@ -36,3 +38,13 @@ pnpm run export
 - `components/` - sdílené komponenty layoutů.
 - `styles/index.css` - globální barvy, fonty a breadcrumb styl.
 - `snippets/` - volitelné ukázkové soubory pro code slidy.
+
+## Live lecture pravidla
+
+- Každý slide má jednu funkci: myšlenka, ukázka, demo, cvičení nebo shrnutí.
+- Dlouhé vysvětlení patří do HTML komentářů jako speaker notes.
+- Prompt drž na 4–6 řádcích a karty nejvýše ve 3–4 sloupcích.
+- Pro jednu silnou větu použij `statement`.
+- Pro přechod do prohlížeče nebo terminálu použij `live-demo`.
+
+Vlastní layouty: `hero`, `toc`, `statement`, `one-idea`, `live-demo`, `code` a `pipeline`.
