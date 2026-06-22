@@ -4,6 +4,17 @@ All notable changes to this template are documented in this file.
 
 The format is based on Keep a Changelog and releases follow SemVer.
 
+## [0.3.0] - 2026-06-22
+
+### Added
+
+- Added a localized `prompts/` library to generated presentations.
+- Added a Czech prompt for converting an article into a concise live-lecture Slidev deck.
+
+### Changed
+
+- Documented how authors and presentation agents should discover and use bundled prompts.
+
 ## [0.2.0] - 2026-06-22
 
 ### Added

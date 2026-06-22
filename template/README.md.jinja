@@ -38,6 +38,13 @@ pnpm run export
 - `components/` - sdílené komponenty layoutů.
 - `styles/index.css` - globální barvy, fonty a breadcrumb styl.
 - `snippets/` - volitelné ukázkové soubory pro code slidy.
+- `prompts/` - lokalizované prompty pro tvorbu a úpravy prezentace.
+
+## Připravené prompty
+
+V adresáři `prompts/` jsou znovupoužitelná zadání rozdělená podle jazyka. Například `prompts/cs/presentation_from_article.md` převede článek na prezentaci pro živý výklad.
+
+Před použitím doplň označené vstupy jako publikum, délku, cíl a zdrojový text. Výstup promptu ulož jako `slides.md` a ověř pomocí `pnpm run build`.
 
 ## Live lecture pravidla
 

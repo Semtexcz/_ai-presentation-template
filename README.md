@@ -2,7 +2,7 @@
 
 Čistá Copier šablona pro tvorbu dalších prezentací ve Slidev. Obsahuje vlastní layouty, globální styl a startovací `slides.md`.
 
-Aktuální verze templatu: `v0.2.0`.
+Aktuální verze templatu: `v0.3.0`.
 
 ## Použití
 
@@ -59,6 +59,17 @@ Změny mezi releasy jsou v [CHANGELOG.md](/mnt/Data/1_Drive/1_Projekty/Softwarov
 - `template/components/` - sdílené komponenty layoutů.
 - `template/styles/index.css` - globální barvy, fonty a breadcrumb styl.
 - `template/snippets/` - volitelné ukázkové soubory pro code slidy.
+- `template/prompts/` - lokalizované prompty pro tvorbu a úpravy prezentací.
+
+## Připravené prompty
+
+Copier zkopíruje adresář `prompts/` do každé vygenerované prezentace. Prompty jsou rozdělené podle jazyka pomocí ISO kódu, například `cs` pro češtinu.
+
+Aktuálně dostupné:
+
+- [`presentation_from_article.md`](template/prompts/cs/presentation_from_article.md) - převede článek na stručnou Slidev prezentaci pro živou přednášku.
+
+Prompt otevři, doplň cílové publikum, délku, cíl a zdrojový článek a potom jeho obsah pošli AI spolu s aktuálním projektem. Výstupem má být kompletní obsah `slides.md`.
 
 ## Společný frontmatter
 

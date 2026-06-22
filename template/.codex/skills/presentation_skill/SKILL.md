@@ -42,8 +42,9 @@ If the user asks for PPTX, create the canonical version in Slidev first, then ex
 2. **Preserve the template.** Edit generated presentation content first. Modify `layouts/`, `components/`, or `styles/` only when explicitly requested.
 3. **Prefer existing layouts.** Add a new layout only when the same new pattern will be reused across multiple presentations.
 4. **Use README as the layout reference.** This skill defines the decision process; README contains the detailed template documentation.
-5. **Slides support the talk.** Put explanation, nuance, and examples into speaker notes, not onto the visible slide.
-6. **Optimize for fast iteration.** Produce a usable first draft before polishing details.
+5. **Reuse bundled prompts.** Check `prompts/<language>/` when the task matches an existing presentation-generation workflow.
+6. **Slides support the talk.** Put explanation, nuance, and examples into speaker notes, not onto the visible slide.
+7. **Optimize for fast iteration.** Produce a usable first draft before polishing details.
 
 ## Default Workflow
 

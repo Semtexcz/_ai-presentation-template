@@ -85,6 +85,7 @@ layouts/
 components/
 styles/
 snippets/
+prompts/
 public/
 images/
 .codex/skills/presentation_skill/
@@ -97,6 +98,7 @@ Use this structure as follows:
 * `components/` — shared Vue components used by layouts or slides.
 * `styles/` — global visual style.
 * `snippets/` — reusable code, prompt, or text examples.
+* `prompts/` — reusable, localized instructions for common presentation-generation tasks.
 * `public/` and `images/` — static assets.
 * `.codex/skills/presentation_skill/` — presentation methodology and quality rules.
 
