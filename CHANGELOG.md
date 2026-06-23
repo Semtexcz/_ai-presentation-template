@@ -4,6 +4,12 @@ All notable changes to this template are documented in this file.
 
 The format is based on Keep a Changelog and releases follow SemVer.
 
+## [0.4.1] - 2026-06-23
+
+### Changed
+
+- Updated the `code` Slidev layout to shrink all code blocks together when content gets dense, while keeping a minimum bottom safe area and allowing the minimum font size to be configured via `codeFontMin` frontmatter.
+
 ## [0.4.0] - 2026-06-22
 
 ### Added

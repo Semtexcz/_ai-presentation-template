@@ -2,7 +2,7 @@
 
 Čistá Copier šablona pro tvorbu dalších prezentací ve Slidev. Obsahuje vlastní layouty, globální styl a startovací `slides.md`.
 
-Aktuální verze templatu: `v0.4.0`.
+Aktuální verze templatu: `v0.4.1`.
 
 ## Použití
 
@@ -188,13 +188,17 @@ Frontmatter:
 
 Použití pro ukázky textu, kódu, výpočtů nebo terminálových příkladů.
 
+Frontmatter:
+
+- `codeFontMin` - minimální velikost písma pro všechny kódové bloky na slidu; výchozí `12`.
+
 Sloty:
 
 - `#title` - nadpis ukázky.
 - výchozí slot - Markdown obsah, typicky fenced code block.
 - `#note` - krátká poznámka pod ukázkou.
 
-Běžný fenced code block se zobrazí jako světlá, velká karta vhodná pro prompt nebo krátkou demo ukázku. Drž ho na 4–6 řádcích; syntax highlighting použij jen tehdy, když pomáhá výkladu.
+Běžný fenced code block se zobrazí jako světlá, velká karta vhodná pro prompt nebo krátkou demo ukázku. Pokud se na slidu sejde víc bloků nebo delší text, layout zmenší písmo jednotně napříč všemi bloky, ale nepůjde pod `codeFontMin` a zachová spodní bezpečný okraj. Drž ho na 4–6 řádcích; syntax highlighting použij jen tehdy, když pomáhá výkladu.
 
 ## Layout: text-compare
 

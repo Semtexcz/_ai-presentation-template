@@ -6,12 +6,12 @@
       :current="$attrs.current"
     />
 
-    <main class="code-content">
+    <main ref="codeContentEl" class="code-content">
       <div class="code-title">
         <slot name="title" />
       </div>
 
-      <div class="code-area">
+      <div ref="codeAreaEl" class="code-area">
         <slot />
       </div>
 
@@ -22,17 +22,125 @@
   </section>
 </template>
 
+<script setup>
+import { nextTick, onBeforeUnmount, onMounted, onUpdated, ref } from 'vue'
+
+const props = defineProps({
+  codeFontMin: {
+    type: Number,
+    default: 12,
+  },
+})
+
+const codeContentEl = ref(null)
+const codeAreaEl = ref(null)
+let resizeObserver
+
+function getCodeBlocks() {
+  return Array.from(codeAreaEl.value?.querySelectorAll('.generation-code, pre') ?? [])
+}
+
+function getBaseCodeFontSize(blocks) {
+  const sizes = blocks
+    .map((block) => Number.parseFloat(getComputedStyle(block).fontSize))
+    .filter((size) => Number.isFinite(size))
+
+  return sizes.length ? Math.min(...sizes) : props.codeFontMin
+}
+
+function getTrackedBottom(blocks) {
+  const note = codeContentEl.value?.querySelector('.code-note')
+
+  if (note)
+    return note.getBoundingClientRect().bottom
+
+  const lastBlock = blocks.at(-1)
+  if (lastBlock)
+    return lastBlock.getBoundingClientRect().bottom
+
+  return codeAreaEl.value?.getBoundingClientRect().bottom ?? 0
+}
+
+function fitsWithinBottomGap(blocks) {
+  const contentRect = codeContentEl.value?.getBoundingClientRect()
+  if (!contentRect)
+    return true
+
+  const bottomGap = Number.parseFloat(
+    getComputedStyle(codeContentEl.value).getPropertyValue('--code-bottom-gap'),
+  ) || 0
+
+  return getTrackedBottom(blocks) <= contentRect.bottom - bottomGap
+}
+
+async function fitCodeBlocks() {
+  await nextTick()
+
+  const codeArea = codeAreaEl.value
+  if (!codeArea)
+    return
+
+  const blocks = getCodeBlocks()
+  if (!blocks.length) {
+    codeArea.style.removeProperty('--code-font-size')
+    return
+  }
+
+  codeArea.style.removeProperty('--code-font-size')
+  await nextTick()
+
+  const minSize = Math.max(1, props.codeFontMin)
+  let size = Math.max(getBaseCodeFontSize(blocks), minSize)
+  codeArea.style.setProperty('--code-font-size', `${size}px`)
+  await nextTick()
+
+  while (!fitsWithinBottomGap(blocks) && size > minSize) {
+    size -= 1
+    codeArea.style.setProperty('--code-font-size', `${size}px`)
+    await nextTick()
+  }
+}
+
+onMounted(() => {
+  fitCodeBlocks()
+
+  if (codeContentEl.value) {
+    resizeObserver = new ResizeObserver(fitCodeBlocks)
+    resizeObserver.observe(codeContentEl.value)
+  }
+})
+
+onUpdated(fitCodeBlocks)
+
+onBeforeUnmount(() => {
+  resizeObserver?.disconnect()
+})
+</script>
+
 <style scoped>
 .code-layout {
   background: var(--bg);
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .code-content {
+  --code-bottom-gap: 24px;
   margin-left: 8%;
   margin-right: 8%;
   margin-top: 4%;
+  padding-bottom: var(--code-bottom-gap);
   width: auto;
   max-width: 1100px;
+  height: 100%;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
 
 .code-title {
@@ -45,8 +153,10 @@
 }
 
 .code-area {
+  --code-font-size: 26px;
   margin-top: 30px;
   width: 100%;
+  min-height: 0;
 }
 
 .code-note {
@@ -84,7 +194,10 @@
   border-radius: 14px;
   background: #111111;
   color: #FFFFFF;
-  font: 600 34px/1.45 'Inter', monospace;
+  font-family: 'Inter', monospace;
+  font-size: var(--code-font-size);
+  font-weight: 600;
+  line-height: 1.45;
   white-space: pre-wrap;
   overflow: hidden;
 }
@@ -128,7 +241,7 @@
   box-sizing: border-box;
   color: var(--text) !important;
   font-family: 'Inter', monospace !important;
-  font-size: clamp(22px, 2.2vw, 26px) !important;
+  font-size: var(--code-font-size) !important;
   font-weight: 500;
   line-height: 1.38 !important;
   white-space: pre-wrap !important;
