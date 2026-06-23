@@ -211,6 +211,10 @@ onBeforeUnmount(() => {
   align-items: stretch;
 }
 
+.one-idea-visual :deep(.flow:has(> .flow-step:nth-child(4):last-child)) {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .one-idea-visual :deep(.flow-step) {
   position: relative;
   min-height: 124px;

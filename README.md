@@ -2,7 +2,7 @@
 
 Čistá Copier šablona pro tvorbu dalších prezentací ve Slidev. Obsahuje vlastní layouty, globální styl a startovací `slides.md`.
 
-Aktuální verze templatu: `v0.4.1`.
+Aktuální verze templatu: `v0.4.2`.
 
 ## Použití
 

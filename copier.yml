@@ -4,7 +4,7 @@ _subdirectory: template
 template_version:
   type: str
   help: Internal template release version.
-  default: "0.4.1"
+  default: "0.4.2"
   when: false
 
 project_name:

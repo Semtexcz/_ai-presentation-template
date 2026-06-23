@@ -4,6 +4,12 @@ All notable changes to this template are documented in this file.
 
 The format is based on Keep a Changelog and releases follow SemVer.
 
+## [0.4.2] - 2026-06-23
+
+### Fixed
+
+- Fixed four-card flows in the `one-idea` Slidev layout to use a balanced 2-by-2 grid instead of wrapping as 3-and-1.
+
 ## [0.4.1] - 2026-06-23
 
 ### Changed
