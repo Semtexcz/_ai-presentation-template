@@ -7,7 +7,7 @@
     />
 
     <main class="statement-content" :class="`align-${align}`">
-      <div class="statement-title">
+      <div class="slide-title statement-title">
         <slot name="title" />
       </div>
       <div v-if="$slots.subtitle" class="statement-subtitle">
@@ -46,13 +46,9 @@ defineProps({
 }
 
 .statement-title {
-  color: var(--text);
-  font: 700 clamp(58px, 7.2vw, 82px)/1.04 'Outfit', sans-serif;
-  letter-spacing: -0.045em;
-  word-break: normal;
-  overflow-wrap: normal;
-  hyphens: none;
-  text-wrap: balance;
+  --slide-title-size: clamp(52px, 6.4vw, 74px);
+  --slide-title-line-height: 1.04;
+  --slide-title-letter-spacing: -0.045em;
 }
 
 .statement-subtitle {

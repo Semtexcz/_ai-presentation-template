@@ -7,7 +7,7 @@
     />
 
     <main class="one-idea-content">
-      <div class="one-idea-title">
+      <div class="slide-title one-idea-title">
         <slot name="title" />
       </div>
 
@@ -123,7 +123,7 @@ onBeforeUnmount(() => {
 .one-idea-content {
   margin-left: var(--content-inline-margin);
   margin-right: var(--content-inline-margin);
-  margin-top: 3%;
+  margin-top: var(--slide-header-gap);
   width: auto;
   flex: 1;
   min-height: 0;
@@ -132,18 +132,7 @@ onBeforeUnmount(() => {
 }
 
 .one-idea-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(40px, 5vw, 54px);
-  font-weight: 700;
-  line-height: 1.06;
-  letter-spacing: -0.03em;
-  color: var(--text);
-  max-width: 980px;
-  word-break: normal;
-  overflow-wrap: normal;
-  hyphens: none;
-  text-wrap: balance;
-  flex: 0 0 auto;
+  --slide-title-max-width: 980px;
 }
 
 .one-idea-visual {

@@ -7,7 +7,7 @@
     />
 
     <main class="hero-content">
-      <div class="hero-title">
+      <div class="slide-title hero-title">
         <slot name="title" />
       </div>
 
@@ -28,18 +28,14 @@
 .hero-content {
   margin-left: var(--content-inline-margin);
   margin-right: var(--content-inline-margin);
-  margin-top: 7%;
+  margin-top: clamp(28px, 5vh, 48px);
 
   max-width: 560px;
 }
 
 .hero-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 68px;
-  font-weight: 700;
-  line-height: 1.03;
-  color: var(--text);
-
+  --slide-title-size: clamp(56px, 6.3vw, 68px);
+  --slide-title-line-height: 1.03;
   max-width: 520px;
 }
 

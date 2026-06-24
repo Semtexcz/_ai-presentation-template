@@ -8,7 +8,7 @@
 
     <main class="live-demo-content">
       <div class="live-demo-kicker">{{ kicker }}</div>
-      <div class="live-demo-title">
+      <div class="slide-title live-demo-title">
         <slot name="title" />
       </div>
       <div v-if="$slots.subtitle" class="live-demo-subtitle">
@@ -49,13 +49,9 @@ defineProps({
 
 .live-demo-title {
   margin-top: 22px;
-  color: var(--text);
-  font: 700 clamp(56px, 7vw, 78px)/1.02 'Outfit', sans-serif;
-  letter-spacing: -0.04em;
-  word-break: normal;
-  overflow-wrap: normal;
-  hyphens: none;
-  text-wrap: balance;
+  --slide-title-size: clamp(50px, 6.2vw, 72px);
+  --slide-title-line-height: 1.02;
+  --slide-title-letter-spacing: -0.04em;
 }
 
 .live-demo-subtitle {

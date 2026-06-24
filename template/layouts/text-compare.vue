@@ -7,7 +7,7 @@
     />
 
     <main class="text-compare-content">
-      <div class="text-compare-title">
+      <div class="slide-title text-compare-title">
         <slot name="title" />
       </div>
 
@@ -91,24 +91,14 @@ defineProps({
 .text-compare-content {
   margin-left: var(--content-inline-margin);
   margin-right: var(--content-inline-margin);
-  margin-top: 3.5%;
+  margin-top: var(--slide-header-gap);
   width: auto;
   display: flex;
   flex-direction: column;
 }
 
 .text-compare-title {
-  max-width: 880px;
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(40px, 5vw, 54px);
-  font-weight: 700;
-  line-height: 1.06;
-  letter-spacing: -0.03em;
-  color: var(--text);
-  word-break: normal;
-  overflow-wrap: normal;
-  hyphens: none;
-  text-wrap: balance;
+  --slide-title-max-width: 880px;
 }
 
 .text-compare-grid {

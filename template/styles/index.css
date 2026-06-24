@@ -13,6 +13,12 @@
   --semantic-good: #137333;
   --semantic-good-soft: #EFFAF2;
   --content-inline-margin: 4%;
+  --slide-padding-top: 18px;
+  --slide-header-gap: clamp(14px, 2vh, 20px);
+  --slide-title-size: clamp(38px, 4.6vw, 50px);
+  --slide-title-line-height: 1.06;
+  --slide-title-letter-spacing: -0.03em;
+  --slide-title-max-width: 980px;
 }
 
 html,
@@ -26,7 +32,7 @@ body {
   background: var(--bg);
   color: var(--text);
 
-  padding-top: 24px;
+  padding-top: var(--slide-padding-top);
   padding-left: 40px;
   padding-right: 40px;
   padding-bottom: 40px;
@@ -66,6 +72,7 @@ li {
 h1,
 h2,
 h3,
+.slide-title,
 .hero-title,
 .hero-subtitle,
 .toc-title,
@@ -96,6 +103,7 @@ code {
 h1,
 h2,
 h3,
+.slide-title,
 .hero-title,
 .toc-title,
 .toc-label,
@@ -127,6 +135,17 @@ h3,
   opacity: 0.92;
 
   margin-left: 6px;
+}
+
+.slide-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--slide-title-size);
+  font-weight: 700;
+  line-height: var(--slide-title-line-height);
+  letter-spacing: var(--slide-title-letter-spacing);
+  color: var(--text);
+  max-width: var(--slide-title-max-width);
+  flex: 0 0 auto;
 }
 
 .breadcrumb .separator {

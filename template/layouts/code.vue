@@ -7,7 +7,7 @@
     />
 
     <main ref="codeContentEl" class="code-content">
-      <div class="code-title">
+      <div class="slide-title code-title">
         <slot name="title" />
       </div>
 
@@ -131,7 +131,7 @@ onBeforeUnmount(() => {
   --code-bottom-gap: 24px;
   margin-left: var(--content-inline-margin);
   margin-right: var(--content-inline-margin);
-  margin-top: 4%;
+  margin-top: var(--slide-header-gap);
   padding-bottom: var(--code-bottom-gap);
   width: auto;
   max-width: 1100px;
@@ -144,12 +144,7 @@ onBeforeUnmount(() => {
 }
 
 .code-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 52px;
-  font-weight: 700;
-  line-height: 1.06;
-  letter-spacing: -0.03em;
-  color: var(--text);
+  --slide-title-max-width: 1040px;
 }
 
 .code-area {

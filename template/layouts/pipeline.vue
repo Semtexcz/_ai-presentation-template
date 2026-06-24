@@ -7,7 +7,7 @@
     />
 
     <main class="pipeline-content">
-      <div class="pipeline-title">
+      <div class="slide-title pipeline-title">
         <slot name="title" />
       </div>
 
@@ -127,19 +127,15 @@ function stepClass(index) {
 .pipeline-content {
   margin-left: var(--content-inline-margin);
   margin-right: var(--content-inline-margin);
-  margin-top: 2.8%;
+  margin-top: var(--slide-header-gap);
   width: auto;
   max-width: 1040px;
 }
 
 .pipeline-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 44px;
-  font-weight: 700;
-  line-height: 1.04;
-  letter-spacing: -0.03em;
-  color: var(--text);
-  max-width: 820px;
+  --slide-title-max-width: 820px;
+  --slide-title-size: clamp(36px, 4.2vw, 46px);
+  --slide-title-line-height: 1.04;
 }
 
 /* Shared */

@@ -10,7 +10,7 @@
     />
 
     <main class="toc-content">
-      <div class="toc-title">
+      <div class="slide-title toc-title">
         <slot name="title">Co se naučíš?</slot>
       </div>
 
@@ -115,18 +115,14 @@ function formatNumber(index) {
 .toc-content {
   margin-left: var(--content-inline-margin);
   margin-right: var(--content-inline-margin);
-  margin-top: 3%;
+  margin-top: var(--slide-header-gap);
   width: auto;
   max-width: 980px;
 }
 
 .toc-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 54px;
-  font-weight: 700;
-  line-height: 1.02;
-  letter-spacing: -0.04em;
-  color: var(--text);
+  --slide-title-line-height: 1.03;
+  --slide-title-letter-spacing: -0.04em;
 }
 
 .toc-list {

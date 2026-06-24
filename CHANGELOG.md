@@ -4,6 +4,13 @@ All notable changes to this template are documented in this file.
 
 The format is based on Keep a Changelog and releases follow SemVer.
 
+## [0.5.4] - 2026-06-24
+
+### Changed
+
+- Moved breadcrumbs slightly higher across bundled layouts and tightened the gap between breadcrumbs and slide titles to free more vertical space for main slide content.
+- Unified reusable slide-title styling across layouts so heading scale, weight, and wrapping now inherit from the same shared CSS tokens.
+
 ## [0.5.3] - 2026-06-24
 
 ### Fixed
