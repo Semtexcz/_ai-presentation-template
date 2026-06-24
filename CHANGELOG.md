@@ -4,6 +4,13 @@ All notable changes to this template are documented in this file.
 
 The format is based on Keep a Changelog and releases follow SemVer.
 
+## [0.4.5] - 2026-06-24
+
+### Changed
+
+- Standardized the default slide-design rules across README, AGENTS, and the presentation skill to enforce one idea per slide, minimal visible text, and visual-first layouts.
+- Added an explicit 10-to-60-second per-slide heuristic so overloaded slides are treated as too dense by default.
+
 ## [0.4.4] - 2026-06-24
 
 ### Fixed

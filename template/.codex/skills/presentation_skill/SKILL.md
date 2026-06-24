@@ -83,12 +83,20 @@ Use these as hard defaults:
 - one clear takeaway headline per slide,
 - minimal visible text,
 - visual structure before bullet lists,
+- prefer diagrams, comparisons, tables, schemas, arrows, framed groupings, and other visual arrangement,
+- use text only when another form is not suitable,
+- allow full prompts, short code samples, or other structured text only when that exact visible structure matters,
+- no long paragraphs,
+- show only what should be visible on screen,
+- do not describe what the lecturer will say on the slide,
 - speaker notes for detailed explanation,
 - no decoration without an information function,
 - consistent breadcrumbs for longer decks,
-- strong typography and whitespace.
+- strong typography and whitespace,
+- minimalist slides,
+- target roughly 10 to 60 seconds of on-screen time per slide.
 
-If a slide feels crowded, split it into concept, example, and implication.
+If a slide feels crowded or would likely stay on screen for longer than one minute, split it into concept, example, and implication.
 
 ## Narrative Patterns
 
@@ -223,6 +231,7 @@ Default limits:
 - Flow step label: 1–3 words.
 - Flow subtext: one phrase.
 - Code slide: only the relevant excerpt.
+- A visible slide should usually support about 10 to 60 seconds of presenter attention.
 
 Detailed explanation belongs in speaker notes.
 

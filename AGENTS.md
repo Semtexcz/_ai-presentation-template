@@ -13,6 +13,22 @@ Keep release metadata and release workflow consistent across every change.
 - Use Conventional Commits for commit messages, for example `feat:`, `fix:`, `docs:`, `chore:`.
 - Every new released version must have a matching Git tag, for example `v0.1.0`.
 
+## Default slide rules
+
+By default, generated presentation guidance should enforce these rules:
+
+- One slide = one main idea.
+- Keep visible text to a minimum.
+- Prefer diagrams, comparisons, tables, schemas, arrows, framed groupings, and other visual structure.
+- Use text only when another form is not suitable.
+- A slide may contain a full prompt, short code sample, or other structured text when that exact visible structure matters.
+- Do not use long paragraphs.
+- Do not describe what the lecturer will say.
+- Put on the slide only what should be visible on screen.
+- Slides should stay minimalist.
+- Each slide should usually stay on screen for about 10 to 60 seconds.
+- If a slide would stay on screen for longer than one minute, it probably contains too much information.
+
 ## Change workflow
 
 1. Update `template_version` in `copier.yml`.

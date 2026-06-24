@@ -2,7 +2,7 @@
 
 Zdrojový Copier template pro tvorbu dalších Slidev prezentací. Tento repozitář dokumentuje údržbu templatu, release workflow a práci s Copierem. Dokumentace, která se má propsat do vygenerované prezentace, patří do [`template/README.md.jinja`](template/README.md.jinja).
 
-Aktuální verze templatu: `v0.4.4`.
+Aktuální verze templatu: `v0.4.5`.
 
 ## Co je kde
 
@@ -22,6 +22,22 @@ pnpm run dev
 ```
 
 Po vygenerování projektu už další práci, layouty a prompt guidance řeší README uvnitř cílové prezentace.
+
+## Výchozí pravidla pro slidy
+
+Tyto zásady mají být výchozí v README, AGENTS i skills vygenerované prezentace:
+
+- Jeden slide = jedna hlavní myšlenka.
+- Minimum textu.
+- Preferuj diagramy, porovnání, tabulky, schémata, šipky, rámečky a vizuální uspořádání.
+- Text používej pouze tehdy, když jiná forma není vhodná.
+- Pokud je to vhodné, slide může obsahovat celý prompt nebo krátký ukázkový kód či jiný text, který má přesně danou strukturu.
+- Dlouhé odstavce nepoužívej.
+- Nepopisuj to, co bude lektor říkat.
+- Na slide patří pouze to, co má být vidět na obrazovce.
+- Slidy mají být minimalistické.
+- Každý slide by měl být viditelný přibližně 10 až 60 sekund.
+- Pokud by byl na obrazovce déle než minutu, pravděpodobně obsahuje příliš mnoho informací.
 
 ## Jak založit novou prezentaci
 
@@ -68,4 +84,4 @@ Při každé user-visible nebo maintenance-relevant změně:
 2. Přidej odpovídající záznam do `CHANGELOG.md`.
 3. Uprav dokumentaci v root README a v `template/README.md.jinja`, pokud se změna týká i vygenerovaného projektu.
 4. Vytvoř Conventional Commit, například `docs:` nebo `feat:`.
-5. Vytvoř odpovídající Git tag, například `v0.4.4`.
+5. Vytvoř odpovídající Git tag, například `v0.4.5`.

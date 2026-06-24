@@ -63,6 +63,20 @@ MUST:
 * Keep changes as small as reasonably possible.
 * Validate non-trivial changes with `pnpm run build` when possible.
 
+Default visible-slide rules:
+
+* One slide = one main idea.
+* Keep visible text to a minimum.
+* Prefer diagrams, comparisons, tables, schemas, arrows, framed groupings, and visual arrangement over paragraphs.
+* Use text only when another visual form is not suitable.
+* A slide may contain a full prompt, short code sample, or other structured text when exact visible wording matters.
+* Do not use long paragraphs.
+* Do not describe what the lecturer will say.
+* Put on the slide only what should be visible on screen.
+* Keep slides minimalist.
+* Aim for each slide to stay on screen for roughly 10 to 60 seconds.
+* If a slide would likely stay on screen for longer than one minute, treat it as overloaded and split or simplify it.
+
 MUST NOT:
 
 * Treat this project as a Copier template.
