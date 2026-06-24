@@ -4,6 +4,14 @@ All notable changes to this template are documented in this file.
 
 The format is based on Keep a Changelog and releases follow SemVer.
 
+## [0.4.3] - 2026-06-24
+
+### Changed
+
+- Split documentation responsibilities between the root `README.md` and generated `template/README.md.jinja`.
+- Kept Copier usage, template maintenance, and release workflow in the root README.
+- Moved layout guidance, live-lecture rules, and prompt examples into the generated template README so they ship with every new presentation.
+
 ## [0.4.2] - 2026-06-23
 
 ### Fixed
