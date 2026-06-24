@@ -4,6 +4,12 @@ All notable changes to this template are documented in this file.
 
 The format is based on Keep a Changelog and releases follow SemVer.
 
+## [0.7.1] - 2026-06-24
+
+### Fixed
+
+- Extended the offline `VisualIcon` registry with additional Phosphor icons used by `CycleDiagram`, including `chat-circle-text`, `cursor-text`, `sparkle`, and singular `arrow-clockwise` names so workflow diagrams no longer fall back to the question-mark icon.
+
 ## [0.7.0] - 2026-06-24
 
 ### Added

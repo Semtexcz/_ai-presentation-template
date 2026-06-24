@@ -4,6 +4,7 @@
 
 <script setup>
 import { computed } from 'vue'
+import IconArrowClockwise from '~icons/ph/arrow-clockwise-duotone'
 import IconArrowsClockwise from '~icons/ph/arrows-clockwise-duotone'
 import IconBookOpen from '~icons/ph/book-open-duotone'
 import IconBracketsCurly from '~icons/ph/brackets-curly-duotone'
@@ -12,10 +13,12 @@ import IconBrowser from '~icons/ph/browser-duotone'
 import IconBug from '~icons/ph/bug-duotone'
 import IconCamera from '~icons/ph/camera-duotone'
 import IconChartBar from '~icons/ph/chart-bar-duotone'
+import IconChatCircleText from '~icons/ph/chat-circle-text-duotone'
 import IconChat from '~icons/ph/chat-centered-text-duotone'
 import IconCheckCircle from '~icons/ph/check-circle-duotone'
 import IconChecks from '~icons/ph/checks-duotone'
 import IconCircles from '~icons/ph/circles-three-plus-duotone'
+import IconCursorText from '~icons/ph/cursor-text-duotone'
 import IconDatabase from '~icons/ph/database-duotone'
 import IconFiles from '~icons/ph/files-duotone'
 import IconGauge from '~icons/ph/gauge-duotone'
@@ -38,6 +41,7 @@ import IconQuestion from '~icons/ph/question-duotone'
 import IconRobot from '~icons/ph/robot-duotone'
 import IconRocket from '~icons/ph/rocket-launch-duotone'
 import IconShieldCheck from '~icons/ph/shield-check-duotone'
+import IconSparkle from '~icons/ph/sparkle-duotone'
 import IconStudent from '~icons/ph/student-duotone'
 import IconTarget from '~icons/ph/target-duotone'
 import IconTestTube from '~icons/ph/test-tube-duotone'
@@ -58,6 +62,7 @@ const legacyAliases = {
 }
 
 const icons = {
+  'ph:arrow-clockwise-duotone': IconArrowClockwise,
   'ph:arrows-clockwise-duotone': IconArrowsClockwise,
   'ph:book-open-duotone': IconBookOpen,
   'ph:brackets-curly-duotone': IconBracketsCurly,
@@ -66,10 +71,12 @@ const icons = {
   'ph:bug-duotone': IconBug,
   'ph:camera-duotone': IconCamera,
   'ph:chart-bar-duotone': IconChartBar,
+  'ph:chat-circle-text-duotone': IconChatCircleText,
   'ph:chat-centered-text-duotone': IconChat,
   'ph:check-circle-duotone': IconCheckCircle,
   'ph:checks-duotone': IconChecks,
   'ph:circles-three-plus-duotone': IconCircles,
+  'ph:cursor-text-duotone': IconCursorText,
   'ph:database-duotone': IconDatabase,
   'ph:files-duotone': IconFiles,
   'ph:gauge-duotone': IconGauge,
@@ -92,6 +99,7 @@ const icons = {
   'ph:robot-duotone': IconRobot,
   'ph:rocket-launch-duotone': IconRocket,
   'ph:shield-check-duotone': IconShieldCheck,
+  'ph:sparkle-duotone': IconSparkle,
   'ph:student-duotone': IconStudent,
   'ph:target-duotone': IconTarget,
   'ph:test-tube-duotone': IconTestTube,
