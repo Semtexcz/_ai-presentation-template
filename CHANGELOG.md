@@ -4,6 +4,12 @@ All notable changes to this template are documented in this file.
 
 The format is based on Keep a Changelog and releases follow SemVer.
 
+## [0.6.2] - 2026-06-24
+
+### Added
+
+- Added a root `release-template.sh` helper that reads `template_version` from `copier.yml`, creates the matching annotated Git tag, pushes that tag to `origin`, and runs `copier update --defaults --trust`.
+
 ## [0.6.1] - 2026-06-24
 
 ### Changed
