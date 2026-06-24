@@ -87,6 +87,9 @@ Použití: proces, workflow nebo algoritmus.
 - prop `mode` — `vertical` nebo `snake`.
 - prop `columns` — počet sloupců ve `snake` režimu.
 
+`vertical` používej pro krátký sled kroků a drž ho maximálně na 5 položkách.
+Od 6 kroků přepni na `snake`, jinak slide zbytečně ztrácí čitelnost.
+
 ### `code`
 
 Použití: kód, prompt, příkaz, výpočet nebo terminálový výstup.

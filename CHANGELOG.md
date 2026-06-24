@@ -4,6 +4,13 @@ All notable changes to this template are documented in this file.
 
 The format is based on Keep a Changelog and releases follow SemVer.
 
+## [0.5.5] - 2026-06-24
+
+### Changed
+
+- Made the vertical `pipeline` layout denser when it contains five steps so the full sequence still fits on a slide without clipping.
+- Documented that vertical `pipeline` is intended for at most five steps and that longer sequences must switch to `mode: snake`.
+
 ## [0.5.4] - 2026-06-24
 
 ### Changed

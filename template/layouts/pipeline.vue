@@ -14,7 +14,7 @@
       <div
         class="pipeline"
         :class="mode === 'snake' ? 'pipeline-snake' : 'pipeline-vertical'"
-        :style="{ '--columns': columns }"
+        :style="pipelineStyle"
       >
         <template v-for="(step, index) in arrangedSteps" :key="index">
           <div
@@ -85,6 +85,28 @@ const arrangedSteps = computed(() => {
   return rows.flat()
 })
 
+const pipelineStyle = computed(() => {
+  const isVertical = props.mode !== 'snake'
+  const denseVertical = isVertical && props.steps.length >= 5
+
+  return {
+    '--columns': props.columns,
+    '--pipeline-margin-top': denseVertical ? '20px' : '30px',
+    '--pipeline-step-min-height': denseVertical ? '52px' : '64px',
+    '--pipeline-step-padding': denseVertical ? '10px 16px' : '12px 18px',
+    '--pipeline-step-font-size': denseVertical ? '16px' : '18px',
+    '--pipeline-step-line-height': denseVertical ? '1.15' : '1.2',
+    '--pipeline-vertical-gap': denseVertical ? '4px' : '6px',
+    '--pipeline-vertical-arrow-height': denseVertical ? '10px' : '16px',
+    '--pipeline-note-margin-top': denseVertical ? '18px' : '26px',
+    '--pipeline-snake-column-gap': '34px',
+    '--pipeline-snake-row-gap': '42px',
+    '--pipeline-snake-arrow-side-offset': '-25px',
+    '--pipeline-snake-arrow-bottom-offset': '-32px',
+    '--pipeline-snake-arrow-size': '20px',
+  }
+})
+
 function rowIndex(index) {
   return Math.floor(index / props.columns)
 }
@@ -141,13 +163,13 @@ function stepClass(index) {
 /* Shared */
 
 .pipeline {
-  margin-top: 30px;
+  margin-top: var(--pipeline-margin-top);
 }
 
 .pipeline-step {
   position: relative;
 
-  min-height: 64px;
+  min-height: var(--pipeline-step-min-height);
   height: auto;
   border: 1px solid var(--border);
   border-radius: 14px;
@@ -157,14 +179,14 @@ function stepClass(index) {
   align-items: center;
   justify-content: center;
 
-  padding: 12px 18px;
+  padding: var(--pipeline-step-padding);
 
   font-family: 'Inter', sans-serif;
-  font-size: 18px;
+  font-size: var(--pipeline-step-font-size);
   font-weight: 500;
   color: var(--text);
 
-  line-height: 1.2;
+  line-height: var(--pipeline-step-line-height);
   text-align: center;
   white-space: normal;
   word-break: normal;
@@ -197,11 +219,11 @@ function stepClass(index) {
 
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: var(--pipeline-vertical-gap);
 }
 
 .pipeline-vertical .pipeline-arrow {
-  height: 16px;
+  height: var(--pipeline-vertical-arrow-height);
 }
 
 /* Snake mode */
@@ -211,8 +233,8 @@ function stepClass(index) {
 
   display: grid;
   grid-template-columns: repeat(var(--columns), minmax(160px, 1fr));
-  column-gap: 34px;
-  row-gap: 42px;
+  column-gap: var(--pipeline-snake-column-gap);
+  row-gap: var(--pipeline-snake-row-gap);
 
   align-items: center;
 }
@@ -222,22 +244,22 @@ function stepClass(index) {
 .pipeline-snake .pipeline-step.arrow-right::after {
   content: "→";
   position: absolute;
-  right: -25px;
+  right: var(--pipeline-snake-arrow-side-offset);
   top: 50%;
   transform: translateY(-50%);
   color: #BBBBBB;
-  font-size: 20px;
+  font-size: var(--pipeline-snake-arrow-size);
   font-weight: 400;
 }
 
 .pipeline-snake .pipeline-step.arrow-left::after {
   content: "←";
   position: absolute;
-  left: -25px;
+  left: var(--pipeline-snake-arrow-side-offset);
   top: 50%;
   transform: translateY(-50%);
   color: #BBBBBB;
-  font-size: 20px;
+  font-size: var(--pipeline-snake-arrow-size);
   font-weight: 400;
 }
 
@@ -245,10 +267,10 @@ function stepClass(index) {
   content: "↓";
   position: absolute;
   left: 50%;
-  bottom: -32px;
+  bottom: var(--pipeline-snake-arrow-bottom-offset);
   transform: translateX(-50%);
   color: #BBBBBB;
-  font-size: 20px;
+  font-size: var(--pipeline-snake-arrow-size);
   font-weight: 400;
 }
 
@@ -259,7 +281,7 @@ function stepClass(index) {
 /* Note */
 
 .pipeline-note {
-  margin-top: 26px;
+  margin-top: var(--pipeline-note-margin-top);
   max-width: 760px;
 
   font-family: 'Inter', sans-serif;
