@@ -125,9 +125,11 @@ function stepClass(index) {
 }
 
 .pipeline-content {
-  margin-left: 8%;
+  margin-left: var(--content-inline-margin);
+  margin-right: var(--content-inline-margin);
   margin-top: 2.8%;
-  width: min(76%, 1040px);
+  width: auto;
+  max-width: 1040px;
 }
 
 .pipeline-title {

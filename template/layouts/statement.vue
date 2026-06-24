@@ -35,7 +35,7 @@ defineProps({
 }
 
 .statement-content {
-  margin: auto 8%;
+  margin: auto var(--content-inline-margin);
   padding-bottom: 4%;
   max-width: 980px;
 }

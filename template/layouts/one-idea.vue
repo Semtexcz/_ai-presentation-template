@@ -121,8 +121,8 @@ onBeforeUnmount(() => {
 }
 
 .one-idea-content {
-  margin-left: 4%;
-  margin-right: 4%;
+  margin-left: var(--content-inline-margin);
+  margin-right: var(--content-inline-margin);
   margin-top: 3%;
   width: auto;
   flex: 1;

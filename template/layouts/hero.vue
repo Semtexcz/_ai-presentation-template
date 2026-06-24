@@ -26,7 +26,8 @@
 }
 
 .hero-content {
-  margin-left: 8%;
+  margin-left: var(--content-inline-margin);
+  margin-right: var(--content-inline-margin);
   margin-top: 7%;
 
   max-width: 560px;

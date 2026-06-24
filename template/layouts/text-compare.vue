@@ -89,8 +89,8 @@ defineProps({
 }
 
 .text-compare-content {
-  margin-left: 8%;
-  margin-right: 8%;
+  margin-left: var(--content-inline-margin);
+  margin-right: var(--content-inline-margin);
   margin-top: 3.5%;
   width: auto;
   display: flex;

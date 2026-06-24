@@ -129,8 +129,8 @@ onBeforeUnmount(() => {
 
 .code-content {
   --code-bottom-gap: 24px;
-  margin-left: 8%;
-  margin-right: 8%;
+  margin-left: var(--content-inline-margin);
+  margin-right: var(--content-inline-margin);
   margin-top: 4%;
   padding-bottom: var(--code-bottom-gap);
   width: auto;
