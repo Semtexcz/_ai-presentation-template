@@ -4,6 +4,13 @@ All notable changes to this template are documented in this file.
 
 The format is based on Keep a Changelog and releases follow SemVer.
 
+## [0.5.1] - 2026-06-24
+
+### Changed
+
+- Reduced the default horizontal slide padding so generated presentations use more of the available canvas width.
+- Expanded the `one-idea` layout content area and title width to reduce wasted side margins on comparison-heavy slides.
+
 ## [0.5.0] - 2026-06-24
 
 ### Added

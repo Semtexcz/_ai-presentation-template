@@ -121,9 +121,9 @@ onBeforeUnmount(() => {
 }
 
 .one-idea-content {
-  margin-left: 8%;
-  margin-right: 8%;
-  margin-top: 3.5%;
+  margin-left: 4%;
+  margin-right: 4%;
+  margin-top: 3%;
   width: auto;
   flex: 1;
   min-height: 0;
@@ -138,7 +138,7 @@ onBeforeUnmount(() => {
   line-height: 1.06;
   letter-spacing: -0.03em;
   color: var(--text);
-  max-width: 860px;
+  max-width: 980px;
   word-break: normal;
   overflow-wrap: normal;
   hyphens: none;
