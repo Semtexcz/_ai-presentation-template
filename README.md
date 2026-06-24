@@ -2,7 +2,7 @@
 
 Zdrojový Copier template pro tvorbu dalších Slidev prezentací. Tento repozitář dokumentuje údržbu templatu, release workflow a práci s Copierem. Dokumentace, která se má propsat do vygenerované prezentace, patří do [`template/README.md.jinja`](template/README.md.jinja).
 
-Aktuální verze templatu: `v0.6.0`.
+Aktuální verze templatu: `v0.6.2`.
 
 ## Co je kde
 
@@ -86,3 +86,9 @@ Při každé user-visible nebo maintenance-relevant změně:
 3. Uprav dokumentaci v root README a v `template/README.md.jinja`, pokud se změna týká i vygenerovaného projektu.
 4. Vytvoř Conventional Commit, například `docs:` nebo `feat:`.
 5. Vytvoř odpovídající Git tag, například `v0.5.0`.
+
+Pro standardní release tag + push + lokální update můžeš použít také:
+
+```bash
+./release-template.sh
+```
