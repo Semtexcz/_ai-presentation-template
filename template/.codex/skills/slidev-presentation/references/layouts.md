@@ -86,8 +86,9 @@ potřeby ručně skládat HTML.
 
 - prop `items` — pole objektů s klíči:
   `title` (povinné), `subtitle` (volitelné), `kicker` (volitelné),
-  `icon` (volitelné; podporované hodnoty: `student`, `bug`, `pair`, `review`,
-  `docs`, `tests`).
+  `icon` (volitelné; podporuje Iconify identifikátor jako `ph:student-duotone`
+  nebo `carbon:user-avatar`, případně staré aliasy `student`, `bug`, `pair`,
+  `review`, `docs`, `tests` kvůli kompatibilitě).
 - prop `columns` — `2` nebo `3`, výchozí `3`.
 - `#title` — takeaway nadpis.
 - `#note` — volitelná krátká věta pod gridem.

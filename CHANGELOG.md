@@ -4,6 +4,13 @@ All notable changes to this template are documented in this file.
 
 The format is based on Keep a Changelog and releases follow SemVer.
 
+## [0.6.1] - 2026-06-24
+
+### Changed
+
+- Generalized `RoleIcon` so grid cards can render explicit Iconify-style icon names instead of only a fixed built-in role list.
+- Kept legacy shorthand aliases such as `student` and `bug` working for backward compatibility while updating the starter deck to use explicit icon identifiers.
+
 ## [0.6.0] - 2026-06-24
 
 ### Added
