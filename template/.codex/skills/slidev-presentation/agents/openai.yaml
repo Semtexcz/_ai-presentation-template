@@ -1,0 +1,4 @@
+interface:
+  display_name: "Slidev Presentation"
+  short_description: "Create and refine template-based Slidev decks"
+  default_prompt: "Use $slidev-presentation to create or improve this Slidev deck."

@@ -1,232 +1,82 @@
 # AGENTS.md
 
-## Purpose
+## Project context
 
-This is a generated Slidev presentation project.
+This is a generated Slidev presentation project. Work on this presentation; do
+not treat it as the source Copier template.
 
-Your job is to help create, edit, improve, and maintain this specific presentation. Do not treat this project as the original Copier template.
-
-This file contains only project-specific rules, workflow boundaries, and validation instructions.
-
-For presentation design, narrative structure, slide quality, visual clarity, and speaker-flow methodology, use the dedicated presentation skill:
-
-```text id="1yecvt"
-.codex/skills/presentation_skill
-````
-
-Do not duplicate the presentation skill here.
+Keep this file focused on project boundaries. Presentation methodology and
+layout documentation live in the `slidev-presentation` skill.
 
 ## Instruction priority
 
-When working in this project, use this priority order:
+Apply instructions in this order:
 
 1. Direct user instructions.
-2. This `AGENTS.md` file for project-specific rules.
-3. `.codex/skills/presentation_skill` for presentation methodology.
-4. Existing project structure and code conventions.
+2. This file for project boundaries and validation.
+3. `.codex/skills/slidev-presentation/SKILL.md` for presentation work.
+4. Existing project conventions.
 
-If this file and the presentation skill seem to conflict:
+If instructions conflict, this file controls files, commands, and technical
+boundaries; the skill controls narrative, design, and slide-writing decisions.
 
-* this file wins for project structure, commands, files, and technical boundaries,
-* the presentation skill wins for presentation quality, narrative, design, and slide-writing methodology.
+## Skill routing
 
-## Required skill usage
+Read `.codex/skills/slidev-presentation/SKILL.md` before work that changes:
 
-Before making substantial changes to the presentation, read and apply:
+- presentation content or structure,
+- narrative flow or speaker notes,
+- slide density or visual design,
+- layout selection,
+- an article, brief, or outline into a deck,
+- presentation-quality review.
 
-```text id="kh6nrs"
-.codex/skills/presentation_skill
-```
-
-Use the presentation skill especially when the task involves:
-
-* creating a new deck,
-* rewriting or restructuring slides,
-* improving slide design,
-* improving narrative flow,
-* reducing slide density,
-* creating speaker notes,
-* turning an article or outline into slides,
-* reviewing presentation quality.
-
-If the skill is unavailable in the environment, continue with best effort and explicitly mention that the presentation skill was not available.
+For a narrowly technical fix, do not load presentation references unless the
+change also affects content or design. If the skill is unavailable, continue
+with best effort and report that limitation.
 
 ## Project boundaries
 
-MUST:
+Always:
 
-* Read `slides.md` before making structural or content changes.
-* Prefer editing `slides.md` before changing layouts, components, or global styles.
-* Preserve valid Slidev frontmatter.
-* Preserve existing layout names and slot names unless there is a strong reason to change them.
-* Use the same visible language as the existing presentation unless explicitly asked otherwise.
-* Keep changes as small as reasonably possible.
-* Validate non-trivial changes with `pnpm run build` when possible.
+- Read `slides.md` before changing presentation content or structure.
+- Prefer editing `slides.md` over layouts, components, or global styles.
+- Preserve valid Slidev frontmatter and existing layout and slot names.
+- Match the visible language of the existing presentation unless asked otherwise.
+- Keep the change as small as reasonably possible.
+- Validate non-trivial changes with `pnpm run build` when possible.
 
-Default visible-slide rules:
+Do not:
 
-* One slide = one main idea.
-* Keep visible text to a minimum.
-* Prefer diagrams, comparisons, tables, schemas, arrows, framed groupings, and visual arrangement over paragraphs.
-* Use text only when another visual form is not suitable.
-* A slide may contain a full prompt, short code sample, or other structured text when exact visible wording matters.
-* Do not use long paragraphs.
-* Do not describe what the lecturer will say.
-* Put on the slide only what should be visible on screen.
-* Keep slides minimalist.
-* Aim for each slide to stay on screen for roughly 10 to 60 seconds.
-* If a slide would likely stay on screen for longer than one minute, treat it as overloaded and split or simplify it.
+- Add Jinja syntax or Copier variables; this is already a generated project.
+- Rewrite the whole deck unless explicitly requested.
+- Create a layout for a one-off slide.
+- Add a dependency without a clear reusable need.
+- Change global styles to solve a single-slide problem.
+- Treat build or export output as source files.
+- Commit changes unless the user asks.
 
-MUST NOT:
+## File responsibilities
 
-* Treat this project as a Copier template.
-* Add Jinja syntax or Copier variables.
-* Rewrite the whole deck unless explicitly asked.
-* Add a new layout for a one-off slide.
-* Add dependencies unless clearly needed.
-* Change global styles for a single-slide problem.
-* Commit or rely on generated build/export output as source.
-* Break build/export behavior.
+- `slides.md` — presentation content, order, frontmatter, and speaker notes.
+- `layouts/` — reusable Slidev layouts and their public APIs.
+- `components/` — shared Vue components.
+- `styles/` — global presentation styling.
+- `snippets/` — reusable code or text examples.
+- `prompts/` — localized generation and review prompts.
+- `.codex/skills/slidev-presentation/` — agent workflow and references.
 
-## Project structure
-
-Typical generated project structure:
-
-```text id="qfwxwi"
-slides.md
-package.json
-layouts/
-components/
-styles/
-snippets/
-prompts/
-public/
-images/
-.codex/skills/presentation_skill/
-```
-
-Use this structure as follows:
-
-* `slides.md` — main presentation content.
-* `layouts/` — reusable Slidev layouts.
-* `components/` — shared Vue components used by layouts or slides.
-* `styles/` — global visual style.
-* `snippets/` — reusable code, prompt, or text examples.
-* `prompts/` — reusable, localized instructions for common presentation-generation tasks.
-* `public/` and `images/` — static assets.
-* `.codex/skills/presentation_skill/` — presentation methodology and quality rules.
-
-## Editing rules
-
-### Prefer `slides.md`
-
-Most presentation work should happen in `slides.md`.
-
-Use it for:
-
-* slide content,
-* slide order,
-* speaker notes,
-* examples,
-* diagrams written directly in HTML/SVG/Markdown,
-* layout frontmatter.
-
-### Edit layouts only when reusable
-
-Edit `layouts/` only when:
-
-* the same structure is needed repeatedly,
-* an existing layout has a bug,
-* the current layout API is too limited,
-* the change cannot be expressed cleanly in `slides.md`.
-
-Do not create a layout just to make one slide special.
-
-### Edit styles only when global
-
-Edit `styles/` only when:
-
-* the change should apply globally,
-* a repeated visual pattern needs a shared class,
-* typography, spacing, or color consistency is broken.
-
-Do not scatter repeated hardcoded design values across slides.
-
-### Add components sparingly
-
-Add a component only when:
-
-* the same visual or interactive element appears repeatedly,
-* it improves readability of `slides.md`,
-* it has a clear reusable purpose.
-
-Avoid Vue complexity for simple static slide content.
-
-## Commands
-
-Use these commands from the project root:
-
-```bash id="yd1ebp"
-pnpm install
-pnpm run dev
-pnpm run build
-pnpm run export
-```
-
-Use:
-
-* `pnpm run dev` for local preview,
-* `pnpm run build` for validation,
-* `pnpm run export` only when an exported version is needed.
+Modify layouts, components, or styles only for a reusable need, an existing
+bug, or a limitation that cannot be handled cleanly in `slides.md`.
 
 ## Validation
 
-After changing `slides.md`, layouts, components, styles, dependencies, or assets:
+After changing `slides.md`, layouts, components, styles, dependencies, or
+assets:
 
-1. Check that Slidev frontmatter is valid.
-2. Check that existing layouts still render logically.
-3. Attempt:
+1. Check frontmatter and asset paths.
+2. Check that affected layouts still use valid props and slots.
+3. Run `pnpm run build`.
+4. Run `pnpm run export` only when an exported artifact is requested.
 
-```bash id="87g36y"
-pnpm run build
-```
-
-If validation cannot be run, explicitly say what was not run.
-
-## Dependency policy
-
-Before adding a dependency, check whether the goal can be solved with:
-
-* Slidev,
-* Vue,
-* CSS,
-* static HTML/SVG,
-* existing layouts,
-* existing components,
-* local assets.
-
-Add a dependency only when it clearly improves the presentation and is worth the maintenance cost.
-
-## Assets
-
-When adding assets:
-
-* use meaningful filenames,
-* prefer local assets over fragile remote links,
-* keep file sizes reasonable,
-* avoid copyrighted material unless permission is clear,
-* do not use images only as decoration.
-
-## Preferred agent workflow
-
-For presentation-quality tasks:
-
-1. Read `slides.md`.
-2. Read `.codex/skills/presentation_skill`.
-3. Identify whether the task is mainly about content, structure, design, speaker notes, or technical implementation.
-4. Make the smallest useful change.
-5. Preserve project consistency.
-6. Validate when possible.
-7. Explain what changed and why.
-
-For purely technical tasks, still preserve the presentation’s existing style and structure.
+If a check cannot run, state exactly what was not verified.

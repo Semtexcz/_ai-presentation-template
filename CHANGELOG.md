@@ -4,6 +4,24 @@ All notable changes to this template are documented in this file.
 
 The format is based on Keep a Changelog and releases follow SemVer.
 
+## [0.5.0] - 2026-06-24
+
+### Added
+
+- Added progressively loaded layout and authoring references to the generated presentation skill.
+- Added dedicated Czech prompts for creating a deck from a brief, designing one slide, and reviewing an existing presentation.
+- Added Codex UI metadata for the generated presentation skill.
+
+### Changed
+
+- Renamed the generated skill from `.codex/skills/presentation_skill` to `.codex/skills/slidev-presentation` and aligned its directory and metadata name.
+- Reduced generated AGENTS, skill, and README guidance to task-specific routing and removed repeated detailed rules.
+- Made the generated README a concise human-facing index for commands, layouts, prompts, and agent references.
+
+### Migration
+
+- `copier update` replaces the old tracked skill path with `.codex/skills/slidev-presentation`; custom references to the previous path must be updated.
+
 ## [0.4.5] - 2026-06-24
 
 ### Changed

@@ -2,7 +2,7 @@
 
 Zdrojový Copier template pro tvorbu dalších Slidev prezentací. Tento repozitář dokumentuje údržbu templatu, release workflow a práci s Copierem. Dokumentace, která se má propsat do vygenerované prezentace, patří do [`template/README.md.jinja`](template/README.md.jinja).
 
-Aktuální verze templatu: `v0.4.5`.
+Aktuální verze templatu: `v0.5.0`.
 
 ## Co je kde
 
@@ -21,11 +21,11 @@ pnpm install
 pnpm run dev
 ```
 
-Po vygenerování projektu už další práci, layouty a prompt guidance řeší README uvnitř cílové prezentace.
+Po vygenerování projektu funguje jeho README jako stručný rozcestník. Agentní workflow a podrobné reference jsou v `.codex/skills/slidev-presentation/`; načítají se pouze podle typu úlohy.
 
 ## Výchozí pravidla pro slidy
 
-Tyto zásady mají být výchozí v README, AGENTS i skills vygenerované prezentace:
+Úplná pravidla jsou ve skillu vygenerované prezentace. README a AGENTS obsahují jen stručné shrnutí a směrování, aby se stejný text nenačítal a neudržoval na více místech:
 
 - Jeden slide = jedna hlavní myšlenka.
 - Minimum textu.
@@ -71,6 +71,7 @@ Změny mezi releasy jsou v [CHANGELOG.md](CHANGELOG.md).
 - `template/styles/index.css` - globální barvy, fonty a breadcrumb styl.
 - `template/snippets/` - volitelné ukázkové soubory pro code slidy.
 - `template/prompts/` - lokalizované prompty kopírované do vygenerované prezentace.
+- `template/.codex/skills/slidev-presentation/` - stručný skill a postupně načítané reference pro agenta.
 
 ## Release workflow
 
@@ -84,4 +85,4 @@ Při každé user-visible nebo maintenance-relevant změně:
 2. Přidej odpovídající záznam do `CHANGELOG.md`.
 3. Uprav dokumentaci v root README a v `template/README.md.jinja`, pokud se změna týká i vygenerovaného projektu.
 4. Vytvoř Conventional Commit, například `docs:` nebo `feat:`.
-5. Vytvoř odpovídající Git tag, například `v0.4.5`.
+5. Vytvoř odpovídající Git tag, například `v0.5.0`.

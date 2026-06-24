@@ -2,11 +2,11 @@
 
 Slidev prezentace založená na interním prezentačním templatu.
 
-Verze prezentace: `v{{ presentation_version }}`.
+- Verze prezentace: `v{{ presentation_version }}`
+- Použitá verze templatu: `v{{ template_version }}`
 
-Použitá verze templatu: `v{{ template_version }}`.
-
-Template je určený pro živý výklad: jeden slide má nést jednu myšlenku a delší vysvětlení patří do speaker notes.
+Template je určený pro živý výklad: jeden slide nese jednu hlavní myšlenku a
+delší vysvětlení patří do speaker notes.
 
 ## Použití
 
@@ -21,36 +21,59 @@ Výchozí adresa je `http://localhost:3030`. Pokud je port obsazený:
 pnpm exec slidev --port 4100
 ```
 
-Produkční build:
+Validace a export:
 
 ```bash
 pnpm run build
-```
-
-Export:
-
-```bash
 pnpm run export
 ```
 
-## Struktura
+Export spouštěj jen tehdy, když potřebuješ výsledný soubor.
 
-- `slides.md` - obsah prezentace.
-- `layouts/` - vlastní Slidev layouty.
-- `components/` - sdílené komponenty layoutů.
-- `styles/index.css` - globální barvy, fonty a breadcrumb styl.
-- `snippets/` - volitelné ukázkové soubory pro code slidy.
-- `prompts/` - lokalizované prompty pro tvorbu a úpravy prezentace.
+## Struktura projektu
 
-## Připravené prompty
+- `slides.md` — obsah, pořadí, frontmatter a speaker notes.
+- `layouts/` — znovupoužitelné Slidev layouty.
+- `components/` — sdílené Vue komponenty.
+- `styles/index.css` — globální vizuální styl.
+- `snippets/` — volitelné ukázky kódu a textu.
+- `prompts/` — lokalizované prompty pro tvorbu a revizi prezentace.
+- `.codex/skills/slidev-presentation/` — workflow a reference pro agenta.
+- `AGENTS.md` — technické hranice práce v tomto projektu.
 
-V adresáři `prompts/` jsou znovupoužitelná zadání rozdělená podle jazyka. Například `prompts/cs/presentation_from_article.md` převede článek na prezentaci pro živý výklad.
+Většinu obsahových změn dělej pouze v `slides.md`. Layouty, komponenty a styly
+měň až tehdy, když jde o opakovaně použitelný vzor nebo opravu chyby.
 
-Před použitím doplň označené vstupy jako publikum, délku, cíl a zdrojový text. Výstup promptu ulož jako `slides.md` a ověř pomocí `pnpm run build`.
+## Rychlá pravidla pro slidy
+
+- Jeden slide = jedna hlavní myšlenka.
+- Nadpis má sdělit pointu, ne pouze téma.
+- Minimum viditelného textu; preferuj vizuální strukturu.
+- Přesný prompt, krátký kód nebo jiný strukturovaný text může být viditelný,
+  pokud je jeho forma součástí sdělení.
+- Dlouhý výklad patří do HTML komentářů jako speaker notes.
+- Přeplněný slide rozděl; jeden slide má typicky podporovat 10–60 sekund výkladu.
+
+Úplná pravidla dramaturgie, hustoty, poznámek a přístupnosti jsou v
+[referenci pro tvorbu prezentace](.codex/skills/slidev-presentation/references/authoring.md).
+
+## Přehled layoutů
+
+| Potřeba | Layout |
+|---|---|
+| Úvod, závěr nebo velký přechod | `hero` |
+| Jedna silná věta | `statement` |
+| Obsah, mapa nebo rekapitulace | `toc` |
+| Koncept s vizuálem | `one-idea` |
+| Proces nebo algoritmus | `pipeline` |
+| Kód, prompt, příkaz nebo terminál | `code` |
+| Porovnání dvou textových bloků | `text-compare` |
+| Přechod k živé ukázce | `live-demo` |
+
+Přesné props, sloty, společný frontmatter, vizuální CSS třídy a minimální
+příklad jsou v [referenci layoutů](.codex/skills/slidev-presentation/references/layouts.md).
 
 ## Společný frontmatter
-
-Vlastní layouty používají tyto společné atributy:
 
 ```yaml
 section: Kontext
@@ -62,357 +85,32 @@ breadcrumb:
 title: "Jakou otázku řešíme?"
 ```
 
-`breadcrumb` se zobrazí v horní navigační stopě. Pokud chybí, layout použije dvojici `section` a `current`. `title` je metadata pro Slidev; viditelný nadpis se většinou vkládá do slotu `#title`.
+`breadcrumb` používej pro konzistentní navigaci v delších prezentacích.
+Viditelný nadpis patří u vlastních layoutů obvykle do slotu `#title`.
 
-## Live lecture pravidla
+## Připravené prompty
 
-- Jeden slide = jedna hlavní myšlenka.
-- Minimum textu.
-- Preferuj diagramy, porovnání, tabulky, schémata, šipky, rámečky a vizuální uspořádání.
-- Text používej pouze tehdy, když jiná forma není vhodná.
-- Pokud je to vhodné, slide může obsahovat celý prompt nebo krátký ukázkový kód či jiný text, který má přesně danou strukturu.
-- Dlouhé odstavce nepoužívej.
-- Nepopisuj to, co bude lektor říkat.
-- Na slide patří pouze to, co má být vidět na obrazovce.
-- Slidy mají být minimalistické.
-- Každý slide by měl být viditelný přibližně 10 až 60 sekund.
-- Pokud by byl na obrazovce déle než minutu, pravděpodobně obsahuje příliš mnoho informací.
-- Dlouhé vysvětlení patří do HTML komentářů jako speaker notes.
-- Prompt drž na 4–6 řádcích a karty nejvýše ve 3–4 sloupcích.
-- Pro jednu silnou větu použij `statement`.
-- Pro porovnání dvou promptů, výstupů nebo krátkých textů použij `text-compare`.
-- Delší prompt ke kopírování dej do `text-compare` ve `vertical` módu nebo do samostatného `code` slidu.
-- Pro přechod do prohlížeče nebo terminálu použij `live-demo`.
+V `prompts/cs/` jsou samostatná zadání podle typu práce:
 
-Vlastní layouty: `hero`, `toc`, `statement`, `one-idea`, `live-demo`, `code`, `pipeline` a `text-compare`.
+- `presentation_from_article.md` — převod článku do prezentace.
+- `presentation_from_brief.md` — vytvoření decku z briefu nebo osnovy.
+- `single_slide.md` — návrh jednoho konkrétního slidu.
+- `review_existing_presentation.md` — přímá revize existujícího `slides.md`.
 
-## Layout: hero
+Před použitím doplň označené vstupy, například publikum, délku, cíl a zdrojový
+obsah. Prompty odkazují na lokální skill, takže agent načte jen reference
+potřebné pro danou úlohu.
 
-Použití pro úvodní, závěrečné a velké přechodové slidy.
+## Práce s agentem
 
-Sloty:
-
-- `#title` - hlavní nadpis.
-- `#subtitle` - podpůrný text pod nadpisem.
-
-```md
----
-layout: hero
-section: Název prezentace
-current: Úvod
-title: "Název prezentace"
----
-
-<template #title>
-Název<br>
-prezentace.
-</template>
-
-<template #subtitle>
-Krátký podtitulek prezentace.
-</template>
-```
-
-## Layout: toc
-
-Použití pro mapu prezentace nebo rekapitulaci částí.
-
-Frontmatter:
-
-- `items` - pole položek obsahu.
-- `active` - index aktivní položky, počítáno od `0`.
-- `columns` - `1` nebo `2`; výchozí hodnota je `1`.
-- `showAnchor` - `true` zobrazí dekorativní kruhový symbol vpravo.
-
-## Layout: statement
-
-Použití pro jednu velkou větu bez karet nebo rámu. Volitelný `#subtitle` doplní krátké upřesnění. Frontmatter `align` podporuje `left` (výchozí) a `center`.
-
-Sloty:
-
-- `#title` - jediná hlavní myšlenka.
-- `#subtitle` - volitelná krátká podpůrná věta.
-
-## Layout: one-idea
-
-Použití pro jeden silný koncept na slide. Má nadpis, vizuální plochu a krátkou poznámku.
-
-Frontmatter:
-
-- `visualFrame` - `true`/`false`; výchozí `true`.
-- `visualVariant` - `default`, `diagram`, `equation`, `comparison`, `demo` nebo `warning`.
-
-Sloty:
-
-- `#title` - hlavní myšlenka slidu.
-- `#visual` - obrázek, SVG nebo HTML struktura.
-- `#note` - volitelná krátká takeaway věta pod vizuálem; dlouhý výklad patří do speaker notes.
-
-Pomocné CSS třídy ve vizuálu:
-
-- `.flow`, `.flow-step`, `.flow-kicker`, `.flow-label`, `.flow-sub`
-- `.equation`, `.term`, `.operator`, `.term.accent`
-- `.comparison`, `.comparison-panel`, `.comparison-panel.accent`
-- `.demo-card`, `.demo-mark`, `.demo-title`, `.demo-sub`
-- `.warning-grid`, `.warning-panel`, `.not-equal`
-- `.mini-graph`
-
-## Layout: pipeline
-
-Použití pro procesy a opakující se kroky.
-
-Frontmatter:
-
-- `steps` - pole kroků.
-- `active` - index aktivního kroku, počítáno od `0`.
-- `mode` - `vertical` nebo `snake`.
-- `columns` - počet sloupců pro `snake`.
-
-## Layout: code
-
-Použití pro ukázky textu, kódu, výpočtů nebo terminálových příkladů.
-
-Frontmatter:
-
-- `codeFontMin` - minimální velikost písma pro všechny kódové bloky na slidu; výchozí `12`.
-
-Sloty:
-
-- `#title` - nadpis ukázky.
-- výchozí slot - Markdown obsah, typicky fenced code block.
-- `#note` - krátká poznámka pod ukázkou.
-
-Běžný fenced code block se zobrazí jako světlá, velká karta vhodná pro prompt nebo krátkou demo ukázku. Pokud se na slidu sejde víc bloků nebo delší text, layout zmenší písmo jednotně napříč všemi bloky, ale nepůjde pod `codeFontMin` a zachová spodní bezpečný okraj.
-
-## Layout: text-compare
-
-Použití pro srovnání dvou textových bloků: špatný vs lepší prompt, slabý vs lepší výstup, původní vs upravené zadání nebo krátký původní vs opravený kód.
-
-Frontmatter:
-
-- `mode` - `horizontal` nebo `vertical`; výchozí `horizontal`.
-- `leftTitle` - název levého nebo horního panelu; výchozí `Původní`.
-- `rightTitle` - název pravého nebo dolního panelu; výchozí `Upravené`.
-- `leftKicker` - volitelný kicker levého nebo horního panelu.
-- `rightKicker` - volitelný kicker pravého nebo dolního panelu.
-- `leftVariant` - `neutral`, `bad`, `good` nebo `accent`; výchozí `neutral`.
-- `rightVariant` - `neutral`, `bad`, `good` nebo `accent`; výchozí `accent`.
-
-Sloty:
-
-- `#title` - hlavní nadpis slidu.
-- `#left` - levý nebo horní obsah.
-- `#right` - pravý nebo dolní obsah.
-- `#note` - volitelná krátká poznámka pod panely.
-
-Pravidla použití:
-
-- `horizontal` použij pro krátký kontrast, který se vejde do dvou panelů vedle sebe.
-- `vertical` použij pro delší prompt nebo text, který má jít pohodlně číst nebo kopírovat.
-- `text-compare` je jen pro dva bloky; pokud potřebuješ tři a více bloků, rozděl obsah do více slidů.
-- Pro velmi dlouhý prompt, dlouhý kód nebo detailní rozbor raději použij samostatný `code` slide.
-
-Krátký horizontální příklad:
-
-````md
----
-layout: text-compare
-section: Python situace
-current: For cyklus
-title: "Lepší prompt nastaví směr odpovědi."
-mode: horizontal
-leftTitle: "Vágní prompt"
-rightTitle: "Lepší prompt"
-leftVariant: bad
-rightVariant: accent
----
-
-<template #title>
-Lepší prompt nastaví směr odpovědi.
-</template>
-
-<template #left>
+Pro obsahovou nebo designovou práci má agent nejprve načíst:
 
 ```text
-Vysvětli for cyklus.
+.codex/skills/slidev-presentation/SKILL.md
 ```
 
-</template>
+Skill určuje, kdy načíst detailní dokumentaci. Pro úzkou technickou opravu není
+nutné načítat dramaturgii ani kompletní API layoutů.
 
-<template #right>
-
-```text
-Jsem začátečník v Pythonu a znám proměnné a seznamy.
-Vysvětli mi for cyklus na seznamu jmen.
-Použij analogii, 5 řádků kódu a mini cvičení.
-```
-
-</template>
-
-<template #note>
-Lepší prompt nezmění jen formulaci. Změní typ odpovědi.
-</template>
-````
-
-Vertikální příklad pro delší prompt:
-
-````md
----
-layout: text-compare
-section: Python situace
-current: Prompt ke kopírování
-title: "Dlouhý prompt dej raději přes celou šířku."
-mode: vertical
-leftTitle: "Vágní prompt"
-rightTitle: "Lepší prompt"
-leftVariant: bad
-rightVariant: accent
----
-
-<template #title>
-Dlouhý prompt dej raději přes celou šířku.
-</template>
-
-<template #left>
-
-```text
-Napiš program na známky.
-```
-
-</template>
-
-<template #right>
-
-```text
-Napiš jednoduchý terminálový program na průměr známek.
-Jsem začátečník: použij jen list, input(), for, if a print().
-Neřeš zatím výjimky ani soubory.
-Přidej 2 testovací vstupy a očekávaný výstup.
-```
-
-</template>
-
-<template #note>
-Horizontal mód je na krátký kontrast. Vertical mód je lepší pro prompt, který chci číst nebo kopírovat.
-</template>
-````
-
-## Layout: live-demo
-
-Použití jako čistý přechod před živou ukázkou v AI, prohlížeči nebo terminálu. Neobsahuje karty, code area ani note area.
-
-Sloty:
-
-- `#title` - co se teď bude dít.
-- `#subtitle` - volitelný krátký popis ukázky.
-
-Frontmatter `kicker` může přepsat výchozí text `Živá ukázka`.
-
-## Stylové zásady
-
-- Drž jednoduchou paletu definovanou v `styles/index.css`.
-- Nepoužívej dekorace bez informační funkce.
-- U `one-idea` preferuj konkrétní diagram, srovnání nebo graf před dlouhým textem.
-- Pro skutečné procesy použij `pipeline`; karty v `.flow` nemají výchozí šipky.
-- `text-compare` neslouží pro víc než dva bloky; pokud potřebuješ tři a více, rozděl obsah do více slidů.
-- Dlouhé vysvětlení patří do speaker notes.
-- Nový layout přidej jen tehdy, když opakovaně řeší jiný typ slidu než existující layouty.
-
-## Příklady dobrých promptů
-
-Pokud chceš přes AI vygenerovat první verzi `slides.md`, vyplatí se zadat nejen téma, ale i cílové publikum, strukturu a omezení templatu. Tyto prompty fungují výrazně lépe než obecné "udělej mi prezentaci".
-
-### 1. Návrh celé prezentace
-
-```text
-Vytvoř obsah souboru slides.md pro Slidev prezentaci v češtině.
-Téma: Jak zavést interní AI asistenty do produktového týmu.
-Cílové publikum: vedení firmy a seniorní product manažeři.
-Cíl prezentace: vysvětlit přínosy, rizika, plán pilotu a rozhodnutí na konci.
-
-Použij pouze layouty hero, toc, one-idea, pipeline a code.
-Prezentace má mít 10 slidů.
-Každý slide musí mít smysluplný frontmatter včetně section, current a title.
-Jeden slide = jedna hlavní myšlenka.
-Minimum textu a žádné dlouhé odstavce.
-Preferuj diagramy, porovnání, tabulky, schémata, šipky, rámečky a jiné vizuální uspořádání.
-Text používej jen když jiná forma není vhodná.
-Na slide dej jen to, co má být vidět na obrazovce; nepopisuj, co bude lektor říkat.
-Pokud je to vhodné, slide může obsahovat celý prompt nebo krátký ukázkový kód s přesnou strukturou.
-Každý slide má být čitelný zhruba na 10 až 60 sekund; pokud by byl na obrazovce déle než minutu, rozděl ho.
-U one-idea preferuj diagram, srovnání nebo jednoduchý decision framework místo odstavců textu.
-Text drž stručný, konkrétní a bez marketingových frází.
-Na konec přidej slide s jasným doporučením a dalšími kroky.
-
-Vrať pouze validní obsah slides.md.
-```
-
-### 2. Přepsání osnovy do tohoto templatu
-
-```text
-Převeď tuto osnovu do Slidev slides.md s využitím layoutů z tohoto templatu:
-1. Problém: týmy tráví moc času ruční přípravou podkladů
-2. Kde AI pomůže nejdřív
-3. Kde AI naopak nechceme nasadit
-4. Návrh pilotu na 6 týdnů
-5. Metriky úspěchu
-6. Rozhodnutí pro management
-
-Požadavky:
-- první slide jako hero
-- druhý slide jako toc
-- procesní část dej do pipeline
-- pokud se hodí ukázka promptu nebo výstupu, použij code layout
-- každý slide ať obsahuje jen jednu hlavní myšlenku
-- minimum textu, bez dlouhých odstavců
-- preferuj vizuální uspořádání před vysvětlujícím textem
-- na slide patří jen to, co má být vidět na obrazovce
-- slide může obsahovat celý prompt nebo krátký kód, když na přesné struktuře záleží
-- pokud by slide působil na více než minutu výkladu, rozděl ho
-- speaker notes nepřidávej
-
-Vrať jen Markdown pro slides.md.
-```
-
-### 3. Jeden silný slide místo textové omáčky
-
-```text
-Navrhni jeden slide s layoutem one-idea pro téma:
-"Ne každá AI automatizace šetří čas."
-
-Chci:
-- výrazný titul do slotu title
-- vizuál jako comparison mezi "rychlé demo" a "udržitelný provoz"
-- krátkou note větu, která vysvětlí trade-off
-- minimum textu, maximum srozumitelnosti
-
-Výstup vrať jako kompletní Markdown jednoho slidu včetně frontmatteru.
-```
-
-### 4. Slide s ukázkou promptu nebo terminálu
-
-```text
-Vytvoř slide s layoutem code, který ukazuje praktický prompt pro shrnutí zákaznických ticketů.
-Potřebuji:
-- krátký český nadpis
-- realistický prompt ve fenced code blocku
-- pod tím krátkou poznámku, kdy takový prompt funguje a kdy už nestačí
-- žádné obecné poučky, jen konkrétní ukázku
-
-Vrať pouze jeden slide jako Markdown.
-```
-
-### 5. Revize už existující prezentace
-
-```text
-Zkontroluj následující obsah slides.md a navrhni jeho lepší verzi pro tento template.
-Hledej hlavně:
-- slidy s příliš mnoha myšlenkami
-- místa, kde má být one-idea místo odstavců
-- části, které je lepší převést do pipeline nebo code layoutu
-- nejasné nebo generické titulky
-
-Pak vrať upravený obsah slides.md, ne seznam doporučení.
-```
-
-Nejlepší výsledky obvykle vzniknou, když do promptu doplníš ještě konkrétní kontext: typ publika, délku prezentace, očekávané rozhodnutí a 2 až 3 klíčové teze, které musí zaznít.
+Po netriviální změně spusť `pnpm run build`. Pokud potřebuješ PDF nebo jiný
+export, následně spusť `pnpm run export` a výsledek vizuálně zkontroluj.
