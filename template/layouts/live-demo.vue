@@ -7,7 +7,10 @@
     />
 
     <main class="live-demo-content">
-      <div class="live-demo-kicker">{{ kicker }}</div>
+      <div class="live-demo-heading">
+        <VisualIcon v-if="icon" :name="icon" />
+        <div class="live-demo-kicker">{{ kicker }}</div>
+      </div>
       <div class="slide-title live-demo-title">
         <slot name="title" />
       </div>
@@ -19,7 +22,10 @@
 </template>
 
 <script setup>
+import VisualIcon from '../components/VisualIcon.vue'
+
 defineProps({
+  icon: { type: String, default: 'ph:play-circle-duotone' },
   kicker: {
     type: String,
     default: 'Živá ukázka',
@@ -46,6 +52,9 @@ defineProps({
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
+
+.live-demo-heading { display: flex; align-items: center; gap: 12px; color: var(--accent); }
+.live-demo-heading :deep(svg) { width: 30px; height: 30px; }
 
 .live-demo-title {
   margin-top: 22px;

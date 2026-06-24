@@ -7,6 +7,7 @@
     />
 
     <main class="statement-content" :class="`align-${align}`">
+      <div v-if="icon" class="statement-icon"><VisualIcon :name="icon" /></div>
       <div class="slide-title statement-title">
         <slot name="title" />
       </div>
@@ -18,7 +19,10 @@
 </template>
 
 <script setup>
+import VisualIcon from '../components/VisualIcon.vue'
+
 defineProps({
+  icon: { type: String, default: '' },
   align: {
     type: String,
     default: 'left',
@@ -44,6 +48,10 @@ defineProps({
   align-self: center;
   text-align: center;
 }
+
+.statement-icon { width: 58px; height: 58px; margin-bottom: 24px; color: var(--accent); }
+.statement-icon :deep(svg) { width: 100%; height: 100%; }
+.statement-content.align-center .statement-icon { margin-left: auto; margin-right: auto; }
 
 .statement-title {
   --slide-title-size: clamp(52px, 6.4vw, 74px);

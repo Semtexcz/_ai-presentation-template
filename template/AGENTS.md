@@ -42,6 +42,8 @@ Always:
 - Read `slides.md` before changing presentation content or structure.
 - Prefer editing `slides.md` over layouts, components, or global styles.
 - Preserve valid Slidev frontmatter and existing layout and slot names.
+- Complete the visual pass required by the presentation skill before writing or reviewing content slides.
+- Use `VisualPlaceholder` instead of inventing an asset path when a required image is unavailable.
 - Match the visible language of the existing presentation unless asked otherwise.
 - Keep the change as small as reasonably possible.
 - Validate non-trivial changes with `pnpm run build` when possible.
@@ -78,5 +80,6 @@ assets:
 2. Check that affected layouts still use valid props and slots.
 3. Run `pnpm run build`.
 4. Run `pnpm run export` only when an exported artifact is requested.
+5. Report every unresolved visual placeholder and every text-only exception.
 
 If a check cannot run, state exactly what was not verified.

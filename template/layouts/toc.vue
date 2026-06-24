@@ -16,8 +16,8 @@
 
       <div v-if="columns === 1" class="toc-list">
         <div
-          v-for="(item, index) in items"
-          :key="item"
+          v-for="(item, index) in normalizedItems"
+          :key="`${item.label}-${index}`"
           class="toc-item"
           :class="{ active: index === active }"
         >
@@ -26,7 +26,8 @@
           </div>
 
           <div class="toc-label">
-            {{ item }}
+            <VisualIcon v-if="item.icon" :name="item.icon" />
+            <span>{{ item.label }}</span>
           </div>
         </div>
       </div>
@@ -35,7 +36,7 @@
         <div class="toc-column">
           <div
             v-for="(item, index) in leftColumn"
-            :key="item"
+            :key="`${item.label}-${index}`"
             class="toc-item"
             :class="{ active: index === active }"
           >
@@ -44,7 +45,8 @@
             </div>
 
             <div class="toc-label">
-              {{ item }}
+              <VisualIcon v-if="item.icon" :name="item.icon" />
+              <span>{{ item.label }}</span>
             </div>
           </div>
         </div>
@@ -52,7 +54,7 @@
         <div class="toc-column">
           <div
             v-for="(item, localIndex) in rightColumn"
-            :key="item"
+            :key="`${item.label}-${localIndex}`"
             class="toc-item"
             :class="{ active: splitIndex + localIndex === active }"
           >
@@ -61,7 +63,8 @@
             </div>
 
             <div class="toc-label">
-              {{ item }}
+              <VisualIcon v-if="item.icon" :name="item.icon" />
+              <span>{{ item.label }}</span>
             </div>
           </div>
         </div>
@@ -74,6 +77,7 @@
 
 <script setup>
 import { computed } from 'vue'
+import VisualIcon from '../components/VisualIcon.vue'
 
 const props = defineProps({
   items: {
@@ -94,11 +98,12 @@ const props = defineProps({
   },
 })
 
-const splitIndex = computed(() => Math.ceil(props.items.length / 2))
+const normalizedItems = computed(() => props.items.map((item) => typeof item === 'string' ? { label: item } : item))
+const splitIndex = computed(() => Math.ceil(normalizedItems.value.length / 2))
 
-const leftColumn = computed(() => props.items.slice(0, splitIndex.value))
+const leftColumn = computed(() => normalizedItems.value.slice(0, splitIndex.value))
 
-const rightColumn = computed(() => props.items.slice(splitIndex.value))
+const rightColumn = computed(() => normalizedItems.value.slice(splitIndex.value))
 
 function formatNumber(index) {
   return String(index + 1).padStart(2, '0')
@@ -173,7 +178,12 @@ function formatNumber(index) {
   font-weight: 600;
   line-height: 1.08;
   color: #333333;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
+
+.toc-label :deep(svg) { width: 28px; height: 28px; flex: 0 0 28px; color: currentColor; }
 
 .toc-item.active {
   border-bottom: 2px solid var(--accent);

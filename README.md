@@ -2,7 +2,7 @@
 
 Zdrojový Copier template pro tvorbu dalších Slidev prezentací. Tento repozitář dokumentuje údržbu templatu, release workflow a práci s Copierem. Dokumentace, která se má propsat do vygenerované prezentace, patří do [`template/README.md.jinja`](template/README.md.jinja).
 
-Aktuální verze templatu: `v0.6.2`.
+Aktuální verze templatu: `v0.7.0`.
 
 ## Co je kde
 
@@ -30,6 +30,9 @@ Po vygenerování projektu funguje jeho README jako stručný rozcestník. Agent
 - Jeden slide = jedna hlavní myšlenka.
 - Minimum textu.
 - Preferuj diagramy, porovnání, tabulky, schémata, šipky, rámečky a vizuální uspořádání.
+- Pro každý obsahový slide proveď visual pass a zvol informační vizuál nebo odůvodni textovou výjimku.
+- Významové ikony používej pro kategorie, akce, stavy a navigaci; dekorativní ikona sama nestačí.
+- Pokud chybí lokální obrázek, vlož popsaný placeholder a chybějící asset nahlas.
 - Text používej pouze tehdy, když jiná forma není vhodná.
 - Pokud je to vhodné, slide může obsahovat celý prompt nebo krátký ukázkový kód či jiný text, který má přesně danou strukturu.
 - Dlouhé odstavce nepoužívej.

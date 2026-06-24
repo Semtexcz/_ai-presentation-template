@@ -1,5 +1,6 @@
 ---
 layout: hero
+icon: ph:presentation-chart-duotone
 section: {{ presentation_title|to_json }}
 current: Úvod
 breadcrumb:
@@ -31,10 +32,14 @@ breadcrumb:
   - Mapa
 columns: 2
 items:
-  - Kontext
-  - Princip
-  - Ukázka
-  - Shrnutí
+  - label: Kontext
+    icon: ph:magnifying-glass-duotone
+  - label: Princip
+    icon: ph:circles-three-plus-duotone
+  - label: Ukázka
+    icon: ph:play-circle-duotone
+  - label: Shrnutí
+    icon: ph:check-circle-duotone
 active: 0
 showAnchor: false
 title: "Mapa prezentace"
@@ -51,6 +56,7 @@ Speaker notes:
 
 ---
 layout: statement
+icon: ph:warning-duotone
 section: Kontext
 current: Hlavní myšlenka
 breadcrumb:
@@ -91,28 +97,15 @@ Prompt potřebuje čtyři věci.
 </template>
 
 <template #visual>
-<div class="flow">
-  <div class="flow-step">
-    <div class="flow-kicker">1</div>
-    <div class="flow-label">Role</div>
-    <div class="flow-sub">Kdo odpovídá?</div>
-  </div>
-  <div class="flow-step">
-    <div class="flow-kicker">2</div>
-    <div class="flow-label">Kontext</div>
-    <div class="flow-sub">Co musí znát?</div>
-  </div>
-  <div class="flow-step">
-    <div class="flow-kicker">3</div>
-    <div class="flow-label">Úkol</div>
-    <div class="flow-sub">Co má udělat?</div>
-  </div>
-  <div class="flow-step">
-    <div class="flow-kicker">4</div>
-    <div class="flow-label">Formát</div>
-    <div class="flow-sub">Jak má vypadat výstup?</div>
-  </div>
-</div>
+<HubDiagram
+  :center="{ title: 'Dobrý prompt', subtitle: 'Jedno jasné zadání', icon: 'ph:chat-centered-text-duotone' }"
+  :items="[
+    { title: 'Role', subtitle: 'Kdo odpovídá?', icon: 'ph:user-focus-duotone' },
+    { title: 'Kontext', subtitle: 'Co musí znát?', icon: 'ph:files-duotone' },
+    { title: 'Úkol', subtitle: 'Co má udělat?', icon: 'ph:target-duotone' },
+    { title: 'Formát', subtitle: 'Jak vypadá výstup?', icon: 'ph:list-checks-duotone' },
+  ]"
+/>
 </template>
 
 <!--
@@ -148,6 +141,7 @@ Speaker notes:
 
 ---
 layout: code
+icon: ph:brackets-curly-duotone
 section: Ukázka
 current: Lepší prompt
 breadcrumb:
@@ -175,28 +169,31 @@ Speaker notes:
 -->
 
 ---
-layout: pipeline
+layout: one-idea
 section: Princip
 current: Iterace
 breadcrumb:
   - {{ presentation_title|to_json }}
   - Princip
   - Iterace
-mode: snake
-columns: 3
-steps:
-  - Napiš první verzi
-  - Spusť prompt
-  - Zkontroluj výstup
-  - Najdi slabé místo
-  - Uprav zadání
-  - Spusť znovu
-active: 2
+visualVariant: diagram
 title: "První prompt není řešení"
 ---
 
 <template #title>
 První prompt není řešení.
+</template>
+
+<template #visual>
+<CycleDiagram
+  :steps="[
+    { title: 'Napiš', icon: 'ph:pencil-simple-duotone' },
+    { title: 'Spusť', icon: 'ph:play-duotone' },
+    { title: 'Zkontroluj', icon: 'ph:magnifying-glass-duotone' },
+    { title: 'Uprav', icon: 'ph:wrench-duotone' },
+  ]"
+  :active="2"
+/>
 </template>
 
 <!--
@@ -221,20 +218,13 @@ Tři věci pro praxi.
 </template>
 
 <template #visual>
-<div class="flow">
-  <div class="flow-step">
-    <div class="flow-kicker">1</div>
-    <div class="flow-label">Doplň kontext</div>
-  </div>
-  <div class="flow-step">
-    <div class="flow-kicker">2</div>
-    <div class="flow-label">Urči formát</div>
-  </div>
-  <div class="flow-step">
-    <div class="flow-kicker">3</div>
-    <div class="flow-label">Ověř výstup</div>
-  </div>
-</div>
+<MetricStrip
+  :items="[
+    { value: '01', label: 'Doplň kontext', icon: 'ph:files-duotone' },
+    { value: '02', label: 'Urči formát', icon: 'ph:list-checks-duotone', variant: 'accent' },
+    { value: '03', label: 'Ověř výstup', icon: 'ph:check-circle-duotone' },
+  ]"
+/>
 </template>
 
 <!--

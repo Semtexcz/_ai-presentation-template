@@ -17,6 +17,7 @@
       >
         <article class="compare-panel" :class="`variant-${leftVariant}`">
           <header class="compare-panel-header">
+            <VisualIcon v-if="leftIcon" :name="leftIcon" class="compare-panel-icon" />
             <div v-if="leftKicker" class="compare-panel-kicker">{{ leftKicker }}</div>
             <div class="compare-panel-title">{{ leftTitle }}</div>
           </header>
@@ -28,6 +29,7 @@
 
         <article class="compare-panel" :class="`variant-${rightVariant}`">
           <header class="compare-panel-header">
+            <VisualIcon v-if="rightIcon" :name="rightIcon" class="compare-panel-icon" />
             <div v-if="rightKicker" class="compare-panel-kicker">{{ rightKicker }}</div>
             <div class="compare-panel-title">{{ rightTitle }}</div>
           </header>
@@ -46,7 +48,11 @@
 </template>
 
 <script setup>
+import VisualIcon from '../components/VisualIcon.vue'
+
 defineProps({
+  leftIcon: { type: String, default: '' },
+  rightIcon: { type: String, default: '' },
   mode: {
     type: String,
     default: 'horizontal',
@@ -154,6 +160,11 @@ defineProps({
   flex-direction: column;
   gap: 6px;
 }
+
+.compare-panel-icon { width: 34px; height: 34px; margin-bottom: 4px; color: var(--text-soft); }
+.compare-panel.variant-bad .compare-panel-icon { color: var(--semantic-bad); }
+.compare-panel.variant-good .compare-panel-icon { color: var(--semantic-good); }
+.compare-panel.variant-accent .compare-panel-icon { color: var(--accent); }
 
 .compare-panel-kicker {
   font: 700 12px/1 'Inter', sans-serif;

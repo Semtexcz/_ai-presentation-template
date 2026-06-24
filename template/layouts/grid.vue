@@ -19,7 +19,7 @@
           :class="{ 'has-icon': item.icon }"
         >
           <div v-if="item.icon" class="grid-icon" aria-hidden="true">
-            <RoleIcon :name="item.icon" />
+            <VisualIcon :name="item.icon" />
           </div>
 
           <div class="grid-copy">
@@ -39,7 +39,7 @@
 
 <script setup>
 import { computed } from 'vue'
-import RoleIcon from '../components/RoleIcon.vue'
+import VisualIcon from '../components/VisualIcon.vue'
 
 const props = defineProps({
   items: {

@@ -20,6 +20,9 @@ By default, generated presentation guidance should enforce these rules:
 - One slide = one main idea.
 - Keep visible text to a minimum.
 - Prefer diagrams, comparisons, tables, schemas, arrows, framed groupings, and other visual structure.
+- Run a visual pass for every content slide: select an information-bearing visual or document why a text exception is necessary.
+- Use meaningful icons for categories, states, actions, and navigation where they improve recognition; decorative icons do not count as visual communication.
+- If a required local image is missing, render a described placeholder and report the unresolved asset.
 - Use text only when another form is not suitable.
 - A slide may contain a full prompt, short code sample, or other structured text when that exact visible structure matters.
 - Do not use long paragraphs.

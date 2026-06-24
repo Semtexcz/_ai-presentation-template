@@ -7,6 +7,7 @@
     />
 
     <main class="hero-content">
+      <div v-if="icon" class="hero-icon"><VisualIcon :name="icon" /></div>
       <div class="slide-title hero-title">
         <slot name="title" />
       </div>
@@ -20,6 +21,12 @@
   </section>
 </template>
 
+<script setup>
+import VisualIcon from '../components/VisualIcon.vue'
+
+defineProps({ icon: { type: String, default: '' } })
+</script>
+
 <style scoped>
 .hero-layout {
   background: var(--bg);
@@ -32,6 +39,9 @@
 
   max-width: 560px;
 }
+
+.hero-icon { width: 62px; height: 62px; margin-bottom: 22px; color: var(--accent); }
+.hero-icon :deep(svg) { width: 100%; height: 100%; }
 
 .hero-title {
   --slide-title-size: clamp(56px, 6.3vw, 68px);

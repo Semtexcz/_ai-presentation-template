@@ -19,10 +19,17 @@ notes, výukového videa, jazyka či přístupnosti.
 - Viditelný obsah drž minimální; detail patří do speaker notes.
 - Preferuj diagram, porovnání, tabulku, schéma, šipky nebo rámované skupiny
   před seznamem a seznam před odstavcem.
+- Před zápisem slidu proveď visual pass: pointa → typ informace → vizuální
+  forma → zdroj dat nebo assetu.
+- Informační vizuál musí ukazovat množství, vztah, proces, porovnání,
+  hierarchii nebo důkaz. Samotná dekorativní ikona nestačí.
+- Ikony používej jako rychlé označení kategorií, stavů a akcí.
 - Text použij, když přesná viditelná struktura sama nese informaci: prompt,
   krátký kód, příkaz, rovnice nebo citace.
 - Nepopisuj na slidu, co bude lektor říkat.
 - Dekorace bez informační funkce vynech.
+- Pokud chybí potřebný lokální obrázek, vlož `VisualPlaceholder` s popisem
+  požadovaného obsahu a očekávanou cestou. Nevymýšlej neexistující asset.
 - Zachovej světlé pozadí, tmavý text, šedý sekundární text, červený akcent
   `#F11E1E`, výraznou typografii a dostatek prostoru.
 
@@ -70,6 +77,21 @@ jasný úvod, střed a závěr.
 
 Pokud slide obsahuje více point, působí přeplněně nebo potřebuje přes minutu,
 rozděl ho typicky na koncept, příklad a důsledek.
+
+## Povinný visual pass
+
+Pro každý obsahový slide si před implementací poznamenej:
+
+1. takeaway,
+2. typ informace,
+3. vybraný layout nebo vizuální komponentu,
+4. zdroj dat či assetu.
+
+Použij `BarChart` pro množství, `MetricStrip` pro klíčové hodnoty,
+`HubDiagram` pro vztahy, `CycleDiagram` pro opakující se proces, `pipeline` pro
+lineární proces, `grid` pro kategorie a `image-focus` pro obrazový důkaz.
+Textová výjimka je přípustná jen pro krátký `hero` či `statement`, přesný
+prompt, kód nebo citaci a přechod `live-demo`. Ve finálním auditu ji odůvodni.
 
 ## Speaker notes
 
@@ -121,6 +143,8 @@ Před dokončením ověř:
 - Úvod je konkrétní a závěr shrnuje nebo žádá další akci.
 - Layout odpovídá účelu slidu.
 - Většina slidů používá vizuální strukturu místo dlouhého textu.
+- Každý obsahový slide má informační vizuál nebo odůvodněnou textovou výjimku.
+- Použité ikony nesou význam a všechny placeholdery jsou uvedené jako chybějící assety.
 - Speaker notes doplňují výklad tam, kde jsou potřeba.
 - Breadcrumbs, jazyk a vizuální styl jsou konzistentní.
 - Cesty k assetům jsou platné.

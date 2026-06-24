@@ -7,8 +7,11 @@
     />
 
     <main ref="codeContentEl" class="code-content">
-      <div class="slide-title code-title">
-        <slot name="title" />
+      <div class="code-heading">
+        <div v-if="icon" class="code-icon"><VisualIcon :name="icon" /></div>
+        <div class="slide-title code-title">
+          <slot name="title" />
+        </div>
       </div>
 
       <div ref="codeAreaEl" class="code-area">
@@ -24,8 +27,10 @@
 
 <script setup>
 import { nextTick, onBeforeUnmount, onMounted, onUpdated, ref } from 'vue'
+import VisualIcon from '../components/VisualIcon.vue'
 
 const props = defineProps({
+  icon: { type: String, default: '' },
   codeFontMin: {
     type: Number,
     default: 12,
@@ -146,6 +151,10 @@ onBeforeUnmount(() => {
 .code-title {
   --slide-title-max-width: 1040px;
 }
+
+.code-heading { display: flex; align-items: center; gap: 18px; }
+.code-icon { width: 48px; height: 48px; flex: 0 0 48px; color: var(--accent); }
+.code-icon :deep(svg) { width: 100%; height: 100%; }
 
 .code-area {
   --code-font-size: 26px;

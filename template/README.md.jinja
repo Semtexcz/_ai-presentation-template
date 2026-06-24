@@ -29,6 +29,8 @@ pnpm run export
 ```
 
 Export spouštěj jen tehdy, když potřebuješ výsledný soubor.
+Pokud Chromium po instalaci není dostupné, spusť jednorázově
+`pnpm exec playwright install chromium`.
 
 ## Struktura projektu
 
@@ -49,6 +51,9 @@ měň až tehdy, když jde o opakovaně použitelný vzor nebo opravu chyby.
 - Jeden slide = jedna hlavní myšlenka.
 - Nadpis má sdělit pointu, ne pouze téma.
 - Minimum viditelného textu; preferuj vizuální strukturu.
+- Pro každý obsahový slide udělej visual pass: pointa, typ informace, vizuální forma a zdroj.
+- Ikony používej pro význam, kategorii, stav nebo akci; ne jako náhodnou dekoraci.
+- Chybějící obrázek nahraď popsaným `VisualPlaceholder` a uveď ho ve finálním reportu.
 - Přesný prompt, krátký kód nebo jiný strukturovaný text může být viditelný,
   pokud je jeho forma součástí sdělení.
 - Dlouhý výklad patří do HTML komentářů jako speaker notes.
@@ -70,6 +75,12 @@ měň až tehdy, když jde o opakovaně použitelný vzor nebo opravu chyby.
 | Kód, prompt, příkaz nebo terminál | `code` |
 | Porovnání dvou textových bloků | `text-compare` |
 | Přechod k živé ukázce | `live-demo` |
+| Fotografie, screenshot nebo obrazový důkaz | `image-focus` |
+
+Do vizuální plochy `one-idea` můžeš vložit `BarChart`, `MetricStrip`,
+`HubDiagram`, `CycleDiagram`, Mermaid nebo `VisualPlaceholder`. Obecné ikony
+vykresluje `VisualIcon`; podporuje vestavěný registr běžných Iconify názvů z
+kolekce Phosphor.
 
 Přesné props, sloty, společný frontmatter, vizuální CSS třídy a minimální
 příklad jsou v [referenci layoutů](.codex/skills/slidev-presentation/references/layouts.md).

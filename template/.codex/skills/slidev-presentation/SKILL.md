@@ -37,6 +37,8 @@ Do not load README as an agent reference; it is the human-facing project index.
 - Give each slide one main idea and a takeaway headline.
 - Minimize visible text; prefer diagrams, comparisons, tables, schemas, arrows,
   and meaningful grouping.
+- Use meaningful icons to encode a category, action, state, or navigation cue.
+  An icon added only as decoration does not make a slide visual.
 - Show a full prompt, short code sample, or structured text when its exact visible
   form matters.
 - Avoid long paragraphs and descriptions of what the presenter will say.
@@ -52,18 +54,23 @@ For a new deck:
 
 1. Identify audience, purpose, duration, and desired outcome.
 2. State the central promise or thesis in one sentence.
-3. Outline slide titles, takeaways, layout choices, and visual ideas.
-4. Write a complete, valid `slides.md` with existing layouts.
-5. Add speaker notes where spoken context is needed.
-6. Review density, narrative, breadcrumbs, asset paths, and build readiness.
+3. Complete a visual plan for every content slide: takeaway, information type,
+   selected visual form, and data or asset source.
+4. Resolve every slide to an information-bearing visual or a justified text
+   exception before writing the deck.
+5. Write a complete, valid `slides.md` with existing layouts.
+6. Add speaker notes where spoken context is needed.
+7. Review density, narrative, breadcrumbs, asset paths, and build readiness.
 
 For an existing deck:
 
 1. Inspect the complete deck and the user-requested edit boundary.
 2. Identify content, structure, design, or technical problems.
-3. Make the smallest coherent change that solves the request.
-4. Recheck adjacent slides for continuity and consistency.
-5. Build the deck and report any remaining validation gap.
+3. Run the visual plan retrospectively and replace text-heavy slides with
+   charts, diagrams, comparisons, images, or structured components.
+4. Make the smallest coherent change that solves the request.
+5. Recheck adjacent slides for continuity and consistency.
+6. Build the deck and report any remaining validation gap.
 
 Do not block on minor missing context. Make a reasonable assumption and state it.
 Ask only when the answer would materially change the deck.
@@ -97,6 +104,9 @@ insufficient, then define the reusable API and include an example slide.
 - Avoid Vue complexity for static slide content.
 - Do not add dependencies for work achievable with Slidev, Vue, CSS, HTML, SVG,
   existing layouts, or local assets.
+- Never invent an asset path. When an important image is missing, insert
+  `VisualPlaceholder` with a concrete description and expected path, continue
+  the deck, and report the missing asset at completion.
 - Do not edit generated build or export output as source.
 
 ## Validation
@@ -104,9 +114,13 @@ insufficient, then define the reusable API and include an example slide.
 Before completion:
 
 1. Check that every changed slide has one clear takeaway.
-2. Check the selected layouts against `references/layouts.md` when relevant.
-3. Check frontmatter, slots, breadcrumbs, and asset paths.
-4. Run `pnpm run build`.
-5. Run `pnpm run export` only if the user needs an export.
+2. Check that every content slide has an information-bearing visual or a
+   justified text exception (`hero`, short `statement`, exact prompt/code/quote,
+   or `live-demo`).
+3. List unresolved `VisualPlaceholder` instances as missing assets.
+4. Check the selected layouts against `references/layouts.md` when relevant.
+5. Check frontmatter, slots, breadcrumbs, and asset paths.
+6. Run `pnpm run build`.
+7. Run `pnpm run export` only if the user needs an export.
 
 Report commands that could not run instead of implying validation succeeded.

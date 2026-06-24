@@ -4,6 +4,23 @@ All notable changes to this template are documented in this file.
 
 The format is based on Keep a Changelog and releases follow SemVer.
 
+## [0.7.0] - 2026-06-24
+
+### Added
+
+- Added reusable `BarChart`, `MetricStrip`, `HubDiagram`, and `CycleDiagram` components for information-bearing visuals inside `one-idea` slides.
+- Added the `image-focus` layout and a descriptive `VisualPlaceholder` fallback for missing or failed local images.
+- Added a generic `VisualIcon` component while preserving `RoleIcon` as a backward-compatible wrapper.
+- Added a curated offline Iconify registry for common presentation concepts without runtime fetching or extra dependencies.
+- Added Playwright Chromium as an approved generated-project development dependency so the documented Slidev export command works after installation.
+
+### Changed
+
+- Added optional semantic icons to hero, statement, code, live-demo, table-of-contents, pipeline, comparison, and grid presentations where they improve recognition.
+- Extended `toc` and `pipeline` items with backward-compatible object forms for icons and supporting labels.
+- Made a per-slide visual plan and final visual audit mandatory in generated presentation guidance and localized prompts.
+- Updated the starter deck to demonstrate semantic icons and reusable visual components.
+
 ## [0.6.2] - 2026-06-24
 
 ### Added

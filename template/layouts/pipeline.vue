@@ -24,7 +24,11 @@
               stepClass(index),
             ]"
           >
-            {{ step.label }}
+            <VisualIcon v-if="step.icon" :name="step.icon" class="pipeline-icon" />
+            <span class="pipeline-copy">
+              <strong>{{ step.label }}</strong>
+              <small v-if="step.subtitle">{{ step.subtitle }}</small>
+            </span>
           </div>
 
           <div v-if="mode === 'vertical' && index < arrangedSteps.length - 1" class="pipeline-arrow">
@@ -42,6 +46,7 @@
 
 <script setup>
 import { computed } from 'vue'
+import VisualIcon from '../components/VisualIcon.vue'
 
 const props = defineProps({
   steps: {
@@ -63,18 +68,22 @@ const props = defineProps({
 })
 
 const arrangedSteps = computed(() => {
+  const normalizedSteps = props.steps.map((step) => typeof step === 'string'
+    ? { label: step }
+    : { ...step, label: step.label ?? step.title ?? '' })
+
   if (props.mode !== 'snake') {
-    return props.steps.map((label, originalIndex) => ({
-      label,
+    return normalizedSteps.map((step, originalIndex) => ({
+      ...step,
       originalIndex,
     }))
   }
 
   const rows = []
 
-  for (let i = 0; i < props.steps.length; i += props.columns) {
-    const row = props.steps.slice(i, i + props.columns).map((label, offset) => ({
-      label,
+  for (let i = 0; i < normalizedSteps.length; i += props.columns) {
+    const row = normalizedSteps.slice(i, i + props.columns).map((step, offset) => ({
+      ...step,
       originalIndex: i + offset,
     }))
 
@@ -178,6 +187,7 @@ function stepClass(index) {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 12px;
 
   padding: var(--pipeline-step-padding);
 
@@ -194,6 +204,11 @@ function stepClass(index) {
   hyphens: none;
   text-wrap: balance;
 }
+
+.pipeline-icon { width: 28px; height: 28px; flex: 0 0 28px; color: var(--accent); }
+.pipeline-copy { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.pipeline-copy strong { font: inherit; }
+.pipeline-copy small { color: var(--text-soft); font: 500 12px/1.2 'Inter', sans-serif; }
 
 .pipeline-step.active {
   border: 2px solid var(--accent);

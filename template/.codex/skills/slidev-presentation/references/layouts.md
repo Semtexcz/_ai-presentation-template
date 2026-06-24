@@ -24,6 +24,12 @@ Načti tuto referenci pouze při výběru layoutu, práci s jeho props nebo slot
 | Kód, prompt, příkaz nebo strukturovaný text | `code` | Jen relevantní výřez. |
 | Dva porovnávané textové bloky | `text-compare` | Původní vs upravené, špatné vs lepší. |
 | Přechod k živé ukázce | `live-demo` | Prohlížeč, AI nástroj nebo terminál. |
+| Fotografie, screenshot nebo obrazový důkaz | `image-focus` | Lokální obrázek nebo popsaný placeholder. |
+
+Pro množství použij `BarChart`, pro několik klíčových hodnot `MetricStrip`, pro
+vztahy `HubDiagram` a pro opakující se proces `CycleDiagram` uvnitř
+`one-idea`. Obecná schémata lze zapsat také pomocí Mermaid. `pipeline` ponech
+pro lineární pořadí a `grid` pro rovnocenné kategorie.
 
 ## Společný frontmatter
 
@@ -50,12 +56,14 @@ Použití: úvod, závěr nebo velký přechod.
 
 - `#title` — hlavní nadpis.
 - `#subtitle` — volitelný podpůrný text.
+- prop `icon` — volitelná významová Iconify ikona.
 
 ### `statement`
 
 Použití: jedna silná takeaway věta.
 
 - prop `align`: `left` (výchozí) nebo `center`.
+- prop `icon` — volitelná ikona upozornění, pravidla nebo stavu.
 - `#title` — hlavní věta.
 - `#subtitle` — volitelné krátké upřesnění.
 
@@ -64,6 +72,7 @@ Použití: jedna silná takeaway věta.
 Použití: obsah, mapa nebo rekapitulace částí.
 
 - prop `items` — pole položek.
+- položka může být string nebo `{ label, icon? }`.
 - prop `active` — index aktivní položky od `0`.
 - prop `columns` — `1` nebo `2`, výchozí `1`.
 - prop `showAnchor` — zobrazí pravý kruhový symbol.
@@ -102,6 +111,7 @@ Pokud potřebuješ různorodý HTML obsah nebo složitější diagram, vrať se 
 Použití: proces, workflow nebo algoritmus.
 
 - prop `steps` — pole krátkých popisků kroků.
+- krok může být string nebo `{ label, subtitle?, icon? }`.
 - prop `active` — index aktivního kroku od `0`.
 - prop `mode` — `vertical` nebo `snake`.
 - prop `columns` — počet sloupců ve `snake` režimu.
@@ -114,6 +124,7 @@ Od 6 kroků přepni na `snake`, jinak slide zbytečně ztrácí čitelnost.
 Použití: kód, prompt, příkaz, výpočet nebo terminálový výstup.
 
 - prop `codeFontMin` — minimální velikost písma, výchozí `12`.
+- prop `icon` — volitelná ikona typu obsahu, například prompt, terminál či kód.
 - `#title` — nadpis ukázky.
 - výchozí slot — Markdown, obvykle fenced code block.
 - `#note` — krátký kontext pod ukázkou.
@@ -128,6 +139,7 @@ Použití: přesně dva textové bloky.
 - prop `mode` — `horizontal` (výchozí) nebo `vertical`.
 - props `leftTitle`, `rightTitle` — titulky panelů.
 - props `leftKicker`, `rightKicker` — volitelné kickery.
+- props `leftIcon`, `rightIcon` — volitelné významové ikony panelů.
 - props `leftVariant`, `rightVariant` — `neutral`, `bad`, `good` nebo `accent`.
 - `#title` — takeaway nadpis.
 - `#left`, `#right` — porovnávaný obsah.
@@ -146,8 +158,69 @@ kontrastu.
 Použití: čistý přechod před živou ukázkou.
 
 - prop `kicker` — přepis výchozího textu `Živá ukázka`.
+- prop `icon` — Iconify ikona; výchozí je symbol spuštění.
 - `#title` — co se bude dít.
 - `#subtitle` — volitelný krátký popis.
+
+### `image-focus`
+
+Použití: fotografie, screenshot, ilustrace nebo jiný obrazový důkaz.
+
+- prop `image` — lokální cesta k obrázku.
+- prop `alt` — smysluplný alternativní popis.
+- prop `position` — `left` nebo `right`, výchozí `right`.
+- prop `fit` — `cover` nebo `contain`, výchozí `cover`.
+- prop `placeholder` — popis požadovaného obrázku, pokud asset chybí.
+- prop `placeholderKind` — `image`, `photo`, `screenshot`, `diagram` nebo `illustration`.
+- `#title`, `#caption`, `#source` — textové sloty.
+
+Pokud `image` chybí nebo se nenačte, layout automaticky zobrazí
+`VisualPlaceholder`. Takový slide se sestaví, ale placeholder musí být uveden
+ve finálním reportu jako nedokončený asset.
+
+## Vizuální komponenty
+
+Všechny komponenty jsou určené především do slotu `#visual` layoutu
+`one-idea`.
+
+### `VisualIcon`
+
+- prop `name` — Iconify identifikátor z vestavěného registru, například
+  `ph:target-duotone` nebo `ph:chart-bar-duotone`.
+- Registr obsahuje běžné prezentační koncepty z kolekce Phosphor; neznámá
+  ikona se bezpečně nahradí otazníkem. Novou opakovaně potřebnou ikonu přidej
+  statickým importem do `VisualIcon.vue`.
+- Ikona musí nést význam. Dekorace se nepočítá jako informační vizuál.
+
+### `BarChart`
+
+- props `items`, `max?`, `ariaLabel?`.
+- 1–6 položek `{ label, value, displayValue?, highlight? }`.
+- Hodnoty jsou nezáporné; `max` umožní držet společnou stupnici.
+
+### `MetricStrip`
+
+- prop `items` — 1–4 položky `{ value, label, detail?, icon?, variant? }`.
+- `variant` je `neutral`, `accent`, `good` nebo `bad`.
+
+### `HubDiagram`
+
+- prop `center` — `{ title, subtitle?, icon? }`.
+- prop `items` — 2–6 souvisejících uzlů stejného tvaru.
+- prop `ariaLabel?` — popis vztahového schématu.
+
+### `CycleDiagram`
+
+- prop `steps` — 3–5 stringů nebo objektů `{ title, subtitle?, icon? }`.
+- prop `active?` — index zvýrazněného kroku.
+- prop `ariaLabel?` — popis cyklu.
+
+### `VisualPlaceholder`
+
+- prop `description` — povinný konkrétní popis chybějícího vizuálu.
+- props `kind?`, `icon?`, `expectedPath?`.
+- Použij pouze tehdy, když potřebný lokální asset není dostupný. Placeholder
+  zachovává layout a build, ale není hotovým vizuálem.
 
 ## Vizuální stavební bloky
 

@@ -18,9 +18,14 @@ Vstupy:
 
 Použij pouze layouty dostupné v projektu. Zachovej jeden slide na jednu hlavní
 myšlenku, minimum viditelného textu a detailní výklad ve speaker notes.
+Před zápisem vytvoř visual plan pro každý obsahový slide. Preferuj graf,
+metriku, schéma, proces, porovnání nebo lokální obrázek podle typu informace.
+Ikony používej významově. Když chybí potřebný obrázek, vlož konkrétně popsaný
+`VisualPlaceholder` a doporučenou cestu místo vymyšleného assetu.
 
 Uprav přímo `slides.md`, spusť `pnpm run build` a na konci stručně uveď:
 
 - zvolenou dramaturgii,
 - důležité předpoklady,
+- odůvodněné textové výjimky a chybějící assety,
 - výsledek validace.
