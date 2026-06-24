@@ -19,6 +19,7 @@ Načti tuto referenci pouze při výběru layoutu, práci s jeho props nebo slot
 | Jedna silná věta | `statement` | Jedna pointa bez karet. |
 | Obsah, mapa nebo rekapitulace | `toc` | Sekce a aktivní položka. |
 | Koncept s vizuálem | `one-idea` | Výchozí volba pro výukový slide. |
+| Mřížka rolí, kategorií nebo karet | `grid` | Opakující se položky s volitelnou ikonou. |
 | Proces nebo algoritmus | `pipeline` | Krátké navazující kroky. |
 | Kód, prompt, příkaz nebo strukturovaný text | `code` | Jen relevantní výřez. |
 | Dva porovnávané textové bloky | `text-compare` | Původní vs upravené, špatné vs lepší. |
@@ -77,6 +78,23 @@ Použití: jeden koncept s vizuální plochou.
 - `#title` — takeaway nadpis.
 - `#visual` — HTML, SVG, obrázek nebo jiná vizuální struktura.
 - `#note` — volitelná krátká věta pod vizuálem.
+
+### `grid`
+
+Použití: opakující se karty, role, use-casy, kategorie nebo stručná tabulka bez
+potřeby ručně skládat HTML.
+
+- prop `items` — pole objektů s klíči:
+  `title` (povinné), `subtitle` (volitelné), `kicker` (volitelné),
+  `icon` (volitelné; podporované hodnoty: `student`, `bug`, `pair`, `review`,
+  `docs`, `tests`).
+- prop `columns` — `2` nebo `3`, výchozí `3`.
+- `#title` — takeaway nadpis.
+- `#note` — volitelná krátká věta pod gridem.
+
+`grid` použij tehdy, když všechny položky mají stejnou vizuální strukturu.
+Pokud potřebuješ různorodý HTML obsah nebo složitější diagram, vrať se k
+`one-idea` a vlastnímu `#visual`.
 
 ### `pipeline`
 

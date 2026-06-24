@@ -4,6 +4,18 @@ All notable changes to this template are documented in this file.
 
 The format is based on Keep a Changelog and releases follow SemVer.
 
+## [0.6.0] - 2026-06-24
+
+### Added
+
+- Added a reusable `grid` Slidev layout for role maps, category cards, and other compact table-like overviews with optional icons.
+- Added a shared `RoleIcon` component so bundled layouts can render consistent role/category pictograms without slide-specific HTML.
+
+### Changed
+
+- Replaced the starter deck's custom role-grid example with the new `grid` layout API.
+- Documented the new layout in the generated README and the bundled layout reference.
+
 ## [0.5.5] - 2026-06-24
 
 ### Changed

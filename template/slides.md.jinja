@@ -243,6 +243,39 @@ Speaker notes:
 -->
 
 ---
+layout: grid
+section: Úvod
+current: Mapa
+breadcrumb:
+  - {{ presentation_title|to_json }}
+  - Úvod
+  - Mapa
+columns: 3
+items:
+  - icon: student
+    title: učitel Pythonu
+  - icon: bug
+    title: debugger
+  - icon: pair
+    title: pair programmer
+  - icon: review
+    title: code reviewer
+  - icon: docs
+    title: dokumentace
+  - icon: tests
+    title: testy
+title: "Co dnes ukážeme"
+---
+
+<template #title>
+Co dnes ukážeme
+</template>
+
+<template #note>
+Cíl: naučit se používat AI jako nástroj pro učení a experimentování.
+</template>
+
+---
 layout: hero
 section: {{ presentation_title|to_json }}
 current: Konec
