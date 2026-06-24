@@ -2,13 +2,13 @@
 
 Zdrojový Copier template pro tvorbu dalších Slidev prezentací. Tento repozitář dokumentuje údržbu templatu, release workflow a práci s Copierem. Dokumentace, která se má propsat do vygenerované prezentace, patří do [`template/README.md.jinja`](template/README.md.jinja).
 
-Aktuální verze templatu: `v0.4.3`.
+Aktuální verze templatu: `v0.4.4`.
 
 ## Co je kde
 
 - `README.md` - dokumentace k tomuto template repozitáři.
 - `template/README.md.jinja` - README, které vznikne v každé vygenerované prezentaci.
-- `copier.yml` - otázky, validace a interní `template_version`.
+- `copier.yml` - otázky, validace, interní `template_version` a výchozí `presentation_version`.
 - `template/` - soubory, ze kterých Copier vyrenderuje novou prezentaci.
 - `CHANGELOG.md` - změny mezi releasy templatu.
 
@@ -48,7 +48,7 @@ Změny mezi releasy jsou v [CHANGELOG.md](CHANGELOG.md).
 - `copier.yml` - otázky a nastavení Copier templatu.
 - `template/slides.md.jinja` - startovací prezentace s proměnnými.
 - `template/README.md.jinja` - dokumentace pro uživatele vygenerované prezentace.
-- `template/package.json.jinja` - package metadata včetně verze podle `template_version`.
+- `template/package.json.jinja` - package metadata včetně samostatné verze vygenerované prezentace.
 - `template/{{ _copier_conf.answers_file }}.jinja` - answers soubor pro budoucí `copier update`.
 - `template/layouts/` - vlastní Slidev layouty.
 - `template/components/` - sdílené komponenty layoutů.
@@ -60,10 +60,12 @@ Změny mezi releasy jsou v [CHANGELOG.md](CHANGELOG.md).
 
 Autoritativní verze templatu je v `copier.yml` pod `template_version`.
 
+Verze vygenerované prezentace je oddělená a bere se z `presentation_version`. Template release tedy už neurčuje `"version"` v cílovém `package.json`.
+
 Při každé user-visible nebo maintenance-relevant změně:
 
 1. Zvyš `template_version` v `copier.yml`.
 2. Přidej odpovídající záznam do `CHANGELOG.md`.
 3. Uprav dokumentaci v root README a v `template/README.md.jinja`, pokud se změna týká i vygenerovaného projektu.
 4. Vytvoř Conventional Commit, například `docs:` nebo `feat:`.
-5. Vytvoř odpovídající Git tag, například `v0.4.3`.
+5. Vytvoř odpovídající Git tag, například `v0.4.4`.

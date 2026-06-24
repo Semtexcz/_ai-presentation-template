@@ -4,6 +4,17 @@ All notable changes to this template are documented in this file.
 
 The format is based on Keep a Changelog and releases follow SemVer.
 
+## [0.4.4] - 2026-06-24
+
+### Fixed
+
+- Separated generated presentation versioning from template release versioning by adding `presentation_version` to Copier answers.
+- Stopped rendering the internal `template_version` into generated `package.json` and now use `presentation_version` instead.
+
+### Changed
+
+- Updated root and generated README documentation to explain the difference between presentation version and template version.
+
 ## [0.4.3] - 2026-06-24
 
 ### Changed
