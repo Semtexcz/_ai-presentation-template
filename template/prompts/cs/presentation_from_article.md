@@ -19,7 +19,8 @@ Vstupy:
 Nejdřív promysli dramaturgii. Použij pouze layouty dostupné v projektu,
 takeaway nadpisy, minimum viditelného textu a speaker notes pro mluvený výklad.
 Pro porovnání dvou promptů nebo výstupů použij `text-compare`; delší samostatný
-prompt nebo kód dej do `code`.
+prompt nebo kód dej do `code`. Když je jedna varianta špatná a druhá dobrá,
+použij `bad` pro červený panel a `good` pro zelený.
 
 Uprav přímo `slides.md`, spusť `pnpm run build` a na konci stručně uveď:
 

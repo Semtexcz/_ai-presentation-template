@@ -75,7 +75,7 @@ defineProps({
   },
   rightVariant: {
     type: String,
-    default: 'accent',
+    default: 'good',
     validator: (value) => ['neutral', 'bad', 'good', 'accent'].includes(value),
   },
 })
@@ -140,18 +140,18 @@ defineProps({
   flex-direction: column;
 }
 
-.compare-panel.variant-neutral,
-.compare-panel.variant-bad {
+.compare-panel.variant-neutral {
   background: #F7F7F7;
 }
 
 .compare-panel.variant-bad {
-  border-color: var(--border-soft);
+  border-color: rgba(217, 45, 32, 0.36);
+  background: var(--semantic-bad-soft);
 }
 
 .compare-panel.variant-good {
-  border-color: rgba(241, 30, 30, 0.45);
-  background: #FFF3F3;
+  border-color: rgba(19, 115, 51, 0.32);
+  background: var(--semantic-good-soft);
 }
 
 .compare-panel.variant-accent {
@@ -181,9 +181,17 @@ defineProps({
   text-wrap: balance;
 }
 
+.compare-panel.variant-bad .compare-panel-kicker,
+.compare-panel.variant-bad .compare-panel-title {
+  color: var(--semantic-bad);
+}
+
 .compare-panel.variant-good .compare-panel-kicker,
+.compare-panel.variant-good .compare-panel-title {
+  color: var(--semantic-good);
+}
+
 .compare-panel.variant-accent .compare-panel-kicker,
-.compare-panel.variant-good .compare-panel-title,
 .compare-panel.variant-accent .compare-panel-title {
   color: var(--accent);
 }
@@ -235,8 +243,15 @@ defineProps({
   overflow: hidden;
 }
 
-.compare-panel.variant-accent .compare-panel-body :deep(pre),
+.compare-panel.variant-bad .compare-panel-body :deep(pre) {
+  border-color: rgba(217, 45, 32, 0.2);
+}
+
 .compare-panel.variant-good .compare-panel-body :deep(pre) {
+  border-color: rgba(19, 115, 51, 0.2);
+}
+
+.compare-panel.variant-accent .compare-panel-body :deep(pre) {
   border-color: rgba(241, 30, 30, 0.2);
 }
 

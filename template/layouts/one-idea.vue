@@ -319,6 +319,18 @@ onBeforeUnmount(() => {
   background: #FFF7F7;
 }
 
+.one-idea-visual :deep(.comparison-panel.bad) {
+  border-color: rgba(217, 45, 32, 0.36);
+  background: var(--semantic-bad-soft);
+  color: var(--semantic-bad);
+}
+
+.one-idea-visual :deep(.comparison-panel.good) {
+  border-color: rgba(19, 115, 51, 0.32);
+  background: var(--semantic-good-soft);
+  color: var(--semantic-good);
+}
+
 .one-idea-visual :deep(.demo-card) {
   width: 100%;
   min-width: 0;

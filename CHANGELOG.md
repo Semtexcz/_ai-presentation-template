@@ -4,6 +4,16 @@ All notable changes to this template are documented in this file.
 
 The format is based on Keep a Changelog and releases follow SemVer.
 
+## [0.5.3] - 2026-06-24
+
+### Fixed
+
+- Changed comparison semantics so `text-compare` renders bad variants in red and good variants in green instead of using the brand red for both.
+
+### Changed
+
+- Added matching `bad` and `good` helper classes for `one-idea` comparison panels and documented when to use them in generated presentation guidance.
+
 ## [0.5.2] - 2026-06-24
 
 ### Changed

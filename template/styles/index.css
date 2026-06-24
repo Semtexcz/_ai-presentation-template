@@ -8,6 +8,10 @@
   --border: #DADADA;
   --border-soft: #E5E5E5;
   --accent: #F11E1E;
+  --semantic-bad: #D92D20;
+  --semantic-bad-soft: #FFF2F1;
+  --semantic-good: #137333;
+  --semantic-good-soft: #EFFAF2;
   --content-inline-margin: 4%;
 }
 

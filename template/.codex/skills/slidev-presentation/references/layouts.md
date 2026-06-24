@@ -115,6 +115,10 @@ Použití: přesně dva textové bloky.
 určený ke čtení nebo kopírování. Pro tři a více bloků obsah rozděl; pro jeden
 velmi dlouhý blok použij `code`.
 
+Pro polarity typu špatně vs dobře používej `bad` a `good`: špatná varianta je
+červená, dobrá zelená. `accent` nech jen pro zvýraznění bez hodnotového
+kontrastu.
+
 ### `live-demo`
 
 Použití: čistý přechod před živou ukázkou.
@@ -129,7 +133,7 @@ Před vlastním HTML/CSS preferuj existující třídy:
 
 - `.flow`, `.flow-step`, `.flow-kicker`, `.flow-label`, `.flow-sub`
 - `.equation`, `.term`, `.operator`, `.term.accent`
-- `.comparison`, `.comparison-panel`, `.comparison-panel.accent`
+- `.comparison`, `.comparison-panel`, `.comparison-panel.bad`, `.comparison-panel.good`, `.comparison-panel.accent`
 - `.demo-card`, `.demo-mark`, `.demo-title`, `.demo-sub`
 - `.warning-grid`, `.warning-panel`, `.not-equal`
 - `.mini-graph`
