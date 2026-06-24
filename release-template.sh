@@ -10,15 +10,12 @@ if [[ ! -f "$COPIER_FILE" ]]; then
   exit 1
 fi
 
-if ! command -v git >/dev/null 2>&1; then
-  echo "git is required but not available in PATH" >&2
-  exit 1
-fi
-
-if ! command -v copier >/dev/null 2>&1; then
-  echo "copier is required but not available in PATH" >&2
-  exit 1
-fi
+for cmd in git copier awk; do
+  if ! command -v "$cmd" >/dev/null 2>&1; then
+    echo "$cmd is required but not available in PATH" >&2
+    exit 1
+  fi
+done
 
 template_version="$(
   awk '
@@ -27,7 +24,7 @@ template_version="$(
     in_block && $0 ~ /^[[:space:]]+default:/ {
       line = $0
       sub(/^[[:space:]]+default:[[:space:]]*/, "", line)
-      gsub(/"/, "", line)
+      gsub(/["'\'']/, "", line)
       print line
       exit
     }
@@ -39,10 +36,22 @@ if [[ -z "$template_version" ]]; then
   exit 1
 fi
 
-temp_version="v${template_version#v}"
+tag_name="v${template_version#v}"
 
-echo "Creating annotated tag $temp_version from $COPIER_FILE"
-git tag -a "$temp_version" -m "$temp_version"
+echo "Ensuring annotated tag $tag_name exists"
 
-echo "Pushing tag $temp_version to origin"
-git push origin "$temp_version"
+if git rev-parse -q --verify "refs/tags/$tag_name" >/dev/null; then
+  echo "Local tag $tag_name already exists, skipping creation"
+else
+  git tag -a "$tag_name" -m "$tag_name"
+  echo "Created local tag $tag_name"
+fi
+
+echo "Ensuring tag $tag_name exists on origin"
+
+if git ls-remote --exit-code --tags origin "refs/tags/$tag_name" >/dev/null 2>&1; then
+  echo "Remote tag $tag_name already exists, skipping push"
+else
+  git push origin "$tag_name"
+  echo "Pushed tag $tag_name to origin"
+fi
