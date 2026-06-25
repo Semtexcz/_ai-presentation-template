@@ -4,6 +4,12 @@ All notable changes to this template are documented in this file.
 
 The format is based on Keep a Changelog and releases follow SemVer.
 
+## [0.11.1] - 2026-06-25
+
+### Fixed
+
+- Replaced the manual `VisualIcon` whitelist with offline Phosphor collection loading so any valid `ph:*` Iconify name now renders from the bundled library and only truly invalid names fall back to the question-mark icon.
+
 ## [0.11.0] - 2026-06-25
 
 ### Added
