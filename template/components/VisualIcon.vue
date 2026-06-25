@@ -1,10 +1,15 @@
 <template>
-  <Icon :icon="resolvedIcon" class="visual-icon-svg" aria-hidden="true" />
+  <svg
+    class="visual-icon-svg"
+    aria-hidden="true"
+    :viewBox="viewBox"
+    xmlns="http://www.w3.org/2000/svg"
+    v-html="resolvedBody"
+  />
 </template>
 
 <script setup>
 import { computed } from 'vue'
-import { Icon, addCollection } from '@iconify/vue'
 import phIconSet from '@iconify-json/ph/icons.json'
 
 const props = defineProps({ name: { type: String, required: true } })
@@ -17,8 +22,7 @@ const legacyAliases = {
 
 const phIcons = phIconSet.icons ?? {}
 const phAliases = phIconSet.aliases ?? {}
-
-addCollection(phIconSet)
+const viewBox = `0 0 ${phIconSet.width ?? 256} ${phIconSet.height ?? 256}`
 
 function normalizeName(name) {
   const normalized = (legacyAliases[name] ?? name ?? '').trim()
@@ -28,14 +32,33 @@ function normalizeName(name) {
   return normalized.replace('/', ':')
 }
 
-function hasPhIcon(name) {
-  return Boolean(phIcons[name] || phAliases[name])
+function resolvePhIcon(name, seen = new Set()) {
+  if (seen.has(name)) return null
+  if (phIcons[name]) return phIcons[name]
+
+  const alias = phAliases[name]
+  if (!alias?.parent) return null
+
+  seen.add(name)
+  const parent = resolvePhIcon(alias.parent, seen)
+  if (!parent) return null
+
+  return {
+    ...parent,
+    ...alias,
+    body: alias.body ?? parent.body,
+  }
 }
 
 const resolvedIcon = computed(() => {
   const normalized = normalizeName(props.name)
   if (!normalized.startsWith('ph:')) return FALLBACK_ICON
   const iconName = normalized.slice(3)
-  return hasPhIcon(iconName) ? normalized : FALLBACK_ICON
+  return resolvePhIcon(iconName) ? normalized : FALLBACK_ICON
+})
+
+const resolvedBody = computed(() => {
+  const iconName = resolvedIcon.value.slice(3)
+  return resolvePhIcon(iconName)?.body ?? ''
 })
 </script>

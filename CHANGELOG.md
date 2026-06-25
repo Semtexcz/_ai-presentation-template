@@ -9,6 +9,7 @@ The format is based on Keep a Changelog and releases follow SemVer.
 ### Fixed
 
 - Replaced the manual `VisualIcon` whitelist with offline Phosphor collection loading so any valid `ph:*` Iconify name now renders from the bundled library and only truly invalid names fall back to the question-mark icon.
+- Removed the extra `@iconify/vue` runtime dependency from `VisualIcon` so updated generated decks no longer fail during Vite import resolution before a reinstall.
 
 ## [0.11.0] - 2026-06-25
 
