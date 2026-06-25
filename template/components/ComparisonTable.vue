@@ -50,8 +50,6 @@
 import { computed } from 'vue'
 import VisualIcon from './VisualIcon.vue'
 
-const variants = ['neutral', 'bad', 'good', 'accent', 'warning']
-
 const props = defineProps({
   leftTitle: {
     type: String,
@@ -68,12 +66,12 @@ const props = defineProps({
   leftVariant: {
     type: String,
     default: 'neutral',
-    validator: (value) => variants.includes(value),
+    validator: (value) => ['neutral', 'bad', 'good', 'accent', 'warning'].includes(value),
   },
   rightVariant: {
     type: String,
     default: 'accent',
-    validator: (value) => variants.includes(value),
+    validator: (value) => ['neutral', 'bad', 'good', 'accent', 'warning'].includes(value),
   },
   leftIcon: {
     type: String,

@@ -89,11 +89,16 @@ Použití: obsah, mapa nebo rekapitulace částí.
 Použití: jeden koncept s vizuální plochou.
 
 - prop `visualFrame` — zobrazí rám vizuálu; výchozí `true`.
+- prop `visualAlign` — `start`, `center` (výchozí) nebo `stretch`.
 - prop `visualVariant` — `default`, `diagram`, `equation`, `comparison`,
   `demo` nebo `warning`.
 - `#title` — takeaway nadpis.
 - `#visual` — HTML, SVG, obrázek nebo jiná vizuální struktura.
 - `#note` — volitelná krátká věta pod vizuálem.
+
+Pokud vložený vizuál nese vlastní panel, border nebo background, vypni outer
+frame přes `visualFrame: false`. `visualAlign: start` použij pro tabulky nebo
+jiné bloky, které mají sedět na horní hraně slotu místo svislého centrování.
 
 ### `grid`
 

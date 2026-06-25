@@ -16,6 +16,7 @@
         class="one-idea-visual"
         :class="[
           { 'without-frame': !visualFrame },
+          `align-${visualAlign}`,
           `variant-${visualVariant}`,
         ]"
       >
@@ -36,6 +37,11 @@ defineProps({
   visualFrame: {
     type: Boolean,
     default: true,
+  },
+  visualAlign: {
+    type: String,
+    default: 'center',
+    validator: (value) => ['start', 'center', 'stretch'].includes(value),
   },
   visualVariant: {
     type: String,
@@ -151,10 +157,24 @@ onBeforeUnmount(() => {
   overflow: hidden;
 }
 
+.one-idea-visual.align-start {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.one-idea-visual.align-stretch {
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
 .one-idea-visual.without-frame {
+  min-height: 0;
+  max-height: none;
+  flex: 0 0 auto;
   border: none;
   border-radius: 0;
   background: transparent;
+  overflow: visible;
 }
 
 .one-idea-visual :deep(img) {

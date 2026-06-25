@@ -4,6 +4,21 @@ All notable changes to this template are documented in this file.
 
 The format is based on Keep a Changelog and releases follow SemVer.
 
+## [0.11.0] - 2026-06-25
+
+### Added
+
+- Added `visualAlign: start|center|stretch` to the `one-idea` layout so visual content can opt into top alignment or stretch behavior without content-specific CSS.
+
+### Changed
+
+- Generalized `one-idea` so `visualFrame: false` disables the outer visual frame for any self-contained visual block instead of relying on component detection.
+- Updated the generated README, layout reference, and starter deck to show `ComparisonTable` as a self-framed visual inside `one-idea` using `visualFrame: false` and `visualAlign: start`.
+
+### Fixed
+
+- Fixed `one-idea` and `ComparisonTable` prop validators to compile cleanly in generated Slidev builds.
+
 ## [0.10.3] - 2026-06-25
 
 ### Fixed

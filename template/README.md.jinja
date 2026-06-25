@@ -86,6 +86,10 @@ Do vizuální plochy `one-idea` můžeš vložit `BarChart`, `MetricStrip`,
 `VisualIcon`; podporuje vestavěný registr běžných Iconify názvů z kolekce
 Phosphor.
 
+Když vložená komponenta nese vlastní border a background, vypni outer frame přes
+`visualFrame: false`. Pokud zároveň potřebuješ obsah zarovnat k hornímu okraji,
+použij u `one-idea` i `visualAlign: start`.
+
 ## Layout vs komponenta
 
 Layout je doporučené výchozí rozložení slidu. Komponenta je stavební blok,
@@ -102,7 +106,8 @@ který můžeš vložit do layoutu nebo do vlastního HTML.
   zhruba 3 až 6 řádků; delší obsah rozděl do více slidů.
 - `ComparisonTable` použij pro 2 až 6 krátkých dvojic typu vágní vs konkrétní
   nebo špatně vs dobře. Pro dva větší textové bloky je vhodnější
-  `text-compare`.
+  `text-compare`. Pokud tabulka sama tvoří hotový panel, preferuj v `one-idea`
+  `visualFrame: false`.
 
 Když ti layout překáží nebo nutí obsah do špatné struktury, vrať se k
 `one-idea` a poskládej slide z komponent nebo jednoduchého HTML.
