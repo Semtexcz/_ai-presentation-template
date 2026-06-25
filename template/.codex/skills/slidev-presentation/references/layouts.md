@@ -28,10 +28,11 @@ Načti tuto referenci pouze při výběru layoutu, práci s jeho props nebo slot
 | Fotografie, screenshot nebo obrazový důkaz | `image-focus` | Lokální obrázek nebo popsaný placeholder. |
 
 Pro množství použij `BarChart`, pro několik klíčových hodnot `MetricStrip`, pro
-vztahy `HubDiagram`, pro přesný prompt `PromptCard` a pro krátkou sledovanou
-sekvenci `StepCards` uvnitř `one-idea` nebo `split-demo`. Obecná schémata lze
-zapsat také pomocí Mermaid. `pipeline` ponech pro lineární pořadí a `grid` pro
-rovnocenné kategorie.
+vztahy `HubDiagram`, pro přesný prompt `PromptCard`, pro krátkou sledovanou
+sekvenci `StepCards`, pro strukturovaná data `DataTable` a pro krátké
+dvousloupcové kontrasty `ComparisonTable` uvnitř `one-idea` nebo
+`split-demo`. Obecná schémata lze zapsat také pomocí Mermaid. `pipeline`
+ponech pro lineární pořadí a `grid` pro rovnocenné kategorie.
 
 Layouty jsou výchozí doporučení. Pokud zvolený layout zhoršuje čitelnost nebo
 nutí obsah do špatné struktury, použij `one-idea` s vhodnými komponentami nebo
@@ -259,15 +260,74 @@ není kopírovací widget ani editor; je to vizuálně odlišená karta.
 
 ### `StepCards`
 
-- prop `steps` — 2–5 položek typu string nebo objekt
-  `{ title, subtitle?, icon?, variant? }`.
-- prop `active?` — index zvýrazněného kroku.
-- prop `columns?` — `2`, `3` nebo `4`; bez zadání se rozložení přizpůsobí počtu karet.
-- prop `ariaLabel?` — popis sekvence.
+- props `steps`, `active?`, `columns?`, `ariaLabel?`.
+- 2–5 kroků; od 4 kroků se komponenta sama zhušťuje.
+- Použití: krátká sekvence, iterace, checklist checkpointů.
 
-Použití: krátké iterace, checklist, prompt → odpověď → upřesnění, kontrolní
-workflow. Pro čistě lineární proces s důrazem na tok kroků používej raději
-`pipeline`; pro opakující se smyčku `CycleDiagram`.
+### `DataTable`
+
+- props `columns`, `rows`, `caption?`, `dense?`, `striped?`,
+  `highlightFirstColumn?`, `ariaLabel?`.
+- Použití: problém -> řešení, situace -> doporučení, pojem -> význam, chyba ->
+  oprava, checklist, přehled možností.
+- Doporučené limity: 2 až 4 sloupce a 3 až 6 řádků.
+- `rows` mohou být pole hodnot nebo objekty; u objektů se buňky berou podle
+  názvů v `columns`.
+- Použij `dense`, jen když se tabulka blíží horní hranici hustoty. Neřeš
+  přeplněný slide dalším zmenšováním písma; rozděl obsah do dvou slidů.
+
+Použij `DataTable`, když je nejdůležitější čitelná mřížka vztahů mezi více
+sloupci. Nepoužívej ji pro dva delší textové bloky, silně narativní srovnání
+ani pro seznam rovnocenných kategorií bez potřeby buněk.
+
+```vue
+<DataTable
+  :columns="['Situace', 'Použij']"
+  :rows="[
+    ['Jeden dlouhý prompt', 'code'],
+    ['Kód + prompt', 'split-demo'],
+    ['Dvě krátké varianty', 'ComparisonTable'],
+  ]"
+  caption="Volba prezentační struktury"
+  striped
+  highlight-first-column
+/>
+```
+
+### `ComparisonTable`
+
+- props `leftTitle`, `rightTitle`, `rows`, `leftVariant?`, `rightVariant?`,
+  `leftIcon?`, `rightIcon?`, `caption?`, `dense?`, `ariaLabel?`.
+- Použití: vágní vs konkrétní, špatně vs dobře, před vs po, riziko vs
+  bezpečnější řešení.
+- Doporučené limity: 2 až 6 řádků, krátké texty v obou sloupcích.
+- Varianty: `neutral`, `bad`, `good`, `accent`, `warning`.
+
+Použij `ComparisonTable`, když máš několik krátkých dvojic a potřebuješ je
+vizuálně čitelně rozlišit po řádcích. Nepoužívej ji pro dva větší odstavcové
+bloky; tam je vhodnější `text-compare`. Pokud levý a pravý panel nesou odlišnou
+roli, například vstup vs prompt, vrať se ke `split-demo`.
+
+```vue
+<ComparisonTable
+  left-title="Vágně"
+  right-title="Konkrétně"
+  left-variant="bad"
+  right-variant="good"
+  :rows="[
+    ['Oprav kód', 'Najdi chybu a vysvětli ji'],
+    ['Napiš program', 'Použij pouze input a if'],
+  ]"
+/>
+```
+
+## Rozhodování mezi bloky
+
+- Použij `DataTable`: strukturovaná data ve 2 až 4 sloupcích.
+- Použij `ComparisonTable`: více krátkých dvojic v levém a pravém sloupci.
+- Použij `text-compare`: dva větší bloky textu nebo promptů.
+- Použij `split-demo`: vstup vlevo, prompt nebo instrukce vpravo.
+- Použij `grid`: rovnocenné kategorie nebo karty bez tabulkových buněk.
 
 ### `VisualPlaceholder`
 

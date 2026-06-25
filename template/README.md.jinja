@@ -81,9 +81,10 @@ Obecnou dokumentaci k samotnému Slidevu hledej v `.codex/skills/slidev/`.
 | Fotografie, screenshot nebo obrazový důkaz | `image-focus` |
 
 Do vizuální plochy `one-idea` můžeš vložit `BarChart`, `MetricStrip`,
-`HubDiagram`, `CycleDiagram`, `PromptCard`, `StepCards`, Mermaid nebo
-`VisualPlaceholder`. Obecné ikony vykresluje `VisualIcon`; podporuje vestavěný
-registr běžných Iconify názvů z kolekce Phosphor.
+`HubDiagram`, `CycleDiagram`, `PromptCard`, `StepCards`, `DataTable`,
+`ComparisonTable`, Mermaid nebo `VisualPlaceholder`. Obecné ikony vykresluje
+`VisualIcon`; podporuje vestavěný registr běžných Iconify názvů z kolekce
+Phosphor.
 
 ## Layout vs komponenta
 
@@ -96,6 +97,12 @@ který můžeš vložit do layoutu nebo do vlastního HTML.
   ne jen jako běžný odstavec.
 - `StepCards` použij pro 2 až 5 krátkých iterací nebo checkpointů. Pro čistě
   lineární tok kroků je obvykle lepší `pipeline`.
+- `DataTable` použij pro strukturovaná data ve 2 až 4 sloupcích, typicky
+  problém -> řešení, situace -> doporučení nebo checklist. Bezpečný rozsah je
+  zhruba 3 až 6 řádků; delší obsah rozděl do více slidů.
+- `ComparisonTable` použij pro 2 až 6 krátkých dvojic typu vágní vs konkrétní
+  nebo špatně vs dobře. Pro dva větší textové bloky je vhodnější
+  `text-compare`.
 
 Když ti layout překáží nebo nutí obsah do špatné struktury, vrať se k
 `one-idea` a poskládej slide z komponent nebo jednoduchého HTML.

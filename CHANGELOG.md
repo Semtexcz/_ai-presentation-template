@@ -4,6 +4,16 @@ All notable changes to this template are documented in this file.
 
 The format is based on Keep a Changelog and releases follow SemVer.
 
+## [0.10.0] - 2026-06-25
+
+### Added
+
+- Added reusable `DataTable` and `ComparisonTable` components for presentation-safe tabular content inside existing layouts such as `one-idea`, `split-demo`, or custom slide HTML.
+
+### Changed
+
+- Updated the generated presentation reference, generated README, and starter deck to document when tabular content should use `DataTable`, `ComparisonTable`, `text-compare`, `split-demo`, or `grid`.
+
 ## [0.9.1] - 2026-06-25
 
 ### Fixed

@@ -202,6 +202,79 @@ Speaker notes:
 
 ---
 layout: one-idea
+section: Ukázka
+current: Kdy použít tabulku
+breadcrumb:
+  - {{ presentation_title|to_json }}
+  - Ukázka
+  - Kdy použít tabulku
+visualVariant: comparison
+title: "Tabulka je obsahový blok, ne nový layout"
+---
+
+<template #title>
+Tabulka je obsahový blok, ne nový layout.
+</template>
+
+<template #visual>
+<DataTable
+  :columns="['Situace', 'Použij']"
+  :rows="[
+    ['Jeden dlouhý prompt', 'code'],
+    ['Kód + prompt', 'split-demo'],
+    ['Dvě varianty', 'ComparisonTable'],
+  ]"
+  caption="Volba vhodné struktury"
+  striped
+  highlight-first-column
+/>
+</template>
+
+<!--
+Speaker notes:
+- Ukaž, že tabulka řeší konkrétní obsahovou potřebu uvnitř stávajících layoutů.
+- Pokud by přibývaly další řádky nebo další vysvětlení, rozděl slide.
+-->
+
+---
+layout: one-idea
+section: Ukázka
+current: Vágně vs konkrétně
+breadcrumb:
+  - {{ presentation_title|to_json }}
+  - Ukázka
+  - Vágně vs konkrétně
+visualVariant: comparison
+title: "Krátké dvojice fungují lépe jako ComparisonTable"
+---
+
+<template #title>
+Krátké dvojice fungují lépe jako ComparisonTable.
+</template>
+
+<template #visual>
+<ComparisonTable
+  left-title="Vágně"
+  right-title="Konkrétně"
+  left-variant="bad"
+  right-variant="good"
+  left-icon="ph:x-circle-duotone"
+  right-icon="ph:check-circle-duotone"
+  :rows="[
+    ['Oprav kód', 'Najdi chybu a vysvětli ji'],
+    ['Napiš program', 'Použij pouze input a if'],
+  ]"
+/>
+</template>
+
+<!--
+Speaker notes:
+- Nech publikum rychle přečíst dvojice po řádcích.
+- Pokud by každý sloupec potřeboval delší text, vrať se k text-compare.
+-->
+
+---
+layout: one-idea
 section: Shrnutí
 current: Iterace
 breadcrumb:
