@@ -4,6 +4,17 @@ All notable changes to this template are documented in this file.
 
 The format is based on Keep a Changelog and releases follow SemVer.
 
+## [0.9.0] - 2026-06-25
+
+### Added
+
+- Added the reusable `split-demo` layout for side-by-side demo slides that keep source material and prompt or review instructions visible together.
+- Added `PromptCard` for exact prompt display and `StepCards` for compact prompt-iteration or workflow sequences inside `one-idea`, `split-demo`, or custom slide HTML.
+
+### Changed
+
+- Updated the generated presentation skill, layout reference, generated README, and starter deck to steer demo-first decks toward `split-demo`, `PromptCard`, and `StepCards` without forcing theme-specific layouts.
+
 ## [0.8.1] - 2026-06-25
 
 ### Fixed

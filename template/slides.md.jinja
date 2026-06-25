@@ -115,82 +115,114 @@ Speaker notes:
 -->
 
 ---
-layout: live-demo
+layout: split-demo
 section: Ukázka
-current: Slabý prompt
+current: Vstup a prompt
 breadcrumb:
   - {{ presentation_title|to_json }}
   - Ukázka
-  - Slabý prompt
-title: "Teď to zkusíme v AI"
+  - Vstup a prompt
+leftTitle: Zdroj
+rightTitle: Prompt
+leftIcon: ph:files-duotone
+rightIcon: ph:chat-circle-text-duotone
+rightVariant: accent
+leftWidth: 1.1
+title: "Dej modelu vstup i mantinely vedle sebe"
 ---
 
 <template #title>
-Teď to zkusíme v AI
+Dej modelu vstup i mantinely vedle sebe.
 </template>
 
-<template #subtitle>
-Slabý prompt → lepší prompt
+<template #left>
+
+```md
+Zákaznická zpětná vazba:
+- onboarding je nejasný
+- import dat je pomalý
+- mobilní verze padá po přihlášení
+```
+
 </template>
 
-<!--
-Speaker notes:
-- Přepni do prohlížeče a nejdřív ukaž slabou verzi promptu.
-- Vrať se na slidy až ve chvíli, kdy publikum vidí rozdíl ve výstupu.
--->
-
----
-layout: code
-icon: ph:brackets-curly-duotone
-section: Ukázka
-current: Lepší prompt
-breadcrumb:
-  - {{ presentation_title|to_json }}
-  - Ukázka
-  - Lepší prompt
-title: "Dej modelu jasné mantinely"
----
-
-<template #title>
-Dej modelu jasné mantinely.
-</template>
+<template #right>
+<PromptCard title="První použitelný prompt" kicker="Prompt" icon="ph:chat-centered-text-duotone" variant="accent">
 
 ```text
-Shrň zpětnou vazbu od zákazníků.
-Kontext: rozhodujeme o prioritách na další sprint.
-Výstup: 3 témata, u každého jeden citovaný příklad.
+Shrň 3 hlavní témata.
+U každého uveď 1 citaci ze vstupu.
 Nevymýšlej chybějící informace.
 ```
 
+</PromptCard>
+</template>
+
+<template #note>
+Když musí publikum pochopit vztah mezi vstupem a promptem, ukaž oba artefakty současně.
+</template>
+
 <!--
 Speaker notes:
-- Zvýrazni kontext, formát a omezení.
-- Prompt nahlas nepředčítej; ukaž jen rozdíl proti slabé verzi.
+- Vlevo ukaž, z čeho model vychází.
+- Vpravo ukaž jen tolik promptu, kolik publikum opravdu potřebuje přečíst.
 -->
 
 ---
 layout: one-idea
-section: Princip
-current: Iterace
+section: Ukázka
+current: Přesný prompt
 breadcrumb:
   - {{ presentation_title|to_json }}
-  - Princip
-  - Iterace
-visualVariant: diagram
-title: "První prompt není řešení"
+  - Ukázka
+  - Přesný prompt
+visualVariant: demo
+title: "Prompt zobraz jako samostatný artefakt"
 ---
 
 <template #title>
-První prompt není řešení.
+Prompt zobraz jako samostatný artefakt.
 </template>
 
 <template #visual>
-<CycleDiagram
+<PromptCard title="Upřesňující prompt" kicker="Iterace" icon="ph:cursor-text-duotone" variant="good">
+
+```text
+Přepiš odpověď do češtiny pro úplné začátečníky.
+Zachovej 3 body a u každého přidej krátký příklad.
+```
+
+</PromptCard>
+</template>
+
+<!--
+Speaker notes:
+- Ukaž, že i krátké upřesnění může zásadně změnit kvalitu výstupu.
+-->
+
+---
+layout: one-idea
+section: Shrnutí
+current: Iterace
+breadcrumb:
+  - {{ presentation_title|to_json }}
+  - Shrnutí
+  - Iterace
+visualVariant: diagram
+title: "Prompting je krátký iterativní workflow"
+---
+
+<template #title>
+Prompting je krátký iterativní workflow.
+</template>
+
+<template #visual>
+<StepCards
   :steps="[
-    { title: 'Napiš', icon: 'ph:pencil-simple-duotone' },
-    { title: 'Spusť', icon: 'ph:play-duotone' },
-    { title: 'Zkontroluj', icon: 'ph:magnifying-glass-duotone' },
-    { title: 'Uprav', icon: 'ph:wrench-duotone' },
+    { title: 'Zadání', subtitle: 'Co řešíme', icon: 'ph:target-duotone' },
+    { title: 'Prompt', subtitle: 'První pokus', icon: 'ph:chat-centered-text-duotone' },
+    { title: 'Kontrola', subtitle: 'Co chybí', icon: 'ph:magnifying-glass-duotone', variant: 'accent' },
+    { title: 'Iterace', subtitle: 'Upřesni prompt', icon: 'ph:arrow-clockwise-duotone' },
   ]"
   :active="2"
 />
@@ -198,7 +230,7 @@ První prompt není řešení.
 
 <!--
 Speaker notes:
-- Popiš cyklus jako rychlou kontrolovanou iteraci, ne jako jednorázové zadání.
+- Ukaž workflow jako krátký opakovatelný cyklus.
 -->
 
 ---
@@ -221,48 +253,10 @@ Tři věci pro praxi.
 <MetricStrip
   :items="[
     { value: '01', label: 'Doplň kontext', icon: 'ph:files-duotone' },
-    { value: '02', label: 'Urči formát', icon: 'ph:list-checks-duotone', variant: 'accent' },
-    { value: '03', label: 'Ověř výstup', icon: 'ph:check-circle-duotone' },
+    { value: '02', label: 'Ukaž prompt', icon: 'ph:chat-circle-text-duotone', variant: 'accent' },
+    { value: '03', label: 'Iteruj vědomě', icon: 'ph:arrow-clockwise-duotone' },
   ]"
 />
-</template>
-
-<!--
-Speaker notes:
-- Shrň jen to, co má publikum použít při příští práci.
--->
-
----
-layout: grid
-section: Úvod
-current: Mapa
-breadcrumb:
-  - {{ presentation_title|to_json }}
-  - Úvod
-  - Mapa
-columns: 3
-items:
-  - icon: ph:student-duotone
-    title: učitel Pythonu
-  - icon: ph:bug-duotone
-    title: debugger
-  - icon: ph:users-three-duotone
-    title: pair programmer
-  - icon: ph:checks-duotone
-    title: code reviewer
-  - icon: ph:book-open-duotone
-    title: dokumentace
-  - icon: ph:test-tube-duotone
-    title: testy
-title: "Co dnes ukážeme"
----
-
-<template #title>
-Co dnes ukážeme
-</template>
-
-<template #note>
-Cíl: naučit se používat AI jako nástroj pro učení a experimentování.
 </template>
 
 ---

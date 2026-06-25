@@ -12,6 +12,8 @@
   --semantic-bad-soft: #FFF2F1;
   --semantic-good: #137333;
   --semantic-good-soft: #EFFAF2;
+  --semantic-warning: #9A6700;
+  --semantic-warning-soft: #FFF7E6;
   --content-inline-margin: 4%;
   --slide-padding-top: 18px;
   --slide-header-gap: clamp(14px, 2vh, 20px);

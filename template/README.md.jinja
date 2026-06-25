@@ -76,13 +76,29 @@ Obecnou dokumentaci k samotnému Slidevu hledej v `.codex/skills/slidev/`.
 | Proces nebo algoritmus | `pipeline` |
 | Kód, prompt, příkaz nebo terminál | `code` |
 | Porovnání dvou textových bloků | `text-compare` |
+| Vstup vedle promptu nebo iterace | `split-demo` |
 | Přechod k živé ukázce | `live-demo` |
 | Fotografie, screenshot nebo obrazový důkaz | `image-focus` |
 
 Do vizuální plochy `one-idea` můžeš vložit `BarChart`, `MetricStrip`,
-`HubDiagram`, `CycleDiagram`, Mermaid nebo `VisualPlaceholder`. Obecné ikony
-vykresluje `VisualIcon`; podporuje vestavěný registr běžných Iconify názvů z
-kolekce Phosphor.
+`HubDiagram`, `CycleDiagram`, `PromptCard`, `StepCards`, Mermaid nebo
+`VisualPlaceholder`. Obecné ikony vykresluje `VisualIcon`; podporuje vestavěný
+registr běžných Iconify názvů z kolekce Phosphor.
+
+## Layout vs komponenta
+
+Layout je doporučené výchozí rozložení slidu. Komponenta je stavební blok,
+který můžeš vložit do layoutu nebo do vlastního HTML.
+
+- `split-demo` použij, když slide potřebuje dvě jasně oddělené role vedle sebe:
+  zadání a prompt, dokumentaci a prompt, problémový kód a review otázky.
+- `PromptCard` použij, když prompt musí být na slidu vidět jako přesný artefakt,
+  ne jen jako běžný odstavec.
+- `StepCards` použij pro 2 až 5 krátkých iterací nebo checkpointů. Pro čistě
+  lineární tok kroků je obvykle lepší `pipeline`.
+
+Když ti layout překáží nebo nutí obsah do špatné struktury, vrať se k
+`one-idea` a poskládej slide z komponent nebo jednoduchého HTML.
 
 Přesné props, sloty, společný frontmatter, vizuální CSS třídy a minimální
 příklad jsou v [referenci layoutů](.codex/skills/slidev-presentation/references/layouts.md).

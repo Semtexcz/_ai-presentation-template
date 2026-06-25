@@ -2,7 +2,7 @@
 
 Zdrojový Copier template pro tvorbu dalších Slidev prezentací. Tento repozitář dokumentuje údržbu templatu, release workflow a práci s Copierem. Dokumentace, která se má propsat do vygenerované prezentace, patří do [`template/README.md.jinja`](template/README.md.jinja).
 
-Aktuální verze templatu: `v0.8.0`.
+Aktuální verze templatu: `v0.9.0`.
 
 ## Co je kde
 

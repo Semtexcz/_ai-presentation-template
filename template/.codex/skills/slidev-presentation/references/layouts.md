@@ -23,13 +23,19 @@ Načti tuto referenci pouze při výběru layoutu, práci s jeho props nebo slot
 | Proces nebo algoritmus | `pipeline` | Krátké navazující kroky. |
 | Kód, prompt, příkaz nebo strukturovaný text | `code` | Jen relevantní výřez. |
 | Dva porovnávané textové bloky | `text-compare` | Původní vs upravené, špatné vs lepší. |
+| Vstup vlevo, prompt nebo reakce vpravo | `split-demo` | Demo-first slide pro kód, zadání, dokumentaci a prompt. |
 | Přechod k živé ukázce | `live-demo` | Prohlížeč, AI nástroj nebo terminál. |
 | Fotografie, screenshot nebo obrazový důkaz | `image-focus` | Lokální obrázek nebo popsaný placeholder. |
 
 Pro množství použij `BarChart`, pro několik klíčových hodnot `MetricStrip`, pro
-vztahy `HubDiagram` a pro opakující se proces `CycleDiagram` uvnitř
-`one-idea`. Obecná schémata lze zapsat také pomocí Mermaid. `pipeline` ponech
-pro lineární pořadí a `grid` pro rovnocenné kategorie.
+vztahy `HubDiagram`, pro přesný prompt `PromptCard` a pro krátkou sledovanou
+sekvenci `StepCards` uvnitř `one-idea` nebo `split-demo`. Obecná schémata lze
+zapsat také pomocí Mermaid. `pipeline` ponech pro lineární pořadí a `grid` pro
+rovnocenné kategorie.
+
+Layouty jsou výchozí doporučení. Pokud zvolený layout zhoršuje čitelnost nebo
+nutí obsah do špatné struktury, použij `one-idea` s vhodnými komponentami nebo
+vlastní jednoduchou HTML strukturou.
 
 ## Společný frontmatter
 
@@ -153,6 +159,30 @@ Pro polarity typu špatně vs dobře používej `bad` a `good`: špatná variant
 červená, dobrá zelená. `accent` nech jen pro zvýraznění bez hodnotového
 kontrastu.
 
+Pro jednoduché dvě varianty bez širšího demo kontextu používej raději
+`text-compare`. `split-demo` je vhodnější tehdy, když levý a pravý panel nesou
+odlišnou roli, například vstup vs prompt nebo kód vs revizní zadání.
+
+### `split-demo`
+
+Použití: demo-first slide pro práci vedle sebe, typicky vstup vlevo a prompt,
+iteraci nebo otázky vpravo.
+
+- `#title` — takeaway nadpis.
+- `#left`, `#right` — levý a pravý panel.
+- `#note` — volitelná krátká pointa pod oběma panely.
+- props `leftTitle`, `rightTitle` — titulky panelů.
+- props `leftIcon`, `rightIcon` — volitelné významové ikony panelů.
+- props `leftVariant`, `rightVariant` — `neutral`, `bad`, `good`, `accent`,
+  `warning`.
+- prop `codeFontMin` — minimální velikost písma pro bloky `pre`, výchozí `12`.
+- prop `leftWidth` — poměr levého panelu vůči pravému; výchozí `1`.
+
+Výchozí poměr je 1:1. Pokud blok začíná být přehuštěný, neroztahuj slide
+nekonečně ani nesnižuj písmo pod čitelnost; rozděl obsah do dvou slidů.
+
+Pro jeden dlouhý prompt nebo jeden dlouhý kód používej raději `code`.
+
 ### `live-demo`
 
 Použití: čistý přechod před živou ukázkou.
@@ -214,6 +244,30 @@ Všechny komponenty jsou určené především do slotu `#visual` layoutu
 - prop `steps` — 3–5 stringů nebo objektů `{ title, subtitle?, icon? }`.
 - prop `active?` — index zvýrazněného kroku.
 - prop `ariaLabel?` — popis cyklu.
+
+### `PromptCard`
+
+- props `title?`, `kicker?`, `icon?`.
+- prop `variant?` — `neutral`, `accent`, `good`, `bad`, `warning`.
+- prop `compact?` — zhuštěná varianta pro menší plochy.
+
+Použití: přesně viditelný prompt, který má zůstat na slidu jako artefakt.
+Komponenta funguje uvnitř `one-idea`, `split-demo` i vlastního HTML.
+
+Pro dlouhý prompt vlož do slotu fenced code block nebo `<pre>`. `PromptCard`
+není kopírovací widget ani editor; je to vizuálně odlišená karta.
+
+### `StepCards`
+
+- prop `steps` — 2–5 položek typu string nebo objekt
+  `{ title, subtitle?, icon?, variant? }`.
+- prop `active?` — index zvýrazněného kroku.
+- prop `columns?` — `2`, `3` nebo `4`; bez zadání se rozložení přizpůsobí počtu karet.
+- prop `ariaLabel?` — popis sekvence.
+
+Použití: krátké iterace, checklist, prompt → odpověď → upřesnění, kontrolní
+workflow. Pro čistě lineární proces s důrazem na tok kroků používej raději
+`pipeline`; pro opakující se smyčku `CycleDiagram`.
 
 ### `VisualPlaceholder`
 
@@ -278,4 +332,69 @@ Jedna jasná myšlenka.
 <template #note>
 Detail vysvětli ústně, ne textem na slidu.
 </template>
+```
+
+## Demo-first příklady
+
+### `split-demo`
+
+````md
+---
+layout: split-demo
+leftTitle: Zadání
+rightTitle: Prompt
+leftIcon: ph:brackets-curly-duotone
+rightIcon: ph:chat-circle-text-duotone
+rightVariant: accent
+title: "Přesný vstup vedle přesného promptu"
+---
+
+<template #title>
+Přesný vstup vedle přesného promptu.
+</template>
+
+<template #left>
+
+~~~py
+def total(items):
+    return sum(items)
+~~~
+
+</template>
+
+<template #right>
+<PromptCard title="Revizní prompt" kicker="Prompt" icon="ph:chat-circle-text-duotone" variant="accent">
+
+~~~text
+Najdi dvě rizika a navrhni bezpečnější variantu.
+~~~
+
+</PromptCard>
+</template>
+````
+
+### `PromptCard`
+
+````md
+<PromptCard title="Prompt pro iteraci" kicker="Upřesnění" icon="ph:cursor-text-duotone" variant="good">
+
+~~~text
+Doplň konkrétní data z dokumentace a zachovej stejný formát výstupu.
+~~~
+
+</PromptCard>
+````
+
+### `StepCards`
+
+```md
+<StepCards
+  :steps="[
+    { title: 'Prompt', icon: 'ph:pencil-simple-duotone' },
+    { title: 'Výstup', icon: 'ph:chat-centered-text-duotone' },
+    { title: 'Kontrola', icon: 'ph:magnifying-glass-duotone', variant: 'accent' },
+    { title: 'Iterace', icon: 'ph:arrow-clockwise-duotone' },
+  ]"
+  :active="2"
+/>
 ```

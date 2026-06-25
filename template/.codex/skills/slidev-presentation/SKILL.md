@@ -41,6 +41,9 @@ Do not load README as an agent reference; it is the human-facing project index.
 - Give each slide one main idea and a takeaway headline.
 - Minimize visible text; prefer diagrams, comparisons, tables, schemas, arrows,
   and meaningful grouping.
+- For demo-first decks, consider `split-demo` first for code-or-input vs prompt,
+  `PromptCard` for an exact prompt artifact, and `StepCards` for short
+  iterations or check sequences.
 - Use meaningful icons to encode a category, action, state, or navigation cue.
   An icon added only as decoration does not make a slide visual.
 - Show a full prompt, short code sample, or structured text when its exact visible
@@ -106,6 +109,8 @@ insufficient, then define the reusable API and include an example slide.
 - Use `<template #name>` only for slots supported by the selected layout.
 - Keep breadcrumbs short and consistent in longer decks.
 - Avoid Vue complexity for static slide content.
+- Do not add layouts or components as decorative wrappers around content that
+  would stay clearer in plain `one-idea` or simple HTML.
 - Do not add dependencies for work achievable with Slidev, Vue, CSS, HTML, SVG,
   existing layouts, or local assets.
 - Never invent an asset path. When an important image is missing, insert
