@@ -83,6 +83,21 @@ function fitsWithinBottomGap(blocks) {
   return getTrackedBottom(blocks) <= contentRect.bottom - bottomGap
 }
 
+function blockHasInternalOverflow(block) {
+  const heightOverflow = block.scrollHeight - block.clientHeight > 1
+  const widthOverflow = block.scrollWidth - block.clientWidth > 1
+
+  return heightOverflow || widthOverflow
+}
+
+function hasInternalOverflow(blocks) {
+  return blocks.some(block => blockHasInternalOverflow(block))
+}
+
+function fitsCodeBlocks(blocks) {
+  return fitsWithinBottomGap(blocks) && !hasInternalOverflow(blocks)
+}
+
 async function fitCodeBlocks() {
   await nextTick()
 
@@ -94,10 +109,12 @@ async function fitCodeBlocks() {
   if (!blocks.length) {
     codeArea.style.removeProperty('--code-font-size')
     codeArea.dataset.overflowMode = props.codeOverflow
+    codeArea.dataset.overflowFallback = 'none'
     return
   }
 
   codeArea.dataset.overflowMode = props.codeOverflow
+  codeArea.dataset.overflowFallback = 'none'
 
   if (props.codeOverflow === 'scroll') {
     codeArea.style.removeProperty('--code-font-size')
@@ -112,11 +129,14 @@ async function fitCodeBlocks() {
   codeArea.style.setProperty('--code-font-size', `${size}px`)
   await nextTick()
 
-  while (!fitsWithinBottomGap(blocks) && size > minSize) {
+  while (!fitsCodeBlocks(blocks) && size > minSize) {
     size -= 1
     codeArea.style.setProperty('--code-font-size', `${size}px`)
     await nextTick()
   }
+
+  if (!fitsCodeBlocks(blocks))
+    codeArea.dataset.overflowFallback = 'scroll'
 }
 
 onMounted(() => {
@@ -236,6 +256,10 @@ onBeforeUnmount(() => {
   overflow: auto;
 }
 
+.code-area[data-overflow-fallback='scroll'] :deep(.generation-code) {
+  overflow: auto;
+}
+
 .code-area :deep(.generation-code code) {
   font: inherit;
 }
@@ -294,6 +318,10 @@ onBeforeUnmount(() => {
 }
 
 .code-area[data-overflow-mode='scroll'] :deep(pre) {
+  overflow: auto;
+}
+
+.code-area[data-overflow-fallback='scroll'] :deep(pre) {
   overflow: auto;
 }
 

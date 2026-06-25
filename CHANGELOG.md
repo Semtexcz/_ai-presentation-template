@@ -4,6 +4,12 @@ All notable changes to this template are documented in this file.
 
 The format is based on Keep a Changelog and releases follow SemVer.
 
+## [0.10.3] - 2026-06-25
+
+### Fixed
+
+- Fixed `code` layout shrink detection so multiple fenced code blocks keep shrinking when a block is internally clipped, and only fall back to an internal scrollbar after reaching `codeFontMin`.
+
 ## [0.10.2] - 2026-06-25
 
 ### Added
