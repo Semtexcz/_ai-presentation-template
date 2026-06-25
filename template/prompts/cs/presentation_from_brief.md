@@ -7,6 +7,7 @@ Nejdřív načti:
 - `AGENTS.md`
 - `.codex/skills/slidev-presentation/SKILL.md`
 - reference, které skill předepisuje pro tvorbu celého decku
+- `.codex/skills/slidev/SKILL.md`, pokud budeš potřebovat obecné Slidev feature mimo API tohoto templatu
 
 Vstupy:
 

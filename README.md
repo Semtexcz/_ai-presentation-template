@@ -2,7 +2,7 @@
 
 Zdrojový Copier template pro tvorbu dalších Slidev prezentací. Tento repozitář dokumentuje údržbu templatu, release workflow a práci s Copierem. Dokumentace, která se má propsat do vygenerované prezentace, patří do [`template/README.md.jinja`](template/README.md.jinja).
 
-Aktuální verze templatu: `v0.7.0`.
+Aktuální verze templatu: `v0.8.0`.
 
 ## Co je kde
 
@@ -21,7 +21,7 @@ pnpm install
 pnpm run dev
 ```
 
-Po vygenerování projektu funguje jeho README jako stručný rozcestník. Agentní workflow a podrobné reference jsou v `.codex/skills/slidev-presentation/`; načítají se pouze podle typu úlohy.
+Po vygenerování projektu funguje jeho README jako stručný rozcestník. Template-specific workflow a podrobné reference jsou v `.codex/skills/slidev-presentation/`; oficiální Slidev syntaxe, built-in features a exportní dokumentace jsou v `.codex/skills/slidev/`. Oba skilly se mají načítat pouze podle typu úlohy.
 
 ## Výchozí pravidla pro slidy
 
@@ -74,7 +74,8 @@ Změny mezi releasy jsou v [CHANGELOG.md](CHANGELOG.md).
 - `template/styles/index.css` - globální barvy, fonty a breadcrumb styl.
 - `template/snippets/` - volitelné ukázkové soubory pro code slidy.
 - `template/prompts/` - lokalizované prompty kopírované do vygenerované prezentace.
-- `template/.codex/skills/slidev-presentation/` - stručný skill a postupně načítané reference pro agenta.
+- `template/.codex/skills/slidev-presentation/` - template-specific workflow pro dramaturgii, bundled layouty a práci s `slides.md`.
+- `template/.codex/skills/slidev/` - oficiální upstream Slidev skill a referenční dokumentace k platformě.
 
 ## Release workflow
 

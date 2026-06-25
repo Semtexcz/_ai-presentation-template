@@ -40,7 +40,8 @@ Pokud Chromium po instalaci není dostupné, spusť jednorázově
 - `styles/index.css` — globální vizuální styl.
 - `snippets/` — volitelné ukázky kódu a textu.
 - `prompts/` — lokalizované prompty pro tvorbu a revizi prezentace.
-- `.codex/skills/slidev-presentation/` — workflow a reference pro agenta.
+- `.codex/skills/slidev-presentation/` — workflow a reference pro práci s tímto templatem.
+- `.codex/skills/slidev/` — oficiální Slidev skill pro syntax, built-in features, export a další platformní chování.
 - `AGENTS.md` — technické hranice práce v tomto projektu.
 
 Většinu obsahových změn dělej pouze v `slides.md`. Layouty, komponenty a styly
@@ -61,6 +62,7 @@ měň až tehdy, když jde o opakovaně použitelný vzor nebo opravu chyby.
 
 Úplná pravidla dramaturgie, hustoty, poznámek a přístupnosti jsou v
 [referenci pro tvorbu prezentace](.codex/skills/slidev-presentation/references/authoring.md).
+Obecnou dokumentaci k samotnému Slidevu hledej v `.codex/skills/slidev/`.
 
 ## Přehled layoutů
 
@@ -84,6 +86,8 @@ kolekce Phosphor.
 
 Přesné props, sloty, společný frontmatter, vizuální CSS třídy a minimální
 příklad jsou v [referenci layoutů](.codex/skills/slidev-presentation/references/layouts.md).
+Pro built-in Slidev layouty, komponenty nebo animace použij oficiální
+`.codex/skills/slidev/`.
 
 U `pipeline` ber `vertical` jako výchozí volbu pro krátké sekvence. Ve
 vertikálním režimu drž maximum 5 kroků; od 6 kroků přepni na `mode: snake`.
@@ -126,6 +130,12 @@ Pro obsahovou nebo designovou práci má agent nejprve načíst:
 
 Skill určuje, kdy načíst detailní dokumentaci. Pro úzkou technickou opravu není
 nutné načítat dramaturgii ani kompletní API layoutů.
+Pokud úloha závisí na obecném chování Slidevu, built-in komponentech,
+animacích, exportu nebo CLI, načti navíc:
+
+```text
+.codex/skills/slidev/SKILL.md
+```
 
 Po netriviální změně spusť `pnpm run build`. Pokud potřebuješ PDF nebo jiný
 export, následně spusť `pnpm run export` a výsledek vizuálně zkontroluj.

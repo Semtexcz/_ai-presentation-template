@@ -5,8 +5,10 @@
 This is a generated Slidev presentation project. Work on this presentation; do
 not treat it as the source Copier template.
 
-Keep this file focused on project boundaries. Presentation methodology and
-layout documentation live in the `slidev-presentation` skill.
+Keep this file focused on project boundaries. Template-specific presentation
+methodology and bundled layout documentation live in the `slidev-presentation`
+skill; generic Slidev platform documentation lives in the official `slidev`
+skill.
 
 ## Instruction priority
 
@@ -14,8 +16,9 @@ Apply instructions in this order:
 
 1. Direct user instructions.
 2. This file for project boundaries and validation.
-3. `.codex/skills/slidev-presentation/SKILL.md` for presentation work.
-4. Existing project conventions.
+3. `.codex/skills/slidev-presentation/SKILL.md` for template-specific presentation work.
+4. `.codex/skills/slidev/SKILL.md` for generic Slidev syntax, built-in features, exporting, and official platform behavior.
+5. Existing project conventions.
 
 If instructions conflict, this file controls files, commands, and technical
 boundaries; the skill controls narrative, design, and slide-writing decisions.
@@ -30,6 +33,15 @@ Read `.codex/skills/slidev-presentation/SKILL.md` before work that changes:
 - layout selection,
 - an article, brief, or outline into a deck,
 - presentation-quality review.
+
+Read `.codex/skills/slidev/SKILL.md` before work that depends on generic
+Slidev features outside this template's custom API, for example:
+
+- built-in Slidev layouts or components,
+- click animations, motion, and drawing features,
+- Monaco or advanced code-block capabilities,
+- Mermaid, PlantUML, or LaTeX syntax,
+- exporting, hosting, presenter mode, or other official CLI behavior.
 
 For a narrowly technical fix, do not load presentation references unless the
 change also affects content or design. If the skill is unavailable, continue
@@ -66,7 +78,8 @@ Do not:
 - `styles/` — global presentation styling.
 - `snippets/` — reusable code or text examples.
 - `prompts/` — localized generation and review prompts.
-- `.codex/skills/slidev-presentation/` — agent workflow and references.
+- `.codex/skills/slidev-presentation/` — template-specific workflow and bundled-layout references.
+- `.codex/skills/slidev/` — official Slidev skill and upstream platform references.
 
 Modify layouts, components, or styles only for a reusable need, an existing
 bug, or a limitation that cannot be handled cleanly in `slides.md`.

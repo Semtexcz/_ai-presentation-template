@@ -5,6 +5,7 @@ Nejdřív načti:
 - `AGENTS.md`
 - `.codex/skills/slidev-presentation/SKILL.md`
 - obě reference skillu pro komplexní revizi
+- `.codex/skills/slidev/SKILL.md`, pokud revize zasáhne obecné Slidev feature nebo exportní chování
 
 Zaměř se na:
 

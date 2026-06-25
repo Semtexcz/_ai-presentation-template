@@ -4,6 +4,16 @@ All notable changes to this template are documented in this file.
 
 The format is based on Keep a Changelog and releases follow SemVer.
 
+## [0.8.0] - 2026-06-25
+
+### Added
+
+- Added the official upstream Slidev skill under `.codex/skills/slidev/`, including its bundled reference library for core syntax, built-in layouts and components, animations, exporting, hosting, and presenter features.
+
+### Changed
+
+- Updated generated-project guidance, AGENTS routing, and bundled prompts so template-specific deck workflow stays in `.codex/skills/slidev-presentation/` while generic Slidev platform questions route to the official `.codex/skills/slidev/` skill.
+
 ## [0.7.1] - 2026-06-24
 
 ### Fixed

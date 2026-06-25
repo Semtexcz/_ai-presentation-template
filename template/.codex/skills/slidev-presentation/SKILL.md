@@ -8,6 +8,10 @@ description: Create, restructure, review, and refine Slidev presentations genera
 Work on the generated Slidev presentation, not the source Copier template.
 Produce or edit `slides.md` by default and preserve the existing visual system.
 
+For generic Slidev syntax, built-in layouts and components, animations,
+exporting, or other platform behavior, use `.codex/skills/slidev/SKILL.md` in
+parallel with this template-specific skill.
+
 ## Read context progressively
 
 Load only the reference needed for the task:

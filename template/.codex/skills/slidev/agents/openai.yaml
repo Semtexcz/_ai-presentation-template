@@ -1,0 +1,4 @@
+interface:
+  display_name: "Slidev"
+  short_description: "Official Slidev syntax and platform reference"
+  default_prompt: "Use $slidev for Slidev syntax, built-in features, exporting, or presenter tooling."

@@ -5,6 +5,7 @@ Nejdřív načti:
 - `AGENTS.md`
 - `.codex/skills/slidev-presentation/SKILL.md`
 - `references/layouts.md` podle instrukcí skillu
+- `.codex/skills/slidev/SKILL.md`, pokud zadání vyžaduje built-in Slidev feature mimo bundled layouty
 
 Zadání:
 
