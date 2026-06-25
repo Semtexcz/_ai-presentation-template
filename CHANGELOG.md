@@ -4,6 +4,12 @@ All notable changes to this template are documented in this file.
 
 The format is based on Keep a Changelog and releases follow SemVer.
 
+## [0.9.1] - 2026-06-25
+
+### Fixed
+
+- Made the `code` layout resilient for standard markdown fenced code blocks by keeping the code area inside the slide, allowing font shrink to apply consistently, and falling back to internal code scrolling instead of slide overflow.
+
 ## [0.9.0] - 2026-06-25
 
 ### Added

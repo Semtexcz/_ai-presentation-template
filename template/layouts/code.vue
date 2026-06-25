@@ -146,6 +146,7 @@ onBeforeUnmount(() => {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .code-title {
@@ -168,7 +169,11 @@ onBeforeUnmount(() => {
   --code-font-size: 26px;
   margin-top: 30px;
   width: 100%;
+  flex: 1 1 auto;
   min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .code-note {
@@ -241,10 +246,18 @@ onBeforeUnmount(() => {
 
 .code-area :deep(.slidev-code-wrapper) {
   width: 100%;
+  max-width: 100%;
+  min-height: 0;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .code-area :deep(pre) {
   width: 100%;
+  max-width: 100%;
+  min-height: 0;
+  max-height: 100%;
   margin: 0;
   padding: 24px 28px !important;
   border: 1.5px solid var(--border);
@@ -257,14 +270,15 @@ onBeforeUnmount(() => {
   font-weight: 500;
   line-height: 1.38 !important;
   white-space: pre-wrap !important;
-  word-break: normal;
-  overflow-wrap: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
   hyphens: none;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .code-area :deep(pre code) {
   display: block;
+  max-width: 100%;
   padding: 0;
   background: transparent;
   color: inherit;
