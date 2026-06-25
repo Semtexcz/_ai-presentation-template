@@ -4,6 +4,12 @@ All notable changes to this template are documented in this file.
 
 The format is based on Keep a Changelog and releases follow SemVer.
 
+## [0.8.1] - 2026-06-25
+
+### Fixed
+
+- Allowed long `code` layout titles rendered through the `title` slot to shrink and wrap inside the heading row instead of overflowing past the slide edge.
+
 ## [0.8.0] - 2026-06-25
 
 ### Added

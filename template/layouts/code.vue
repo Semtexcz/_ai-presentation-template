@@ -150,9 +150,17 @@ onBeforeUnmount(() => {
 
 .code-title {
   --slide-title-max-width: 1040px;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: min(1040px, 100%);
 }
 
-.code-heading { display: flex; align-items: center; gap: 18px; }
+.code-heading {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+}
 .code-icon { width: 48px; height: 48px; flex: 0 0 48px; color: var(--accent); }
 .code-icon :deep(svg) { width: 100%; height: 100%; }
 
