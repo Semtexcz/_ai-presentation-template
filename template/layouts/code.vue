@@ -35,6 +35,11 @@ const props = defineProps({
     type: Number,
     default: 12,
   },
+  codeOverflow: {
+    type: String,
+    default: 'shrink',
+    validator: value => ['shrink', 'scroll'].includes(value),
+  },
 })
 
 const codeContentEl = ref(null)
@@ -87,6 +92,14 @@ async function fitCodeBlocks() {
 
   const blocks = getCodeBlocks()
   if (!blocks.length) {
+    codeArea.style.removeProperty('--code-font-size')
+    codeArea.dataset.overflowMode = props.codeOverflow
+    return
+  }
+
+  codeArea.dataset.overflowMode = props.codeOverflow
+
+  if (props.codeOverflow === 'scroll') {
     codeArea.style.removeProperty('--code-font-size')
     return
   }
@@ -219,6 +232,10 @@ onBeforeUnmount(() => {
   overflow: hidden;
 }
 
+.code-area[data-overflow-mode='scroll'] :deep(.generation-code) {
+  overflow: auto;
+}
+
 .code-area :deep(.generation-code code) {
   font: inherit;
 }
@@ -273,6 +290,10 @@ onBeforeUnmount(() => {
   word-break: break-word;
   overflow-wrap: anywhere;
   hyphens: none;
+  overflow: hidden;
+}
+
+.code-area[data-overflow-mode='scroll'] :deep(pre) {
   overflow: auto;
 }
 

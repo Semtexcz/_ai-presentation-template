@@ -4,6 +4,12 @@ All notable changes to this template are documented in this file.
 
 The format is based on Keep a Changelog and releases follow SemVer.
 
+## [0.10.2] - 2026-06-25
+
+### Added
+
+- Added `codeOverflow: shrink|scroll` frontmatter for the `code` layout so authors can choose between automatic code-size fitting and an internal scrollbar per slide.
+
 ## [0.10.1] - 2026-06-25
 
 ### Fixed

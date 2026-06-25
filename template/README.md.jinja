@@ -130,6 +130,17 @@ title: "Jakou otázku řešíme?"
 `breadcrumb` používej pro konzistentní navigaci v delších prezentacích.
 Viditelný nadpis patří u vlastních layoutů obvykle do slotu `#title`.
 
+U layoutu `code` můžeš podle potřeby přepnout chování přetečení:
+
+```yaml
+layout: code
+codeOverflow: shrink # nebo scroll
+codeFontMin: 12
+```
+
+- `shrink` je výchozí režim: layout zmenšuje písmo, aby se obsah pokud možno vešel na slide.
+- `scroll` vypne automatické zmenšování a nechá delší blok rolovat uvnitř rámečku.
+
 ## Připravené prompty
 
 V `prompts/cs/` jsou samostatná zadání podle typu práce:
