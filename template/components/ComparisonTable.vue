@@ -18,14 +18,14 @@
         <tr>
           <th scope="col" class="header-cell header-left px-4 py-3 text-left" :class="leftVariantClass">
             <div class="flex min-w-0 items-center gap-3">
-              <VisualIcon v-if="leftIcon" :name="leftIcon" class="h-6 w-6 shrink-0" />
+              <VisualIcon v-if="leftIcon" :name="leftIcon" class="comparison-table-icon" />
               <span class="min-w-0 text-balance">{{ leftTitle }}</span>
             </div>
           </th>
 
           <th scope="col" class="header-cell header-right px-4 py-3 text-left" :class="rightVariantClass">
             <div class="flex min-w-0 items-center gap-3">
-              <VisualIcon v-if="rightIcon" :name="rightIcon" class="h-6 w-6 shrink-0" />
+              <VisualIcon v-if="rightIcon" :name="rightIcon" class="comparison-table-icon" />
               <span class="min-w-0 text-balance">{{ rightTitle }}</span>
             </div>
           </th>
@@ -192,6 +192,17 @@ function formatCell(value) {
 
 .comparison-table-presenter :deep(svg) {
   display: block;
+}
+
+.comparison-table-icon {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+}
+
+.comparison-table-icon :deep(svg) {
+  width: 100%;
+  height: 100%;
 }
 
 .comparison-table-presenter table.dense .header-cell,

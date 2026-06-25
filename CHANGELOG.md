@@ -4,6 +4,12 @@ All notable changes to this template are documented in this file.
 
 The format is based on Keep a Changelog and releases follow SemVer.
 
+## [0.10.1] - 2026-06-25
+
+### Fixed
+
+- Fixed `ComparisonTable` header icon sizing so the two-column comparison layout no longer collapses under oversized Phosphor SVGs.
+
 ## [0.10.0] - 2026-06-25
 
 ### Added
